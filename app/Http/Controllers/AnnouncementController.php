@@ -19,7 +19,7 @@ class AnnouncementController extends Controller
     {
         $announcements = Announcement::orderBy('created_at', 'desc')->paginate(4);
 
-        return view('announcement.index', compact('announcements'));
+        return view('home', compact('announcements'));
     }
 
     /**
@@ -29,7 +29,7 @@ class AnnouncementController extends Controller
      */
     public function create()
     {
-        
+
         return view('announcement.create');
     }
 
@@ -83,9 +83,9 @@ class AnnouncementController extends Controller
      */
     public function update(AnnouncementRequest $request, Announcement $announcement)
     {
-       
-            $announcement->update($request->all());
-       
+
+        $announcement->update($request->all());
+
 
         return redirect(route('announcement.index'))->with('message', 'Annuncio Aggiornato');
     }
@@ -98,9 +98,8 @@ class AnnouncementController extends Controller
      */
     public function destroy(Announcement $announcement)
     {
-      
-            $announcement->delete();
-            return redirect(route('announcement.index'))->with('message', 'Annuncio eliminato');
-       
+
+        $announcement->delete();
+        return redirect(route('announcement.index'))->with('message', 'Annuncio eliminato');
     }
 }
