@@ -13,10 +13,14 @@
             <!--<button id="notification-button" class="mr-0 mr-md-3 d-none d-md-block">
                 <i class="icon-bell large-icons"></i>
             </button>-->
-            <a class="mr-0 mr-md-3 d-none d-md-block" href="{{ route('login') }}"><button id="loginBtn"
-                    class="btn b-btn">Login/Registrati</button></a>
-            <a class="d-none d-md-block" href=""><button class="btn b-btn disabled">Metti un
+            <a class="mr-0 mr-md-3 d-none d-md-block" href=""><button class="btn b-btn disabled">Metti un
                     annuncio</button></a>
+            @guest
+                <a class="d-none d-md-block" href="{{ route('login') }}"><button id="loginBtn"
+                        class="btn b-btn">Login/Registrati</button></a>
+            @else
+                <!-- User Dropdown -->
+            @endguest
         </div>
     </div>
 </nav>
