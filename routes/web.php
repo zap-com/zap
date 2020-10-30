@@ -18,8 +18,8 @@ use App\Http\Controllers\HomeController;
 
 
 Auth::routes();
-
-Route::get('/', [AnnouncementController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/announcement', [AnnouncementController::class, 'index'])->name('home');
 Route::middleware(['auth'])->group(function () {
 
 
