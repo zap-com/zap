@@ -19,8 +19,20 @@ class Announcement extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function category(){
+    public function category()
+    {
 
         return $this->belongsTo(Category::class);
+    }
+
+    //Uri 
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'title';
     }
 }
