@@ -6,10 +6,16 @@
     <div class="modal-dialog h-100" role="document">
         <div class="modal-content h-100">
             <div class="modal-body px-0">
-                <a class="d-block py-4 w-100 d-flex align-items-center">
-                    <i class="icons icon-login mx-3"></i>
-                    <p class="m-0">Login/Registrati</p>
-                </a>
+                @guest
+
+                    <a href="{{ route('login') }}" class="d-block py-4 w-100 d-flex align-items-center">
+                        <i class="icons icon-login mx-3"></i>
+                        <p class="m-0">Login/Registrati</p>
+                    </a>
+
+                @else
+
+                @endguest
                 <a class="d-block py-4 w-100 d-flex align-items-center">
                     <i class="icons icon-bell mx-3"></i>
                     <p class="m-0">Leggi le notifiche</p>

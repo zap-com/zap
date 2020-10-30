@@ -11,7 +11,7 @@ class Announcement extends Model
 {
     use HasFactory;
 
-    protected $fillables = ['title', 'description', 'price', 'user_id', 'category_id'];
+    protected $fillable = ['title', 'description', 'price', 'user_id', 'category_id'];
 
     //RELAZIONI
     public function user()
@@ -19,7 +19,8 @@ class Announcement extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function category(){
+    public function category()
+    {
 
         return $this->belongsTo(Category::class);
     }
