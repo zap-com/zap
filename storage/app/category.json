@@ -1,0 +1,69 @@
+[{
+        "name": "Auto",
+        "icon": "./icons/car.svg"
+    },
+    {
+        "name": "Moto",
+        "icon": "./icons/motorbikes.svg"
+    },
+    {
+        "name": "Moda",
+        "icon": "./icons/fashion.svg"
+    },
+    {
+        "name": "Case",
+        "icon": "./icons/estate.svg"
+    },
+    {
+        "name": "Elettronica",
+        "icon": "./icons/electronic.svg"
+    },
+    {
+        "name": "Telefoni e accessori",
+        "icon": "./icons/phones.svg"
+    },
+    {
+        "name": "Sport e svago",
+        "icon": "./icons/sport.svg"
+    },
+    {
+        "name": "Tv e audio",
+        "icon": "./icons/tv.svg"
+    },
+    {
+        "name": "Bici",
+        "icon": "./icons/bike.svg"
+    },
+    {
+        "name": "Videogiochi e console",
+        "icon": "./icons/games.svg"
+    },
+    {
+        "name": "Casa e giardino",
+        "icon": "./icons/home.svg"
+    },
+    {
+        "name": "Elettrodomestici",
+        "icon": "./icons/appliances.svg"
+    },
+    {
+        "name": "Libri, Film e Musica",
+        "icon": "./icons/books.svg"
+    },
+    {
+        "name": "Arte e collezionismo",
+        "icon": "./icons/art.svg"
+    },
+    {
+        "name": "Lavoro",
+        "icon": "./icons/jobs.svg"
+    },
+    {
+        "name": "Servizi",
+        "icon": "./icons/services.svg"
+    },
+    {
+        "name": "Altro",
+        "icon": "./icons/other.svg"
+    }
+]
