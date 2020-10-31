@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\AnnouncementController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+
+use App\Http\Controllers\PublicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +19,14 @@ use App\Http\Controllers\HomeController;
 
 
 Auth::routes();
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/announcement', [AnnouncementController::class, 'index'])->name('home');
+//Public Routes
+Route::get('/', [PublicController::class, 'index'])->name('home');
+Route::get('/category/{category}', [PublicController::class, 'category'])->name('category.index');
+
+Route::get('/announcement', [AnnouncementController::class, 'index'])->name('announcement.index');
+
+
+
 Route::middleware(['auth'])->group(function () {
 
 
