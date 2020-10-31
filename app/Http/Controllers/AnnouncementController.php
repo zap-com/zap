@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Announcement;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\AnnouncementRequest;
@@ -29,8 +30,8 @@ class AnnouncementController extends Controller
      */
     public function create()
     {
-        
-        return view('announcement.create');
+        $categories = Category::orderBy('name', 'asc')->get();
+        return view('announcement.create', compact('categories'));
     }
 
     /**
@@ -41,15 +42,15 @@ class AnnouncementController extends Controller
      */
     public function store(AnnouncementRequest $request)
     {
-        $announcement = Announcement::create([
+        Announcement::create([
             'title' => $request->input('title'),
-            'slug' => $request->input('slug'),
-            'body' => $request->input('body'),
-            'img' => $request->file('img')->store('public/img'),
+            'description' => $request->input('description'),
+            'price' => $request->input('price'),
+            'category_id' => $request->input('category'),
             'user_id' => Auth::user()->id
         ]);
 
-        return redirect(route('announcement.index'))->with('message', 'Annuncio Creato');
+        return redirect(route('home'))->with('message', 'Annuncio Creato');
     }
 
     /**
@@ -83,9 +84,9 @@ class AnnouncementController extends Controller
      */
     public function update(AnnouncementRequest $request, Announcement $announcement)
     {
-       
-            $announcement->update($request->all());
-       
+
+        $announcement->update($request->all());
+
 
         return redirect(route('announcement.index'))->with('message', 'Annuncio Aggiornato');
     }
@@ -98,9 +99,8 @@ class AnnouncementController extends Controller
      */
     public function destroy(Announcement $announcement)
     {
-      
-            $announcement->delete();
-            return redirect(route('announcement.index'))->with('message', 'Annuncio eliminato');
-       
+
+        $announcement->delete();
+        return redirect(route('announcement.index'))->with('message', 'Annuncio eliminato');
     }
 }

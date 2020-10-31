@@ -13,10 +13,30 @@
             <!--<button id="notification-button" class="mr-0 mr-md-3 d-none d-md-block">
                 <i class="icon-bell large-icons"></i>
             </button>-->
-            <a class="mr-0 mr-md-3 d-none d-md-block" href="{{ route('login') }}"><button id="loginBtn"
-                    class="btn b-btn">Login/Registrati</button></a>
-            <a class="d-none d-md-block" href=""><button class="btn b-btn disabled">Metti un
+            <a class="mr-0 mr-md-3 d-none d-md-block" href="{{ route('announcement.create') }}"><button
+                    class="btn b-btn">Metti un
                     annuncio</button></a>
+            @guest
+                <a class="d-none d-md-block" href="{{ route('login') }}"><button id="loginBtn"
+                        class="btn b-btn">Login/Registrati</button></a>
+            @else
+                <!-- User Dropdown -->
+                <div class="dropdown">
+                    <button id="loginBtn" class="btn b-btn  dropdown-toggle" type="button" id="dMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">{{ Auth::user()->name }}</button></a>
+                    <div class="dropdown-menu dropdown-menu-right bg-white" aria-labelledby="dMenuButton">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </div>
+                </div>
+            @endguest
         </div>
     </div>
 </nav>
