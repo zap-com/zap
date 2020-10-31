@@ -25,6 +25,6 @@
         </div> -->
         <p class="card-text text-muted mt-2 pt-0 slide-description flex-grow-1">{{ $description }}
         </p>
-        <p class="product-price align-self-end text-right mb-auto p-2">{{ $price }}</p>
+        <p class="product-price align-self-end text-right mb-auto p-2">{{ $price }} €</p>
     </div>
 </div>

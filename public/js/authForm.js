@@ -93,21 +93,22 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-var registerBtn = document.querySelector("#registerBtn");
-registerBtn.addEventListener("click", function (e) {
-  var form = document.querySelector("#form");
-  var formInner = document.querySelector("#formInner");
-  var oldFormInner = formInner.innerHTML;
-  console.log('click');
-  e.preventDefault(); //Toogle form action
+var registerBtn = document.querySelector('#registerBtn');
+var loginForm = document.querySelector('#formLogin');
+var registerForm = document.querySelector('#formRegister');
 
-  if (form.action.includes("login")) {
-    form.action = "http://localhost:8000/register";
-    formInner.innerHTML = "<div class=\"form-group\">\n        <label for=\"name\">Your name and surname</label>\n        <input type=\"text\" class=\"form-control \" name=\"name\"\n            id=\"name\" value=\"\" required autocomplete=\"name\" autofocus>\n    \n     \n            </div>\n            <div class=\"form-group\">\n                <label for=\"email\">Email</label>\n                <input type=\"email\" class=\"form-control \"\n                    name=\"email\" id=\"email\" aria-describedby=\"emailHelp\"  }}\"\n                    required autocomplete=\"email\" autofocus>\n            \n            </div>\n            <div class=\"form-group\">\n                <label for=\"password\">Password</label>\n                <input id=\"password\" type=\"password\"\n                    class=\"form-control\" name=\"password\"\n                    required autocomplete=\"current-password\">\n\n                \n            </div>\n            <div class=\"form-group\">\n                <label for=\"password-confirmation\">Confirm Password</label>\n                <input id=\"password-confirmation\" type=\"password\"\n                    class=\"form-control\"\n                    name=\"password_confirmation\" required autocomplete=\"current-password\">\n\n                \n            </div>\n            <div class=\"form-row align-items-center\">\n                <div class=\"col\">\n                    <button type=\"submit\"\n                        class=\"btn b-btn w-100\">Register</button>\n                </div>\n                <span class=\"px-3 text-muted\">or</span>\n                <div class=\"col text-center\">\n                    <a class=\"color-main\" id=\"#registerBtn\">Login</a>\n                </div>\n            </div>";
-  } else if (form.action.includes("register")) {
-    form.action = "http://localhost:8000/login";
+registerBtn.onclick = function () {
+  if (registerForm.classList.contains('d-none')) {
+    loginForm.classList.add('d-none');
+    registerForm.classList.remove('d-none');
+    registerBtn.innerText = 'Sing-in';
+  } else {
+    console.log('else');
+    loginForm.classList.remove('d-none');
+    registerForm.classList.add('d-none');
+    registerBtn.innerText = 'Register now';
   }
-});
+};
 
 /***/ }),
 
