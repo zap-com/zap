@@ -11728,3 +11728,7 @@ input {
   opacity: 0.4;
 }
 
+.form-group {
+  transition: 0.4s;
+}
+

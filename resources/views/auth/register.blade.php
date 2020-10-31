@@ -44,6 +44,7 @@
                         <h1 class="pb-3">{{ __('connect.signup-title') }} - {{ config('app.name') }}</h1>
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
+                            
                             <div class="form-group">
                                 <label for="name">{{ __('connect.name') }}</label>
                                 <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
@@ -96,7 +97,7 @@
                                 </div>
                                 <span class="px-3 text-muted">{{ __('connect.or') }}</span>
                                 <div class="col text-center">
-                                    <a class="color-main" href="{{ route('login') }}">{{ __('connect.access') }}</a>
+                                    <a class="color-main" id="#registerBtn">Login</a>
                                 </div>
                             </div>
                         </form>

@@ -42,52 +42,13 @@
                 <div class="row h-100 align-items-center">
                     <div class="col-12">
                         <h1 class="pb-3">{{ __('connect.login-title') }} - {{ config('app.name') }}</h1>
-                        <form method="POST" action="{{ route('login') }}">
-                            @csrf
-                            <div class="form-group">
-                                <label for="email">{{ __('connect.email') }}</label>
-                                <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                    name="email" id="email" value="{{ old('email') }}" required autocomplete="email"
-                                    autofocus>
-                                @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="password">{{ __('connect.password') }}</label>
-                                <input id="password" type="password"
-                                    class="form-control @error('password') is-invalid @enderror" name="password"
-                                    required autocomplete="current-password">
-
-                                @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <div class="form-group form-check">
-                                <input class="form-check-input" type="checkbox" name="remember" id="remember"
-                                    {{ old('remember') ? 'checked' : '' }}>
-                                <label class="form-check-label" for="remember">{{ __('connect.remember') }}</label>
-                            </div>
-                            <div class="form-row align-items-center">
-                                <div class="col">
-                                    <button type="submit"
-                                        class="btn b-btn w-100">{{ __('connect.login-submit') }}</button>
-                                </div>
-                                <span class="px-3 text-muted">{{ __('connect.or') }}</span>
-                                <div class="col text-center">
-                                    <a class="color-main" href="{{ route('register') }}">{{ __('connect.signup') }}</a>
-                                </div>
-                            </div>
-                        </form>
+                        <x-authForm/>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script src="{{ asset('js/authForm.js') }}" ></script>
 </body>
 
 </html>
