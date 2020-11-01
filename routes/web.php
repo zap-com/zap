@@ -21,9 +21,11 @@ use App\Http\Controllers\PublicController;
 Auth::routes();
 //Public Routes
 Route::get('/', [PublicController::class, 'index'])->name('home');
+
 Route::get('/category/{category}', [PublicController::class, 'category'])->name('category.index');
 
 Route::get('/announcement', [AnnouncementController::class, 'index'])->name('announcement.index');
+Route::get('/announcement/{announcement}', [AnnouncementController::class, 'show'])->name('announcement.show');
 
 
 

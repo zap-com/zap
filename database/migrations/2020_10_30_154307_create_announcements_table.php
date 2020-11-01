@@ -18,6 +18,7 @@ class CreateAnnouncementsTable extends Migration
             $table->string('title');
             $table->float('price',7,2);
             $table->text('description');
+            $table->string('slug');
             $table->unsignedBigInteger('user_id')->default(1);
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('category_id')->default(1);

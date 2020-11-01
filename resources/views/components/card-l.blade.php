@@ -20,7 +20,7 @@
         </div>
     </div>
     <div class="card-body d-flex flex-column pt-1 pb-1 px-2">
-        <h5 class="card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold">{{ $ad->title }}</h5>
+        <h5 class="card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold"> <a href="{{route('announcement.show', $ad )}}"> {{ $ad->title }} </a></h5>
         <!--
             <div class="d-flex d-row align-items-center py-0 location-row">
             <i class="icon-location-pin pr-1"></i>

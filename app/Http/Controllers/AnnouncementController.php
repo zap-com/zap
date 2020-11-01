@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Announcement;
 use App\Models\Category;
+use Illuminate\Support\Str;
+use App\Models\Announcement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\AnnouncementRequest;
@@ -62,6 +63,7 @@ class AnnouncementController extends Controller
      */
     public function show(Announcement $announcement)
     {
+     
         return view('announcement.show', compact('announcement'));
     }
 
