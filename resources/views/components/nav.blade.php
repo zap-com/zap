@@ -14,7 +14,7 @@
                 <i class="icon-bell large-icons"></i>
             </button>-->
             <a class="mr-0 mr-md-3 d-none d-md-block" href="{{ route('announcement.create') }}"><button
-                    class="btn b-btn">Metti un
+                    class="btn b-btn">Inserisci un
                     annuncio</button></a>
             @guest
                 <a class="d-none d-md-block" href="{{ route('login') }}"><button id="loginBtn"

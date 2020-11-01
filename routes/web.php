@@ -33,10 +33,14 @@ Route::middleware(['auth'])->group(function () {
 
 
 
-    Route::get('/announcement/create', [AnnouncementController::class, 'create'])->name('announcement.create');
+    Route::get('/ad/create', [AnnouncementController::class, 'create'])->name('announcement.create');
+
     Route::post('/announcement/store', [AnnouncementController::class, 'store'])->name('announcement.store');
+
     Route::get('/announcement/{announcement}/edit', [AnnouncementController::class, 'edit'])->name('announcement.edit');
+
     Route::put('/announcement/{announcement}/update', [AnnouncementController::class, 'update'])->name('announcement.update');
+
     Route::delete('/announcement/{announcement}/delete', [AnnouncementController::class, 'destroy'])->name('announcement.destroy');
 
 

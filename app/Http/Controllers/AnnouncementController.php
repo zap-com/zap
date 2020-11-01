@@ -32,7 +32,7 @@ class AnnouncementController extends Controller
     public function create()
     {
        
-        return view('announcement.create', compact('categories'));
+        return view('announcement.create');
     }
 
     /**
