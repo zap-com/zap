@@ -29,7 +29,7 @@
         <p class="card-text text-muted mt-2 pt-0 slide-description flex-grow-1">{{  substr($ad->description, 0 ,200) }}[...] 
         </p>
         <div class="info ">
-            <a class="mr-auto ">{{$ad->category->name}}</a>
+            <a class="mr-auto " href="{{route('category.index', $ad->category )}}">{{$ad->category->name}}</a>
             <p class="product-price text-right mb-auto p-2" >{{ $ad->price}} €</p>
         </div>
         

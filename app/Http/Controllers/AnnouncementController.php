@@ -31,7 +31,7 @@ class AnnouncementController extends Controller
      */
     public function create()
     {
-        $categories = Category::orderBy('name', 'asc')->get();
+       
         return view('announcement.create', compact('categories'));
     }
 

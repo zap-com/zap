@@ -20,6 +20,8 @@ class PublicController extends Controller
 
     public function category(Category $category){
         $announcements = Announcement::where('category_id', $category->id)->get();
-        dd($announcements);
+
+        return view ('category.index', compact('announcements'));
+      
     }
 }
