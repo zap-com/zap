@@ -4,21 +4,35 @@
         <div class="row">
             <div class="col-12">
                 @if (session('message'))
-                <div class="alert alert-success">
-                    {{ session('message') }}
-                </div>
-            @endif
+                    <div class="alert alert-success">
+                        {{ session('message') }}
+                    </div>
+                @endif
             </div>
             <div class="col-12">
                 <h1 class="text-center pt-5 pb-3">Zap, il sito di annunci più che veloce, fulmineo!</h1>
             </div>
         </div>
     </div>
-    <div class="container py-2 py-md-5">
+
+    <section class="container">
+        <div class="row">
+            <div class="col-12">
+                <div id="category-slider" class="swiper-container py-3">
+                    <div id="category-wrapper" class="swiper-wrapper">
+                    </div>
+                </div>
+                <div class="swiper-button-prev cat-prev d-none d-md-flex"></div>
+                <div class="swiper-button-next cat-next d-none d-md-flex"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container py-2 py-md-5">
         <!-- Remember to change col-md-12 in col-md-7 once you add provinces -->
         <div class="row">
 
-           
+
 
 
             <div class="d-none d-md-flex col-5" style="width:100%"></div>
@@ -55,7 +69,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <section class="container align-items-center justify-content-between py-5">
         <div class="row">
@@ -74,5 +88,6 @@
     </script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/truncate.js@1.1.2/truncate.min.js"></script>
-    <script src="{{ asset('js/home.js') }}"></script>
+    <script src="{{ asset('js/cardCarousel.js') }}"></script>
+    <script src="{{ asset('js/catCarousel.js') }}"></script>
 </x-app>

@@ -2,6 +2,7 @@
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/js/authForm.js": "/js/authForm.js",
-    "/js/home.js": "/js/home.js",
+    "/js/cardCarousel.js": "/js/cardCarousel.js",
+    "/js/catCarousel.js": "/js/catCarousel.js",
     "/js/infiniteScroll.js": "/js/infiniteScroll.js"
 }

@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use App\Models\Announcement;
-use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
+
+
 use Spatie\Sluggable\SlugOptions;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Category extends Model
@@ -20,11 +22,6 @@ class Category extends Model
         return $this->hasMany(Announcement::class);
     }
 
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
-
     /**
      * Get the options for generating the slug.
      */
@@ -33,5 +30,17 @@ class Category extends Model
         return SlugOptions::create()
             ->generateSlugsFrom('name')
             ->saveSlugsTo('slug');
+    }
+
+    //Uri 
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }

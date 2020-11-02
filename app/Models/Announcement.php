@@ -10,13 +10,11 @@ use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-
-
 class Announcement extends Model
-{ 
+{
     use HasSlug;
     use HasFactory;
-   
+
 
     protected $fillable = ['title', 'description', 'price', 'user_id', 'category_id'];
 
@@ -32,18 +30,18 @@ class Announcement extends Model
         return $this->belongsTo(Category::class);
     }
 
-    
+
     /**
      * Get the options for generating the slug.
      */
-    public function getSlugOptions() : SlugOptions
+    public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
             ->generateSlugsFrom('title')
             ->saveSlugsTo('slug');
     }
 
-    
+
 
     //Uri 
     /**
@@ -57,7 +55,8 @@ class Announcement extends Model
     }
 
     //Functions
-    public function incrementVisit(){
+    public function incrementVisit()
+    {
         $this->visit++;
         $this->save();
         return $this->visit;

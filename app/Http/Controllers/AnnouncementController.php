@@ -36,6 +36,12 @@ class AnnouncementController extends Controller
         return response()->json($announcements);
     }
 
+    public function catjson()
+    {
+        $categories = Category::orderBy('id', 'asc')->get();
+        return response()->json($categories);
+    }
+
     /**
      * Show the form for creating a new resource.
      *fa

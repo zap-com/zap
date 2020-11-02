@@ -81,45 +81,78 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/authForm.js":
-/*!**********************************!*\
-  !*** ./resources/js/authForm.js ***!
-  \**********************************/
+/***/ "./resources/js/catCarousel.js":
+/*!*************************************!*\
+  !*** ./resources/js/catCarousel.js ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-var registerBtn = document.querySelector('#registerBtn');
-var loginForm = document.querySelector('#formLogin');
-var registerForm = document.querySelector('#formRegister');
-
-registerBtn.onclick = function () {
-  if (registerForm.classList.contains('d-none')) {
-    loginForm.classList.add('d-none');
-    registerForm.classList.remove('d-none');
-    registerBtn.innerText = 'Sing-in';
-  } else {
-    console.log('else');
-    loginForm.classList.remove('d-none');
-    registerForm.classList.add('d-none');
-    registerBtn.innerText = 'Register now';
-  }
-};
+fetch('/announcement/catjson').then(function (response) {
+  return response.json();
+}).then(function (data) {
+  var categoryWrapper = document.querySelector('#category-wrapper');
+  var catCard1 = document.createElement('a');
+  catCard1.classList.add('d-flex', 'card', 'swiper-slide', 'card-category', 'align-items-center', 'pt-3', 'h-100');
+  catCard1.href = "/announcement/";
+  catCard1.innerHTML = "\n            <img class=\"card-img-top mx-auto\" src=\"./icons/all.svg\"></img>\n            <div class=\"card-body pb-0\">\n              <h5 class=\"card-title text-center mb-0\">Tutto</h5>\n            </div>\n            ";
+  categoryWrapper.appendChild(catCard1);
+  data.forEach(function (category) {
+    var categoryWrapper = document.querySelector('#category-wrapper');
+    var catCard = document.createElement('a');
+    catCard.classList.add('d-flex', 'card', 'swiper-slide', 'card-category', 'align-items-center', 'pt-3', 'h-100');
+    catCard.href = "/category/" + category.slug;
+    catCard.innerHTML = "\n            <img class=\"card-img-top mx-auto\" src=\"".concat(category.icon, "\"></img>\n            <div class=\"card-body pb-0\">\n              <h5 class=\"card-title text-center mb-0\">").concat(category.name, "</h5>\n            </div>\n            ");
+    categoryWrapper.appendChild(catCard);
+  });
+  var mySwiper = new Swiper('#category-slider', {
+    // Optional parameters
+    loop: false,
+    speed: 600,
+    slidesPerView: 8,
+    spaceBetween: 10,
+    slidesPerGroup: 3,
+    hideOnClick: true,
+    breakpoints: {
+      // when window width is >= 320px
+      320: {
+        slidesPerView: 4,
+        spaceBetween: 10
+      },
+      // when window width is >= 640px
+      990: {
+        slidesPerView: 6,
+        spaceBetween: 20
+      },
+      1220: {
+        slidesPerView: 8,
+        hideOnClick: true
+      }
+    },
+    // Navigation arrows
+    navigation: {
+      nextEl: '.cat-next',
+      prevEl: '.cat-prev',
+      hideOnClick: true
+    }
+  });
+});
 
 /***/ }),
 
-/***/ 3:
-/*!****************************************!*\
-  !*** multi ./resources/js/authForm.js ***!
-  \****************************************/
+/***/ 2:
+/*!*******************************************!*\
+  !*** multi ./resources/js/catCarousel.js ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /mnt/d/root/dev/wa/zap_presto/resources/js/authForm.js */"./resources/js/authForm.js");
+module.exports = __webpack_require__(/*! /mnt/d/root/dev/wa/zap_presto/resources/js/catCarousel.js */"./resources/js/catCarousel.js");
 
 
 /***/ })
