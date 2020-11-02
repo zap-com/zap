@@ -63,7 +63,7 @@ class AnnouncementController extends Controller
      */
     public function show(Announcement $announcement)
     {
-     
+       $announcement->incrementVisit();
         return view('announcement.show', compact('announcement'));
     }
 
