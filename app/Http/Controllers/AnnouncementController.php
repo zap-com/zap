@@ -32,7 +32,7 @@ class AnnouncementController extends Controller
 
     public function json()
     {
-        $announcements = Announcement::with('category')->orderBy('created_at', 'desc')->get()->take(8);
+        $announcements = Announcement::with('category')->orderBy('visit', 'desc')->get()->take(8);
         return response()->json($announcements);
     }
 
