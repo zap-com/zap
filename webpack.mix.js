@@ -14,4 +14,5 @@ const mix = require('laravel-mix');
 mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/home.js', 'public/js/home.js')
     .js('resources/js/authForm.js', 'public/js/authForm.js')
+    .js('resources/js/infiniteScroll.js', 'public/js/infiniteScroll.js')
     .sass('resources/sass/app.scss', 'public/css');
