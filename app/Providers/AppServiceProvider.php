@@ -6,6 +6,7 @@ use App\Models\Category;
 
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -27,6 +28,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+        //Fix migrazione da clone progetto 
+        if (!Schema::hasTable('categories')) {
+            return;
+        }
         Paginator::useBootstrap();
         $categories = Category::orderBy('name', 'asc')->get();
         View::share('categories', $categories);

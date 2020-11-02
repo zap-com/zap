@@ -53,4 +53,11 @@ class Announcement extends Model
     {
         return 'slug';
     }
+
+    //Functions
+    public function incrementVisit(){
+        $this->visit++;
+        $this->save();
+        return $this->visit;
+    }
 }
