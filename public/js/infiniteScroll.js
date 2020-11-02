@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -874,19 +874,24 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+function truncateString(str, num) {
+  // If the length of str is less than or equal to num
+  // just return str--don't truncate it.
+  if (str.length <= num) {
+    return str;
+  } // Return str truncated with '...' concatenated to the end of str.
+
+
+  return str.slice(0, num) + '...';
+}
+
 var updateDom = function updateDom(data) {
   var wrapper = document.getElementById('listCol');
   data.forEach(function (ad) {
     var card = document.createElement("div");
-    card.classList.add("d-flex");
-    card.classList.add("flex-column");
-    card.classList.add("flex-md-row");
-    card.classList.add("card");
-    card.classList.add("listings-card");
-    card.classList.add("w-100");
-    card.classList.add("my-3");
-    card.classList.add("p-1");
-    card.innerHTML = "\n        <div class=\"small-gallery swiper-container card-img-top\">\n        <div class=\"swiper-wrapper s0\">\n            <img src=\"https://placehold.it/200x150/999/CCC\" alt=\"".concat(ad.title, "\" style=\"width: 100%;}\">\n        </div>\n    </div>\n    <div class=\"card-body d-flex flex-column pt-1 pb-1 px-2\">\n        <h5 class=\"card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold\"> <a href=\"http://localhost:8000/announcement/").concat(ad.slug, "\"> ").concat(ad.title, " </a></h5>\n        \n        <p class=\"card-text text-muted mt-2 pt-0 slide-description flex-grow-1\">").concat(ad.description, "[...] \n        </p>\n        <div class=\"info \">\n            <a class=\"mr-auto \" href=\"http://localhost:8000/category/").concat(ad.category.name, "\">").concat(ad.category.name, "</a>\n            <p class=\"product-price text-right mb-auto p-2\" >").concat(ad.price, " \u20AC</p>\n        </div>\n        \n    </div>");
+    var adDescription = truncateString(ad.description, 200);
+    card.classList.add("d-flex", "flex-column", "flex-md-row", "card", "listings-card", "w-100", "my-3", "p-1");
+    card.innerHTML = "\n        <div class=\"small-gallery swiper-container card-img-top\">\n        <div class=\"swiper-wrapper s0\">\n            <img src=\"https://placehold.it/200x150/999/CCC\" alt=\"".concat(ad.title, "\" style=\"width: 100%;}\">\n        </div>\n    </div>\n    <div class=\"card-body d-flex flex-column pt-1 pb-1 px-2\">\n        <h5 class=\"card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold\"> <a href=\"http://localhost:8000/announcement/").concat(ad.slug, "\"> ").concat(ad.title, " </a></h5>\n        \n        <p class=\"card-text text-muted mt-2 pt-0 slide-description flex-grow-1\">").concat(adDescription, "\n        </p>\n        <div class=\"info \">\n            <a class=\"mr-auto \" href=\"http://localhost:8000/category/").concat(ad.category.slug, "\">").concat(ad.category.name, "</a>\n            <p class=\"product-price text-right mb-auto p-2\" >").concat(ad.price, " \u20AC</p>\n        </div>\n        \n    </div>");
     wrapper.appendChild(card);
   });
 };
@@ -1005,14 +1010,14 @@ window.addEventListener("scroll", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_
 
 /***/ }),
 
-/***/ 2:
+/***/ 3:
 /*!**********************************************!*\
   !*** multi ./resources/js/infiniteScroll.js ***!
   \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\sebou\wa\hack18\zap_presto\resources\js\infiniteScroll.js */"./resources/js/infiniteScroll.js");
+module.exports = __webpack_require__(/*! /mnt/d/root/dev/wa/zap_presto/resources/js/infiniteScroll.js */"./resources/js/infiniteScroll.js");
 
 
 /***/ })

@@ -20,19 +20,19 @@ class AnnouncementController extends Controller
      */
     public function index()
     {
-        
-        $announcements = Announcement::with('category')->orderBy('created_at', 'desc')->paginate(4);
-        if(Request::wantsJson()){
+
+        $announcements = Announcement::with('category')->orderBy('created_at', 'desc')->paginate(16);
+        if (Request::wantsJson()) {
             return $announcements;
         }
-        
+
 
         return view('announcement.index', compact('announcements'));
     }
 
     public function json()
     {
-        $announcements = Announcement::orderBy('created_at', 'desc')->get()->take(8);
+        $announcements = Announcement::with('category')->orderBy('created_at', 'desc')->get()->take(8);
         return response()->json($announcements);
     }
 

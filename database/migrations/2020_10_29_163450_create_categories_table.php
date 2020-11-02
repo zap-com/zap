@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Spatie\Sluggable\SlugOptions;
 
 class CreateCategoriesTable extends Migration
 {
@@ -19,6 +20,7 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('icon');
+            $table->string('slug');
             $table->timestamps();
         });
 
@@ -26,8 +28,8 @@ class CreateCategoriesTable extends Migration
         //prendo le categorie dal json il storage
         $file = Storage::get('category.json');
         $categories = json_decode($file);
-   
-     
+
+
 
         foreach ($categories as $cat) {
 
