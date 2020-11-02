@@ -6,9 +6,10 @@ use App\Models\User;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use App\Models\Announcement;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 use App\Http\Requests\AnnouncementRequest;
+
 
 class AnnouncementController extends Controller
 {
@@ -19,7 +20,12 @@ class AnnouncementController extends Controller
      */
     public function index()
     {
+        
         $announcements = Announcement::orderBy('created_at', 'desc')->paginate(4);
+        if(Request::wantsJson()){
+            return $announcements;
+        }
+        
 
         return view('announcement.index', compact('announcements'));
     }
