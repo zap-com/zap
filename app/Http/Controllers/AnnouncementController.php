@@ -21,7 +21,7 @@ class AnnouncementController extends Controller
     public function index()
     {
         
-        $announcements = Announcement::orderBy('created_at', 'desc')->paginate(4);
+        $announcements = Announcement::with('category')->orderBy('created_at', 'desc')->paginate(4);
         if(Request::wantsJson()){
             return $announcements;
         }

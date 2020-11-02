@@ -43,6 +43,8 @@ class Announcement extends Model
             ->saveSlugsTo('slug');
     }
 
+    
+
     //Uri 
     /**
      * Get the route key for the model.

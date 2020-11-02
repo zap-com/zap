@@ -1,6 +1,6 @@
 const updateDom = data => {
     const wrapper = document.getElementById('listCol');
-    console.log(wrapper);
+   
     data.forEach(ad => {
         const card = document.createElement("div");
         card.classList.add("d-flex");
@@ -25,7 +25,7 @@ const updateDom = data => {
         <p class="card-text text-muted mt-2 pt-0 slide-description flex-grow-1">${ad.description}[...] 
         </p>
         <div class="info ">
-            <a class="mr-auto " href="{{route('category.index', $ad->category )}}">${ad.name}</a>
+            <a class="mr-auto " href="http://localhost:8000/category/${ad.category.name}">${ad.category.name}</a>
             <p class="product-price text-right mb-auto p-2" >${ad.price} €</p>
         </div>
         
@@ -67,7 +67,7 @@ const fetchData = async () => {
             let data = await res.json();
             updateDom(data.data);
 
-            console.log(typeof data);
+        
         }
         currentPage++;
    

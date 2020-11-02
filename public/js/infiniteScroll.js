@@ -870,15 +870,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 var updateDom = function updateDom(data) {
   var wrapper = document.getElementById('listCol');
-  console.log(wrapper);
   data.forEach(function (ad) {
     var card = document.createElement("div");
     card.classList.add("d-flex");
@@ -889,7 +886,7 @@ var updateDom = function updateDom(data) {
     card.classList.add("w-100");
     card.classList.add("my-3");
     card.classList.add("p-1");
-    card.innerHTML = "\n        <div class=\"small-gallery swiper-container card-img-top\">\n        <div class=\"swiper-wrapper s0\">\n            <img src=\"https://placehold.it/200x150/999/CCC\" alt=\"".concat(ad.title, "\" style=\"width: 100%;}\">\n        </div>\n    </div>\n    <div class=\"card-body d-flex flex-column pt-1 pb-1 px-2\">\n        <h5 class=\"card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold\"> <a href=\"http://localhost:8000/announcement/").concat(ad.slug, "\"> ").concat(ad.title, " </a></h5>\n        \n        <p class=\"card-text text-muted mt-2 pt-0 slide-description flex-grow-1\">").concat(ad.description, "[...] \n        </p>\n        <div class=\"info \">\n            <a class=\"mr-auto \" href=\"{{route('category.index', $ad->category )}}\">").concat(ad.name, "</a>\n            <p class=\"product-price text-right mb-auto p-2\" >").concat(ad.price, " \u20AC</p>\n        </div>\n        \n    </div>");
+    card.innerHTML = "\n        <div class=\"small-gallery swiper-container card-img-top\">\n        <div class=\"swiper-wrapper s0\">\n            <img src=\"https://placehold.it/200x150/999/CCC\" alt=\"".concat(ad.title, "\" style=\"width: 100%;}\">\n        </div>\n    </div>\n    <div class=\"card-body d-flex flex-column pt-1 pb-1 px-2\">\n        <h5 class=\"card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold\"> <a href=\"http://localhost:8000/announcement/").concat(ad.slug, "\"> ").concat(ad.title, " </a></h5>\n        \n        <p class=\"card-text text-muted mt-2 pt-0 slide-description flex-grow-1\">").concat(ad.description, "[...] \n        </p>\n        <div class=\"info \">\n            <a class=\"mr-auto \" href=\"http://localhost:8000/category/").concat(ad.category.name, "\">").concat(ad.category.name, "</a>\n            <p class=\"product-price text-right mb-auto p-2\" >").concat(ad.price, " \u20AC</p>\n        </div>\n        \n    </div>");
     wrapper.appendChild(card);
   });
 };
@@ -948,7 +945,7 @@ var fetchData = /*#__PURE__*/function () {
             lastPage = _context2.sent;
 
             if (!(currentPage <= lastPage)) {
-              _context2.next = 12;
+              _context2.next = 11;
               break;
             }
 
@@ -968,12 +965,11 @@ var fetchData = /*#__PURE__*/function () {
           case 9:
             data = _context2.sent;
             updateDom(data.data);
-            console.log(_typeof(data));
 
-          case 12:
+          case 11:
             currentPage++;
 
-          case 13:
+          case 12:
           case "end":
             return _context2.stop();
         }
