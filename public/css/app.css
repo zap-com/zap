@@ -11278,17 +11278,19 @@ a {
 
 .listings-card {
   z-index: 1;
-  border-radius: 25px;
+  border-radius: 30px;
   transition: all 0.2s ease-in-out;
   border: 1px solid #ececec;
 }
 
 .listings-card .card-body {
   flex: 1 1;
+  padding: 1.25rem 0;
 }
 
 #product-wrapper .small-gallery {
   height: 60vh !important;
+  border-radius: 30px;
 }
 
 .listings-card:hover {
@@ -11699,8 +11701,7 @@ input {
 }
 
 #prodCol .card-body {
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
+  border-radius: 30px;
 }
 
 #accCol .profile-photo {
