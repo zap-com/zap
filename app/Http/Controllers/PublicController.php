@@ -18,10 +18,10 @@ class PublicController extends Controller
         return view('home');
     }
 
-    public function category(Category $category){
+    public function category(Category $category)
+    {
         $announcements = Announcement::where('category_id', $category->id)->get();
 
-        return view ('category.index', compact('announcements'));
-      
+        return view('category.index', compact('announcements'));
     }
 }

@@ -24,6 +24,12 @@ class AnnouncementController extends Controller
         return view('announcement.index', compact('announcements'));
     }
 
+    public function json()
+    {
+        $announcements = Announcement::orderBy('created_at', 'desc')->get()->take(8);
+        return response()->json($announcements);
+    }
+
     /**
      * Show the form for creating a new resource.
      *fa
@@ -31,7 +37,7 @@ class AnnouncementController extends Controller
      */
     public function create()
     {
-       
+
         return view('announcement.create');
     }
 
@@ -63,7 +69,7 @@ class AnnouncementController extends Controller
      */
     public function show(Announcement $announcement)
     {
-       $announcement->incrementVisit();
+        $announcement->incrementVisit();
         return view('announcement.show', compact('announcement'));
     }
 

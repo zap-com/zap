@@ -25,6 +25,7 @@ Route::get('/', [PublicController::class, 'index'])->name('home');
 Route::get('/category/{category}', [PublicController::class, 'category'])->name('category.index');
 
 Route::get('/announcement', [AnnouncementController::class, 'index'])->name('announcement.index');
+Route::get('/announcement/json', [AnnouncementController::class, 'json'])->name('announcement.json');
 Route::get('/announcement/{announcement}', [AnnouncementController::class, 'show'])->name('announcement.show');
 
 
@@ -42,6 +43,4 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/announcement/{announcement}/update', [AnnouncementController::class, 'update'])->name('announcement.update');
 
     Route::delete('/announcement/{announcement}/delete', [AnnouncementController::class, 'destroy'])->name('announcement.destroy');
-
-
 });

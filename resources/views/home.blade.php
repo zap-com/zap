@@ -45,4 +45,23 @@
             </div>
         </div>
     </div>
+
+    <section class="container align-items-center justify-content-between py-5">
+        <div class="row">
+            <div class="col-12">
+                <div id="trending-slider" class="swiper-container py-3">
+                    <div id="trending-wrapper" class="swiper-wrapper">
+                    </div>
+                    <div class="swiper-button-prev trend-prev"></div>
+                    <div class="swiper-button-next trend-next"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/truncate.js@1.1.2/truncate.min.js"></script>
+    <script src="{{ asset('js/home.js') }}"></script>
 </x-app>
