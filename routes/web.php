@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\AnnouncementController;
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\PublicController;
+
+use App\Http\Controllers\RevisorController;
+use App\Http\Controllers\AnnouncementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,14 +27,10 @@ Route::get('/announcement/catjson', [AnnouncementController::class, 'catjson'])-
 Route::get('/announcement', [AnnouncementController::class, 'index'])->name('announcement.index');
 Route::get('/announcement/json', [AnnouncementController::class, 'json'])->name('announcement.json');
 Route::get('/announcement/{announcement}', [AnnouncementController::class, 'show'])->name('announcement.show');
-Route::get('/category/tutto', function () {
-    return redirect('announcement');
-});
 
+Route::get('/revisor', [RevisorController::class, 'index']);
 
 Route::middleware(['auth'])->group(function () {
-
-
 
     Route::get('/ad/create', [AnnouncementController::class, 'create'])->name('announcement.create');
 

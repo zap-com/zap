@@ -23,12 +23,12 @@ const updateDom = data => {
         </div>
     </div>
     <div class="card-body d-flex flex-column pt-1 pb-1 px-2">
-        <h5 class="card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold"> <a href="http://localhost:8000/announcement/${ad.slug}"> ${ad.title} </a></h5>
+        <h5 class="card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold"> <a href="/announcement/${ad.slug}"> ${ad.title} </a></h5>
         
         <p class="card-text text-muted mt-2 pt-0 slide-description flex-grow-1">${adDescription}
         </p>
         <div class="info ">
-            <a class="mr-auto " href="http://localhost:8000/category/${ad.category.slug}">${ad.category.name}</a>
+            <a class="mr-auto " href="/category/${ad.category.slug}">${ad.category.name}</a>
             <p class="product-price text-right mb-auto p-2" >${ad.price} €</p>
         </div>
         
@@ -40,7 +40,7 @@ const updateDom = data => {
 
 
 const getTotalPages = async () => {
-    let response = await fetch(`http://localhost:8000/announcement?page=1`, {
+    let response = await fetch(`/announcement?page=1`, {
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json"
@@ -59,7 +59,7 @@ const fetchData = async () => {
 
     if (currentPage <= lastPage) {
         let res = await fetch(
-            `http://localhost:8000/announcement?page=${currentPage}`,
+            `/announcement?page=${currentPage}`,
             {
                 headers: {
                     Accept: "application/json",

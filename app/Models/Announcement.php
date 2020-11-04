@@ -7,6 +7,7 @@ use App\Models\Category;
 use Spatie\Sluggable\HasSlug;
 
 use Spatie\Sluggable\SlugOptions;
+use App\Models\AnnouncementStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -16,7 +17,7 @@ class Announcement extends Model
     use HasFactory;
 
 
-    protected $fillable = ['title', 'description', 'price', 'user_id', 'category_id'];
+    protected $fillable = ['title', 'description', 'price', 'user_id', 'category_id', 'status_id'];
 
     //RELAZIONI
     public function user()
@@ -28,6 +29,11 @@ class Announcement extends Model
     {
 
         return $this->belongsTo(Category::class);
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(AnnouncementStatus::class);
     }
 
 
@@ -60,5 +66,32 @@ class Announcement extends Model
         $this->visit++;
         $this->save();
         return $this->visit;
+    }
+
+
+    public function setStatus($status)
+    {
+        $statusesCode = AnnouncementStatus::where('status', $status)->first();
+      
+        if ($statusesCode) {
+            $this->status_id= $statusesCode->id;
+            $this->save();
+            return $this->status_id;
+        }
+
+        return 'invalid status';
+    }
+
+
+    //Development function
+    static function publishAll()
+    {
+        $announcements = self::all();
+
+        $announcements->map(function ($el){
+            $el->setStatus('accepted');
+        });
+
+        return 'done';
     }
 }

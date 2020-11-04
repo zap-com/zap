@@ -27,6 +27,7 @@ class AnnouncementRequest extends FormRequest
            'title' => 'required',
            'description' => 'required',
            'price' => 'required',
+           'category_id' => 'required|min:1',
         ];
     }
 }

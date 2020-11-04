@@ -21,7 +21,7 @@ class AnnouncementController extends Controller
     public function index()
     {
 
-        $announcements = Announcement::with('category')->orderBy('created_at', 'desc')->paginate(16);
+        $announcements = Announcement::where('status_id', 2)->with('category')->orderBy('created_at', 'desc')->paginate(16);
         if (Request::wantsJson()) {
             return $announcements;
         }
@@ -32,7 +32,7 @@ class AnnouncementController extends Controller
 
     public function json()
     {
-        $announcements = Announcement::with('category')->orderBy('visit', 'desc')->get()->take(8);
+        $announcements = Announcement::where('status_id', 2)->with('category')->orderBy('visit', 'desc')->get()->take(8);
         return response()->json($announcements);
     }
 
