@@ -41,7 +41,7 @@ $('.myBtn').on('click', function () {
 document.addEventListener('DOMContentLoaded', () => {
 
     let dropdowns = document.querySelectorAll('.dropdown-toggle');
-    let dropdownList = document.querySelectorAll('.show')
+    let dropdownList = document.querySelectorAll('.dropdown-menu')
     dropdowns.forEach(function (btn) {
         btn.addEventListener('click', () => {
             dropdowns.forEach(b => {
@@ -50,12 +50,13 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
         document.body.addEventListener('click', () => {
-            if dropdownList.classList.contains('')
-            dropdowns.forEach(b => {
-                if (b.classList.contains('active')) {
-                    btn.classList.remove('active')
-                }
-            })
+            if (dropdownList.classList.contains('.show')) {
+                dropdowns.forEach(b => {
+                    if (b.classList.contains('active')) {
+                        btn.classList.remove('active')
+                    }
+                })
+            }
         })
 
     })
