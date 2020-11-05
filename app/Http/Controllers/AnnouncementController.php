@@ -30,6 +30,17 @@ class AnnouncementController extends Controller
         return view('announcement.index', compact('announcements'));
     }
 
+    public function test()
+    {
+        $announcements = Announcement::where('status_id', 2)->with('category')->orderBy('created_at', 'desc')->paginate(16);
+        if (Request::wantsJson()) {
+            return $announcements;
+        }
+
+
+        return view('test', compact('announcements'));
+    }
+
     public function json()
     {
         $announcements = Announcement::where('status_id', 2)->with('category')->orderBy('visit', 'desc')->get()->take(8);

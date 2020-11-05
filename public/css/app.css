@@ -11756,3 +11756,14 @@ input {
   width: 100%;
 }
 
+.nobtn {
+  display: inline;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  text-align: initial;
+}
+
