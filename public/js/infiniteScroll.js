@@ -891,7 +891,7 @@ var updateDom = function updateDom(data) {
     var card = document.createElement("div");
     var adDescription = truncateString(ad.description, 200);
     card.classList.add("d-flex", "flex-column", "flex-md-row", "card", "listings-card", "w-100", "my-3", "p-1");
-    card.innerHTML = "\n        <div class=\"small-gallery swiper-container card-img-top\">\n        <div class=\"swiper-wrapper s0\">\n            <img src=\"https://placehold.it/200x150/999/CCC\" alt=\"".concat(ad.title, "\" style=\"width: 100%;}\">\n        </div>\n    </div>\n    <div class=\"card-body d-flex flex-column pt-1 pb-1 px-2\">\n        <h5 class=\"card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold\"> <a href=\"http://localhost:8000/announcement/").concat(ad.slug, "\"> ").concat(ad.title, " </a></h5>\n        \n        <p class=\"card-text text-muted mt-2 pt-0 slide-description flex-grow-1\">").concat(adDescription, "\n        </p>\n        <div class=\"info \">\n            <a class=\"mr-auto \" href=\"http://localhost:8000/category/").concat(ad.category.slug, "\">").concat(ad.category.name, "</a>\n            <p class=\"product-price text-right mb-auto p-2\" >").concat(ad.price, " \u20AC</p>\n        </div>\n        \n    </div>");
+    card.innerHTML = "\n        <div class=\"small-gallery swiper-container card-img-top\">\n        <div class=\"swiper-wrapper s0\">\n            <img src=\"https://placehold.it/200x150/999/CCC\" alt=\"".concat(ad.title, "\" style=\"width: 100%;}\">\n        </div>\n    </div>\n    <div class=\"card-body d-flex flex-column pt-1 pb-1 px-2\">\n        <h5 class=\"card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold\"> <a href=\"/announcement/").concat(ad.slug, "\"> ").concat(ad.title, " </a></h5>\n        \n        <p class=\"card-text text-muted mt-2 pt-0 slide-description flex-grow-1\">").concat(adDescription, "\n        </p>\n        <div class=\"info \">\n            <a class=\"mr-auto \" href=\"/category/").concat(ad.category.slug, "\">").concat(ad.category.name, "</a>\n            <p class=\"product-price text-right mb-auto p-2\" >").concat(ad.price, " \u20AC</p>\n        </div>\n        \n    </div>");
     wrapper.appendChild(card);
   });
 };
@@ -904,7 +904,7 @@ var getTotalPages = /*#__PURE__*/function () {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return fetch("http://localhost:8000/announcement?page=1", {
+            return fetch("/announcement?page=1", {
               headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json"
@@ -955,7 +955,7 @@ var fetchData = /*#__PURE__*/function () {
             }
 
             _context2.next = 6;
-            return fetch("http://localhost:8000/announcement?page=".concat(currentPage), {
+            return fetch("/announcement?page=".concat(currentPage), {
               headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json"

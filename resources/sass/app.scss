@@ -131,7 +131,7 @@ button:focus {
 
 .card-category {
     border: 0;
-    transition: all 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
     height: 100%;
 }
 
@@ -272,13 +272,12 @@ button:focus {
 
 .card-category img {
     width: 48px;
-    transition: all 0.2s ease-in-out;
+    transition: filter 0.2s ease-in-out;
     filter: grayscale(100%);
 }
 
 .card-category h5 {
     font-size: 16px;
-    transition: all 0.2s ease-in-out;
 }
 
 #dropdownMenuButton {
@@ -287,8 +286,11 @@ button:focus {
 }
 
 .dropdown-menu {
+    margin-top: 0.5em;
+    top: 0px;
     overflow-y: auto;
-    transition: 0.4s;
+    transition: top 400ms ease-in-out 0ms;
+    background-clip: initial;
 }
 
 a {
@@ -317,7 +319,7 @@ a {
 
 .product-card {
     border-radius: 25px;
-    transition: all 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
     border: 1px solid #ececec;
 }
 
@@ -422,10 +424,6 @@ a {
     font-size: 14px;
 }
 
-.dropdown-menu {
-    background-clip: initial;
-}
-
 .b-btn {
     background-color: #fb8289;
     border: none;
@@ -434,6 +432,11 @@ a {
     transition: all 0.2s ease-in-out;
     color: white;
     font-weight: bold;
+}
+
+.dropdown-toggle.active {
+    z-index: 20;
+    position: relative;
 }
 
 .b-btn:hover {
@@ -601,7 +604,7 @@ input {
 }
 
 @media all and (min-width: 991px) {
-    .dropdown:after {
+    .dropdown:before {
         content: "";
         top: 0;
         right: 0;
@@ -619,7 +622,7 @@ input {
         z-index: 12;
     }
 
-    .dropdown.show:after {
+    .dropdown.show:before {
         z-index: 10;
         opacity: 1;
         visibility: visible;

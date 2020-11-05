@@ -37274,6 +37274,27 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+document.addEventListener('DOMContentLoaded', function () {
+  var dropdowns = document.querySelectorAll('.dropdown-toggle');
+  dropdowns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      dropdowns.forEach(function (b) {
+        return b.classList.toggle('active');
+      });
+      dropdownList.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      });
+      body.addEventListener('click', function () {
+        if (dropdowns.classList.contains('is_active')) {
+          dropdowns.classList.remove('is_active');
+        }
+      });
+    });
+    var dropdownList = document.querySelectorAll('.show');
+  });
+});
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
