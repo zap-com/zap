@@ -11001,6 +11001,10 @@ button:focus {
   border-radius: 25px;
 }
 
+.large-icons {
+  font-size: 20px;
+}
+
 #notification-button:hover {
   color: var(--color-main);
   background-color: #e6e6e6;
@@ -11362,9 +11366,25 @@ a {
   border: none;
   border-radius: 25px;
   height: 40px;
-  transition: all 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out, background-color 0.2 ease-in-out;
   color: white;
   font-weight: bold;
+}
+
+.alt-btn {
+  background-color: none;
+  border: 2px solid #fb8289;
+  border-radius: 25px;
+  height: 40px;
+  transition: color 0.2s ease-in-out, border-color 0.2 ease-in-out;
+  color: #fb8289;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+.alt-btn:hover {
+  border: 2px solid #f46161;
+  color: #f46161;
 }
 
 .dropdown-toggle.active {
@@ -11765,5 +11785,37 @@ input {
   border: none;
   background-color: transparent;
   text-align: initial;
+}
+
+.warn :hover {
+  color: var(--color-main);
+}
+
+.warn-modal {
+  border-radius: 25px;
+}
+
+.textmore {
+  display: none;
+}
+
+.text-desc {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+.showtext {
+  display: block;
+  overflow: visible;
+  -webkit-line-clamp: none;
+}
+
+.was-validated .form-control:invalid,
+.form-control.is-invalid {
+  background-position: right calc(1.2em + 0.1875rem) center;
 }
 

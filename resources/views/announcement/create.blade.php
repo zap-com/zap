@@ -1,10 +1,10 @@
 <x-app>
 
     @if (session('message'))
-    <div class="alert alert-success">
-        {{ session('message') }}
-    </div>
-@endif
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
 
 
     <div class="container">
@@ -14,34 +14,57 @@
                 @csrf
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" name="title" id="title" class="form-control" placeholder="What are you selling?"
-                        required>
+                    <input type="text" name="title" id="title"
+                        class="form-control  @error('title') is-invalid @enderror" placeholder="What are you selling?">
+                    @error('title')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <textarea type="text" name="description" id="description" class="form-control"
-                        placeholder="Describe in short what are you selling" required></textarea>
+                    <textarea type="text" name="description" id="description"
+                        class="form-control @error('description') is-invalid @enderror"
+                        placeholder="Describe in short what are you selling"></textarea>
+                    @error('description')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="category">Category</label>
-                    <select name="category_id" id="category" class="form-control" required>
-                        <option selected>Choose...</option>
+                    <select name="category_id" id="category"
+                        class="form-control @error('category_id') is-invalid @enderror">
+                        <option value="0" selected>Choose...</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endforeach
                     </select>
+                    @error('category_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="price">Price</label>
                     <div class="input-group">
-                        <input type="text" name="price" id="price" class="form-control"
-                            placeholder="How much are you selling it for?" required>
+                        <input type="text" name="price" id="price"
+                            class="form-control @error('price') is-invalid @enderror"
+                            placeholder="How much are you selling it for?">
                         <div class="input-group-append">
                             <div class="input-group-text">€</div>
                         </div>
                     </div>
+                    @error('price')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
 
                 <div class="form-group">
