@@ -10935,6 +10935,12 @@ a.text-dark:focus {
   font-style: normal;
 }
 
+body.preload * {
+  animation-duration: 0s !important;
+  -webkit-animation-duration: 0s !important;
+  transition: background-color 0s, opacity 0s, color 0s, width 0s, height 0s, padding 0s, margin 0s !important;
+}
+
 html {
   scroll-behavior: smooth;
   font-family: "asap", sans-serif;
@@ -11817,5 +11823,9 @@ input {
 .was-validated .form-control:invalid,
 .form-control.is-invalid {
   background-position: right calc(1.2em + 0.1875rem) center;
+}
+
+#searchbar-wrapper .text-muted {
+  color: #ccc !important;
 }
 

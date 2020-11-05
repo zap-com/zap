@@ -38,8 +38,9 @@ class AnnouncementRequest extends FormRequest
             'title.min' => 'Il titolo deve essere più lungo di :min caratteri',
             'title.max' => 'Il titolo non deve superare :max caratteri',
             'description.required' => 'La descrizione è obbligatoria',
-            'category_id.min' => 'Devi selezionare una categoria per il tuo prodotto',
             'price.required' => 'Il prezzo è obbligatorio',
+            'price.integer' => 'Il prezzo deve essere un numero',
+            'category_id.min' => 'Devi selezionare una categoria per il tuo prodotto',
         ];
     }
 }

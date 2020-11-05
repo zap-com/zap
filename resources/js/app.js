@@ -1,4 +1,17 @@
+
+
 require('./bootstrap');
+
+$(function () {
+
+    $(".dropdown-menu a").on('click', function () {
+
+        $(".nobtn:first-child").text($(this).text());
+        $(".nobtn:first-child").val($(this).text());
+
+    });
+
+});
 
 $('#searchbar-wrapper').click(function () {
     $('#searchbar').focus();

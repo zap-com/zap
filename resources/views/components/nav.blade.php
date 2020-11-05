@@ -8,6 +8,19 @@
                     <i class="icon-magnifier icons"></i>
                     <input id="searchbar" class="form-control mr-sm-2 flex-grow-1" type="search" placeholder="Search"
                         aria-label="Search">
+                    <div class="btn-group">
+                        <button type="button" class="nobtn text-muted dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Tutte le categorie
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="#">Tutte le categorie</a>
+                            @foreach ($categories as $category)
+                                <a class="dropdown-item" href="#">{{ $category->name }}</a>
+                            @endforeach
+                        </div>
+                    </div>
+
                 </div>
             </form>
             <!--<button id="notification-button" class="mr-0 mr-md-3 d-none d-md-block">

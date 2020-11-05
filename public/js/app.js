@@ -37274,6 +37274,12 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+$(function () {
+  $(".dropdown-menu a").on('click', function () {
+    $(".nobtn:first-child").text($(this).text());
+    $(".nobtn:first-child").val($(this).text());
+  });
+});
 $('#searchbar-wrapper').click(function () {
   $('#searchbar').focus();
 });

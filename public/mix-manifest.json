@@ -4,5 +4,6 @@
     "/js/authForm.js": "/js/authForm.js",
     "/js/cardCarousel.js": "/js/cardCarousel.js",
     "/js/catCarousel.js": "/js/catCarousel.js",
-    "/js/infiniteScroll.js": "/js/infiniteScroll.js"
+    "/js/infiniteScroll.js": "/js/infiniteScroll.js",
+    "/js/preload.js": "/js/preload.js"
 }
