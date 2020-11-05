@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Announcement;
+use App\Models\User;
 use App\Models\Category;
+use App\Models\Announcement;
 use Illuminate\Http\Request;
 
 class PublicController extends Controller
@@ -23,5 +24,14 @@ class PublicController extends Controller
         $announcements = Announcement::where('category_id', $category->id)->where('status_id', 2)->get();
         
         return view('category.index', compact('announcements'));
+    }
+
+    public function works() {
+
+        return view('work.revisor');
+    }
+
+    public function revisorWork(User $user){
+            dd($user);
     }
 }
