@@ -37275,7 +37275,7 @@ module.exports = function(module) {
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 $(function () {
-  $(".dropdown-menu a").on('click', function () {
+  $(".dropdown-menu label").on('click', function () {
     $(".nobtn:first-child").text($(this).text());
     $(".nobtn:first-child").val($(this).text());
   });
@@ -37308,15 +37308,12 @@ document.addEventListener('DOMContentLoaded', function () {
     btn.addEventListener('click', function () {
       dropdowns.forEach(function (b) {
         b.classList.toggle('active');
-        b.classList.add('active');
       });
     });
     document.body.addEventListener('click', function () {
       if (dropdownList.classList.contains('.show')) {
         dropdowns.forEach(function (b) {
-          if (b.classList.contains('active')) {
-            btn.classList.remove('active');
-          }
+          b.classList.remove('active');
         });
       }
     });

@@ -4,7 +4,7 @@ require('./bootstrap');
 
 $(function () {
 
-    $(".dropdown-menu a").on('click', function () {
+    $(".dropdown-menu label").on('click', function () {
 
         $(".nobtn:first-child").text($(this).text());
         $(".nobtn:first-child").val($(this).text());
@@ -41,23 +41,21 @@ $('.myBtn').on('click', function () {
 document.addEventListener('DOMContentLoaded', () => {
 
     let dropdowns = document.querySelectorAll('.dropdown-toggle');
-    let dropdownList = document.querySelectorAll('.dropdown-menu')
+    let dropdownList = document.querySelectorAll('.dropdown-menu');
+
     dropdowns.forEach(function (btn) {
         btn.addEventListener('click', () => {
             dropdowns.forEach(b => {
                 b.classList.toggle('active');
-                b.classList.add('active')
             });
         });
+
         document.body.addEventListener('click', () => {
             if (dropdownList.classList.contains('.show')) {
                 dropdowns.forEach(b => {
-                    if (b.classList.contains('active')) {
-                        btn.classList.remove('active')
-                    }
+                    b.classList.remove('active')
                 })
             }
         })
-
     })
 });

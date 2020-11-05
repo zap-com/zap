@@ -3,26 +3,31 @@
         <div class="col-12 d-flex flex-row py-2 align-items-center">
             <a class="navbar-brand mr-3" href="{{ route('home') }}"><img class="img-fluid"
                     src="{{ asset('images/zaplogo.svg') }}" width="40"></a>
-            <form class="form-inline flex-grow-1 mr-0 mr-md-3" action="{{route('search')}}" method="GET">
+            <form class="form-inline flex-grow-1 mr-0 mr-md-3" action="{{ route('search') }}" method="GET">
                 @csrf
                 <div id="searchbar-wrapper" class="d-flex flex-row align-items-center px-3 flex-grow-1">
                     <i class="icon-magnifier icons"></i>
-                    <input id="searchbar" class="form-control mr-sm-2 flex-grow-1" type="search" placeholder="Search" name="q"
-                        aria-label="Search">
+                    <input id="searchbar" class="form-control mr-sm-2 flex-grow-1" type="search" placeholder="Search"
+                        name="q" aria-label="Search">
                     <div class="btn-group">
                         <button type="button" class="nobtn text-muted dropdown-toggle" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false" name="c">
                             Tutte le categorie
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#">Tutte le categorie</a>
-                            
+                            <input type="radio" id="cat" class="d-none">
+                            <label for="cat" class="dropdown-item align-items-start justify-content-start">Tutte le
+                                categorie</label>
+
                             @foreach ($categories as $category)
-                            <input type="radio" id="cat" name="cat" value="{{ $category->id }}" class="d-none">
-                            <label for="cat" class="dropdown-item">{{ $category->name }}</label><br>
-                                {{-- <a class="dropdown-item" href="#">{{ $category->name }}</a> --}}
+                                <input type="radio" name="cat" id="cat-{{ $category->id }}" value="{{ $category->id }}"
+                                    class="d-none">
+                                <label for="cat-{{ $category->id }}"
+                                    class="dropdown-item align-items-start justify-content-start">{{ $category->name }}</label>
+                                {{-- <a class="dropdown-item"
+                                    href="#">{{ $category->name }}</a> --}}
                             @endforeach
-                           
+
                         </div>
                     </div>
 
