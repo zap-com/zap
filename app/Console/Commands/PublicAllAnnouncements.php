@@ -2,25 +2,24 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Role;
-use App\Models\User;
+use App\Models\Announcement;
 use Illuminate\Console\Command;
 
-class MakeUserRevisor extends Command
+class PublicAllAnnouncements extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'zap:MakeUserRevisor';
+    protected $signature = 'zap:publishAll';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'fai diventare un user revisore';
+    protected $description = 'Pubblica tutti gli annunci';
 
     /**
      * Create a new command instance.
@@ -39,17 +38,8 @@ class MakeUserRevisor extends Command
      */
     public function handle()
     {
-        $email = $this->ask('inserisci email');
 
-        $user = User::where('email',$email)->first();
-
-        if(!$user){
-            $this->error('l\'utente non esiste');
-            return;
-        }
-
-     $user->roles()->attach(Role::find(2));
-        $user->save();
-        $this->info("l'utente {$user->name} e' ora un revisore");
+        Announcement::publishAll();
+        return 'annunci pubblicati';
     }
 }
