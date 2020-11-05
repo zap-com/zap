@@ -18,17 +18,19 @@ class PublicController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $categories = Category::orderBy('id')->get();
+        return view('home', compact('categories'));
     }
 
     public function category(Category $category)
     {
         $announcements = Announcement::where('category_id', $category->id)->where('status_id', 2)->get();
-        
+
         return view('category.index', compact('announcements'));
     }
 
-    public function works() {
+    public function works()
+    {
 
         return view('work.revisor');
     }
