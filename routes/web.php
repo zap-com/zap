@@ -32,6 +32,17 @@ Route::get('/announcement/{announcement}', [AnnouncementController::class, 'show
 Route::get('/test', [AnnouncementController::class, 'test'])->name('test');
 
 
+//Work
+
+Route::prefix('work')->group(function(){
+    Route::get('/revisor', [PublicController::class, 'works'])->name('works');
+    Route::post('/revisor/send/{user}', [PublicController::class, 'revisorWork'])->name('work.revisor');
+   
+
+});
+
+
+
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/ad/create', [AnnouncementController::class, 'create'])->name('announcement.create');

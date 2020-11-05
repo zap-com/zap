@@ -48,7 +48,7 @@ class MakeUserRevisor extends Command
             return;
         }
 
-     $user->roles()->attach(Role::find(2));
+     $user->roles()->attach(Role::find(3));
         $user->save();
         $this->info("l'utente {$user->name} e' ora un revisore");
     }

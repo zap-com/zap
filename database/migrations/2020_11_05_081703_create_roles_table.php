@@ -21,7 +21,7 @@ class CreateRolesTable extends Migration
             $table->timestamps();
         });
 
-        $roles = ['admin', 'revisor', 'superAdmin'];
+        $roles = [ 'unverified_user','user','revisor', 'admin', 'superAdmin'];
 
         foreach($roles as $role){
             $r = new Role();
