@@ -37301,24 +37301,37 @@ $('.myBtn').on('click', function () {
     $(this).addClass("is-active");
   }
 });
-document.addEventListener('DOMContentLoaded', function () {
-  var dropdowns = document.querySelectorAll('.dropdown-toggle');
-  var dropdownList = document.querySelectorAll('.dropdown-menu');
-  dropdowns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      dropdowns.forEach(function (b) {
-        b.classList.toggle('active');
-      });
-    });
-    document.body.addEventListener('click', function () {
-      if (dropdownList.classList.contains('.show')) {
-        dropdowns.forEach(function (b) {
-          b.classList.remove('active');
-        });
-      }
-    });
+$(function () {
+  $(".dropdown-toggle").on("click", function (e) {
+    $(".dropdown-toggle").toggleClass("active");
+  });
+  $(document).on("click", function (e) {
+    if ($(e.target).is(".dropdown-toggle") === false && $(".dropdown-toggle").hasClass("active")) {
+      $(".dropdown-toggle").toggleClass("active");
+    }
   });
 });
+/**document.addEventListener('DOMContentLoaded', () => {
+
+    let dropdowns = document.querySelectorAll('.dropdown-toggle');
+    let dropdownList = document.querySelectorAll('.dropdown-menu');
+
+    dropdowns.forEach(function (btn) {
+        btn.addEventListener('click', () => {
+            dropdowns.forEach(b => {
+                b.classList.toggle('active');
+            });
+        });
+
+        document.body.addEventListener('click', () => {
+            if (dropdownList.classList.contains('.show')) {
+                dropdowns.forEach(b => {
+                    b.classList.remove('active')
+                })
+            }
+        })
+    })
+});*/
 
 /***/ }),
 

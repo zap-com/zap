@@ -38,7 +38,19 @@ $('.myBtn').on('click', function () {
     }
 })
 
-document.addEventListener('DOMContentLoaded', () => {
+$(function () {
+    $(".dropdown-toggle").on("click", function (e) {
+        $(".dropdown-toggle").toggleClass("active");
+    });
+    $(document).on("click", function (e) {
+        if ($(e.target).is(".dropdown-toggle") === false && $(".dropdown-toggle").hasClass("active")) {
+            $(".dropdown-toggle").toggleClass("active");
+        }
+    });
+});
+
+
+/**document.addEventListener('DOMContentLoaded', () => {
 
     let dropdowns = document.querySelectorAll('.dropdown-toggle');
     let dropdownList = document.querySelectorAll('.dropdown-menu');
@@ -58,4 +70,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         })
     })
-});
+});*/
