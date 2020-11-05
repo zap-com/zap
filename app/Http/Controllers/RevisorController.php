@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Announcement;
 use Illuminate\Http\Request;
 
 class RevisorController extends Controller
@@ -13,6 +14,23 @@ class RevisorController extends Controller
 
     public function index()
     {
-        dd('Che ci fai qui? Sei un revisore?');
+        $announcement = Announcement::where('status_id', 1)
+                        ->orderBy('created_at', 'desc')
+                        ->first();
+        return view('revisor.home', compact('announcement'));
     }
+
+    public function setAccepted(Announcement $announcement)
+    {
+        $announcement->setStatus('accepted');
+        return redirect(route('revisor.home'));
+    }
+
+    public function setRejected(Announcement $announcement)
+    {
+        $announcement->setStatus('rejected');
+        return redirect(route('revisor.home'));
+
+    }
+
 }

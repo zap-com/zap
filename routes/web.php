@@ -22,6 +22,8 @@ use App\Http\Controllers\AnnouncementController;
 Auth::routes();
 //Public Routes
 Route::get('/', [PublicController::class, 'index'])->name('home');
+
+
 Route::get('/category/{category}', [PublicController::class, 'category'])->name('category.index');
 Route::get('/announcement/catjson', [AnnouncementController::class, 'catjson'])->name('category.json');
 Route::get('/announcement', [AnnouncementController::class, 'index'])->name('announcement.index');
@@ -29,7 +31,6 @@ Route::get('/announcement/json', [AnnouncementController::class, 'json'])->name(
 Route::get('/announcement/{announcement}', [AnnouncementController::class, 'show'])->name('announcement.show');
 Route::get('/test', [AnnouncementController::class, 'test'])->name('test');
 
-Route::get('/revisor', [RevisorController::class, 'index']);
 
 Route::middleware(['auth'])->group(function () {
 
@@ -37,9 +38,17 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/announcement/store', [AnnouncementController::class, 'store'])->name('announcement.store');
 
-    Route::get('/announcement/{announcement}/edit', [AnnouncementController::class, 'edit'])->name('announcement.edit');
+    Route::get('/announcement/edit/{announcement}', [AnnouncementController::class, 'edit'])->name('announcement.edit');
 
-    Route::put('/announcement/{announcement}/update', [AnnouncementController::class, 'update'])->name('announcement.update');
+    Route::put('/announcement/update/{announcement}', [AnnouncementController::class, 'update'])->name('announcement.update');
 
-    Route::delete('/announcement/{announcement}/delete', [AnnouncementController::class, 'destroy'])->name('announcement.destroy');
+    Route::delete('/announcement/delete/{announcement}', [AnnouncementController::class, 'destroy'])->name('announcement.destroy');
+});
+
+
+Route::prefix('revisor')->group(function(){
+    Route::get('/dashboard', [RevisorController::class, 'index'])->name('revisor.home');
+    Route::post('/dashboard/{announcement}/accepte', [RevisorController::class, 'setAccepted'])->name('revisor.accept');
+    Route::post('/dashboard/{announcement}/reject', [RevisorController::class, 'setRejected'])->name('revisor.reject');
+
 });

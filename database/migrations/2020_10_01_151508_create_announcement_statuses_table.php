@@ -16,11 +16,11 @@ class CreateAnnouncementStatusesTable extends Migration
     {
         Schema::create('announcement_statuses', function (Blueprint $table) {
             $table->id();
-            $table->enum('status', ['pending','accepted','sold']);
+            $table->enum('status', ['pending','accepted','rejected','sold']);
             $table->timestamps();
         });
 
-        $statuses = ['pending', 'accepted', 'sold'];
+        $statuses = ['pending', 'accepted', 'sold', 'rejected'];
         foreach($statuses as $status){
             $s = new AnnouncementStatus();
             $s->status = $status;

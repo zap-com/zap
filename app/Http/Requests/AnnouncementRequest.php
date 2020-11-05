@@ -13,6 +13,7 @@ class AnnouncementRequest extends FormRequest
      */
     public function authorize()
     {
+        
         return true;
     }
 
@@ -30,4 +31,6 @@ class AnnouncementRequest extends FormRequest
            'category_id' => 'required|min:1',
         ];
     }
+
+    
 }
