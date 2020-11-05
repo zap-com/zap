@@ -14,10 +14,10 @@ class RevisorController extends Controller
 
     public function index()
     {
-        $announcement = Announcement::where('status_id', 1)
+        $announcements = Announcement::where('status_id', 1)
                         ->orderBy('created_at', 'desc')
-                        ->first();
-        return view('revisor.home', compact('announcement'));
+                        ->get();
+        return view('revisor.home', compact('announcements'));
     }
 
     public function setAccepted(Announcement $announcement)

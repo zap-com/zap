@@ -1,18 +1,25 @@
 <x-app>
-    @if ($announcement)
-        {{ $announcement->title }}
+    @if ($announcements->count() > 0 )
+    <div id="listCol" class="col-12 justify-content-center align-items-center px-2 px-md-5">
+        @foreach ($announcements as $announcement)
+            <x-card-rev :ad='$announcement' />
+     
 
-        <form action="{{ route('revisor.accept', compact('announcement')) }}" method="POST">
-            @csrf
-            <button class='btn btn-large btn-success' type='submit'>Accetta</button>
-        </form>
 
-        <form action="{{ route('revisor.reject', compact('announcement')) }}" method="POST">
-            @csrf
-            <button class='btn btn-large btn-danger' type='submit'>Rifiuta</button>
-        </form>
+        @endforeach
+
+    </div>
+
+       
     @else
+        <div class="container h-100" style="height: 100%;">
+            <div class="row">
+                <div class="col-12 text-center mt-5">
+                    <h1>Non ci sono annunci da revisionare</h1>
 
-        <h1>Non ci sono annunci da revisionare</h1>
+                </div>
+            </div>
+        </div>
     @endif
 </x-app>
+

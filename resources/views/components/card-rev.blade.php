@@ -63,7 +63,20 @@
                     <span class="d-flex align-items-middle"><i class="icon-exclamation large-icons pr-2"></i> 2 problems
                     </span>
                 </button>
-                <div> <button class="btn alt-btn mr-1">Decline</button> <button class="btn alt-btn">Accept</button>
+                <div class="d-flex"> 
+                    {{-- <button class="btn alt-btn mr-1">Decline</button> <button class="btn alt-btn">Accept</button> --}}
+
+
+                    <form action="{{ route('revisor.accept', $ad) }}" method="POST">
+                        @csrf
+                        <button class='btn alt-btn  d-inline-block mx-2' type='submit'>Accetta</button>
+                    </form>
+            
+                    <form action="{{ route('revisor.reject', $ad) }}" method="POST">
+                        @csrf
+                        <button class="btn alt-btn mr-1 d-inline-block" type='submit'>Rifiuta</button>
+                    </form>
+
 
                 </div>
             </div>

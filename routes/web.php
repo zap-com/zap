@@ -30,7 +30,6 @@ Route::get('/announcement/catjson', [AnnouncementController::class, 'catjson'])-
 Route::get('/announcement', [AnnouncementController::class, 'index'])->name('announcement.index');
 Route::get('/announcement/json', [AnnouncementController::class, 'json'])->name('announcement.json');
 Route::get('/announcement/{announcement}', [AnnouncementController::class, 'show'])->name('announcement.show');
-Route::get('/test', [AnnouncementController::class, 'test'])->name('test');
 
 //Search route
 

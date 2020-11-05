@@ -18,8 +18,8 @@
                             <a class="dropdown-item" href="#">Tutte le categorie</a>
                             
                             @foreach ($categories as $category)
-                            <input type="radio" id="cat" name="cat" value="{{ $category->id }}" class="d-none">
-                            <label for="cat" class="dropdown-item">{{ $category->name }}</label><br>
+                        <input type="radio" id="cat-{{$category->id}}" name="cat" value="{{ $category->id }}" class="d-none">
+                            <label for="cat-{{$category->id}}" class="dropdown-item">{{ $category->name }}</label><br>
                                 {{-- <a class="dropdown-item" href="#">{{ $category->name }}</a> --}}
                             @endforeach
                            
@@ -31,6 +31,13 @@
             <!--<button id="notification-button" class="mr-0 mr-md-3 d-none d-md-block">
                 <i class="icon-bell large-icons"></i>
             </button>-->
+            @auth
+                {{-- Notification bell --}}
+                <button id="notification-button" class="mr-0 mr-md-3 d-none d-md-block">
+                <i class="icon-bell large-icons"></i>
+              </button>
+            @endauth
+            
             <a class="mr-0 mr-md-3 d-none d-md-block" href="{{ route('announcement.create') }}"><button
                     class="btn b-btn">Inserisci un
                     annuncio</button></a>
@@ -38,6 +45,9 @@
                 <a class="d-none d-md-block" href="{{ route('login') }}"><button id="loginBtn"
                         class="btn b-btn">Login/Registrati</button></a>
             @else
+
+    
+      
                 <!-- User Dropdown -->
                 <div class="dropdown">
                     <button id="loginBtn" class="btn b-btn  dropdown-toggle" type="button" id="dMenuButton"
