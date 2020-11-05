@@ -41,14 +41,14 @@ class MakeUserRevisor extends Command
     {
         $email = $this->ask('inserisci email');
 
-        $user = User::where('email',$email)->first();
+        $user = User::where('email', $email)->first();
 
-        if(!$user){
+        if (!$user) {
             $this->error('l\'utente non esiste');
             return;
         }
 
-     $user->roles()->attach(Role::find(3));
+        $user->roles()->attach(Role::find(3));
         $user->save();
         $this->info("l'utente {$user->name} e' ora un revisore");
     }

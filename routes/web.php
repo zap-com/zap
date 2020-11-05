@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicController;
 
@@ -38,6 +39,7 @@ Route::prefix('work')->group(function(){
     Route::get('/revisor', [PublicController::class, 'works'])->name('works');
     Route::post('/revisor/send/{user}', [PublicController::class, 'revisorWork'])->name('work.revisor');
    
+    Route::get('/revisor/accept/{user}', [AdminController::class, 'acceptRevisor'])->name('work.acceptRevisor');
 
 });
 

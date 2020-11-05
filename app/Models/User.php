@@ -52,4 +52,23 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class);
     }
+
+    //Funzioni
+    public function makeUserRevisor()
+    {
+        if ($this->roles->contains('name', 'revisor')) {
+            return;
+        }
+        $this->roles()->attach(Role::find(3));
+        $this->save();
+        return true;
+    }
+
+    static function getAdmins()
+    {
+
+        return User::all()->filter(function ($u) {
+            return $u->roles->contains('name', 'admin');
+        });
+    }
 }

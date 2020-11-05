@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Announcement;
-use Illuminate\Http\Request;
+use App\Notifications\RevisorRequestNotification;
+
+use Illuminate\Support\Facades\Notification;
 
 class PublicController extends Controller
 {
@@ -32,6 +34,14 @@ class PublicController extends Controller
     }
 
     public function revisorWork(User $user){
-            dd($user);
+        $admins =  User::getAdmins();
+        
+
+        if($admins->count() == 0){
+            return redirect(route('home'))->with('message','Non ci sono Admin, in questo sito comanda l\'anarchia');
+        }
+        Notification::send($user, new RevisorRequestNotification($user));
+
+        return redirect(route('home'))->with('message','Richiesta inviata, ti faremo sapere al più presto');
     }
 }
