@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\Announcement;
 use App\Notifications\RevisorRequestNotification;
+use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Notification;
 
@@ -45,5 +46,16 @@ class PublicController extends Controller
         Notification::send($user, new RevisorRequestNotification($user));
 
         return redirect(route('home'))->with('message','Richiesta inviata, ti faremo sapere al più presto');
+    }
+
+    public function search(Request $req){
+            $s = $req->input('s');
+            $q = $req->input('q');
+
+            
+
+            $announcements = Announcement::search($q)->get();
+        
+            return view('announcement.index', compact('announcements'));
     }
 }

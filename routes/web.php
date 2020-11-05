@@ -32,6 +32,10 @@ Route::get('/announcement/json', [AnnouncementController::class, 'json'])->name(
 Route::get('/announcement/{announcement}', [AnnouncementController::class, 'show'])->name('announcement.show');
 Route::get('/test', [AnnouncementController::class, 'test'])->name('test');
 
+//Search route
+
+Route::get('/test', [PublicController::class, 'search'])->name('search');
+
 
 //Work
 

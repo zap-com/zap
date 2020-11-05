@@ -3,21 +3,27 @@
         <div class="col-12 d-flex flex-row py-2 align-items-center">
             <a class="navbar-brand mr-3" href="{{ route('home') }}"><img class="img-fluid"
                     src="{{ asset('images/zaplogo.svg') }}" width="40"></a>
-            <form class="form-inline flex-grow-1 mr-0 mr-md-3">
+            <form class="form-inline flex-grow-1 mr-0 mr-md-3" action="{{route('search')}}" method="GET">
+                @csrf
                 <div id="searchbar-wrapper" class="d-flex flex-row align-items-center px-3 flex-grow-1">
                     <i class="icon-magnifier icons"></i>
-                    <input id="searchbar" class="form-control mr-sm-2 flex-grow-1" type="search" placeholder="Search"
+                    <input id="searchbar" class="form-control mr-sm-2 flex-grow-1" type="search" placeholder="Search" name="s"
                         aria-label="Search">
                     <div class="btn-group">
                         <button type="button" class="nobtn text-muted dropdown-toggle" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
+                            aria-haspopup="true" aria-expanded="false" name="q">
                             Tutte le categorie
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="#">Tutte le categorie</a>
+                            <select name="category_id" id="category"
+                        class="form-control @error('category_id') is-invalid @enderror">
+                            
                             @foreach ($categories as $category)
+                            <option value="{{ $category->id }}" style="display:none;">{{ $category->name }}</option>
                                 <a class="dropdown-item" href="#">{{ $category->name }}</a>
                             @endforeach
+                        </select>
                         </div>
                     </div>
 
