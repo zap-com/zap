@@ -43,11 +43,8 @@ class RevisorRequestNotification extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->from('zap-work@noreplay.com', 'Richiesta Lavoro')
-                    ->line('Richiesta di Lavoro come revisore')
-                    ->line("Utente: {$this->user->name}")
-                    ->action('Accetta richiesta', url(route('work.acceptRevisor', $this->user)))
-                    ->line('Buon Lavoro!');
+            ->from('no-reply@zap.it', 'Un utente vuole diventare revisore')
+            ->view('email.revisor', ['user' => $this->user]);
     }
 
     /**

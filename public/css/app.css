@@ -11584,7 +11584,7 @@ input {
   }
 
   .dropdown.show:before {
-    z-index: 10;
+    z-index: 20;
     opacity: 1;
     visibility: visible;
     position: fixed;

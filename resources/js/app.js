@@ -41,20 +41,22 @@ $('.myBtn').on('click', function () {
 document.addEventListener('DOMContentLoaded', () => {
 
     let dropdowns = document.querySelectorAll('.dropdown-toggle');
+    let dropdownList = document.querySelectorAll('.show')
     dropdowns.forEach(function (btn) {
         btn.addEventListener('click', () => {
-            dropdowns.forEach(b => b.classList.toggle('active'));
-            dropdownList.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
+            dropdowns.forEach(b => {
+                b.classList.toggle('active');
+                b.classList.add('active')
             });
-
-            body.addEventListener('click', () => {
-                if (dropdowns.classList.contains('is_active')) {
-                    dropdowns.classList.remove('is_active');
+        });
+        document.body.addEventListener('click', () => {
+            if dropdownList.classList.contains('')
+            dropdowns.forEach(b => {
+                if (b.classList.contains('active')) {
+                    btn.classList.remove('active')
                 }
             })
-        });
-        let dropdownList = document.querySelectorAll('.show')
-    });
-})
+        })
+
+    })
+});

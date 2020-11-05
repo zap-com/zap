@@ -37303,22 +37303,20 @@ $('.myBtn').on('click', function () {
 });
 document.addEventListener('DOMContentLoaded', function () {
   var dropdowns = document.querySelectorAll('.dropdown-toggle');
+  var dropdownList = document.querySelectorAll('.show');
   dropdowns.forEach(function (btn) {
     btn.addEventListener('click', function () {
       dropdowns.forEach(function (b) {
         return b.classList.toggle('active');
       });
-      dropdownList.addEventListener('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-      });
-      body.addEventListener('click', function () {
-        if (dropdowns.classList.contains('is_active')) {
-          dropdowns.classList.remove('is_active');
+    });
+    document.body.addEventListener('click', function () {
+      dropdowns.forEach(function (b) {
+        if (b.classList.contains('active')) {
+          btn.classList.remove('active');
         }
       });
     });
-    var dropdownList = document.querySelectorAll('.show');
   });
 });
 
