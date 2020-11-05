@@ -1,4 +1,12 @@
 <x-app>
+
+    @if (session('message'))
+    <div class="alert alert-success">
+        {{ session('message') }}
+    </div>
+@endif
+
+
     <div class="container">
         <div id="prodCol" class="row mx-1 mx-md-0 my-4 py-2">
             <form class="col-12 col-md-6 pt-3" method="POST" action="{{ route('announcement.store') }}"
@@ -17,7 +25,7 @@
 
                 <div class="form-group">
                     <label for="category">Category</label>
-                    <select name="category" id="category" class="form-control" required>
+                    <select name="category_id" id="category" class="form-control" required>
                         <option selected>Choose...</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>

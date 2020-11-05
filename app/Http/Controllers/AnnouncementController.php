@@ -62,16 +62,20 @@ class AnnouncementController extends Controller
      */
     public function store(AnnouncementRequest $request)
     {
+
+       
         Announcement::create([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'price' => $request->input('price'),
-            'category_id' => $request->input('category'),
+            'category_id' => $request->input('category_id'),
             'user_id' => Auth::user()->id
         ]);
 
         return redirect(route('home'))->with('message', 'Annuncio Creato');
     }
+
+
 
     /**
      * Display the specified resource.
