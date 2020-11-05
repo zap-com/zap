@@ -37274,6 +37274,12 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+$('#searchbar-wrapper').click(function () {
+  $('#searchbar').focus();
+});
+$('#account-modal').on('shown.bs.modal', function () {
+  $('#account-modal-input').trigger('focus');
+});
 document.addEventListener('DOMContentLoaded', function () {
   var dropdowns = document.querySelectorAll('.dropdown-toggle');
   dropdowns.forEach(function (btn) {

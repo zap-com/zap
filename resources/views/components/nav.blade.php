@@ -4,11 +4,11 @@
             <a class="navbar-brand mr-3" href="{{ route('home') }}"><img class="img-fluid"
                     src="{{ asset('images/zaplogo.svg') }}" width="40"></a>
             <form class="form-inline flex-grow-1 mr-0 mr-md-3">
-                <!--<div id="searchbar-wrapper" class="d-flex flex-row align-items-center px-3 flex-grow-1">
+                <div id="searchbar-wrapper" class="d-flex flex-row align-items-center px-3 flex-grow-1">
                     <i class="icon-magnifier icons"></i>
                     <input id="searchbar" class="form-control mr-sm-2 flex-grow-1" type="search" placeholder="Search"
                         aria-label="Search">
-                </div>-->
+                </div>
             </form>
             <!--<button id="notification-button" class="mr-0 mr-md-3 d-none d-md-block">
                 <i class="icon-bell large-icons"></i>

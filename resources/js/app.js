@@ -1,5 +1,13 @@
 require('./bootstrap');
 
+$('#searchbar-wrapper').click(function () {
+    $('#searchbar').focus();
+});
+
+$('#account-modal').on('shown.bs.modal', function () {
+    $('#account-modal-input').trigger('focus')
+})
+
 document.addEventListener('DOMContentLoaded', () => {
 
     let dropdowns = document.querySelectorAll('.dropdown-toggle');
