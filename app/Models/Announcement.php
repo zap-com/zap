@@ -4,8 +4,9 @@ namespace App\Models;
 
 use App\Models\User;
 use App\Models\Category;
-use Spatie\Sluggable\HasSlug;
+use Laravel\Scout\Searchable;
 
+use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use App\Models\AnnouncementStatus;
 use Illuminate\Database\Eloquent\Model;
@@ -15,6 +16,7 @@ class Announcement extends Model
 {
     use HasSlug;
     use HasFactory;
+    use Searchable;
 
 
     protected $fillable = ['title', 'description', 'price', 'user_id', 'category_id', 'status_id'];
@@ -36,6 +38,25 @@ class Announcement extends Model
         return $this->belongsTo(AnnouncementStatus::class);
     }
 
+    //FullText research
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+        $array = [
+            'id' => $this->id,
+            'title' => $this->title,
+            'description' => $this->description,
+            'category' => $this->category->name,
+        ] ;
+
+        // Customize array...
+
+        return $array;
+    }
 
     /**
      * Get the options for generating the slug.
