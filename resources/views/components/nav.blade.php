@@ -7,23 +7,22 @@
                 @csrf
                 <div id="searchbar-wrapper" class="d-flex flex-row align-items-center px-3 flex-grow-1">
                     <i class="icon-magnifier icons"></i>
-                    <input id="searchbar" class="form-control mr-sm-2 flex-grow-1" type="search" placeholder="Search" name="s"
+                    <input id="searchbar" class="form-control mr-sm-2 flex-grow-1" type="search" placeholder="Search" name="q"
                         aria-label="Search">
                     <div class="btn-group">
                         <button type="button" class="nobtn text-muted dropdown-toggle" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false" name="q">
+                            aria-haspopup="true" aria-expanded="false" name="c">
                             Tutte le categorie
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="#">Tutte le categorie</a>
-                            <select name="category_id" id="category"
-                        class="form-control @error('category_id') is-invalid @enderror">
                             
                             @foreach ($categories as $category)
-                            <option value="{{ $category->id }}" style="display:none;">{{ $category->name }}</option>
-                                <a class="dropdown-item" href="#">{{ $category->name }}</a>
+                            <input type="radio" id="cat" name="cat" value="{{ $category->id }}" class="d-none">
+                            <label for="cat" class="dropdown-item">{{ $category->name }}</label><br>
+                                {{-- <a class="dropdown-item" href="#">{{ $category->name }}</a> --}}
                             @endforeach
-                        </select>
+                           
                         </div>
                     </div>
 
