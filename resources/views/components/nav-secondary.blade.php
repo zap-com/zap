@@ -8,10 +8,13 @@
             <div id="category-dropdown" class="dropdown-menu dropdown-multicol2" aria-labelledby="dropdownMenuButton">
                 @foreach ($categories as $category)
                     <div class="card dropdown-col card-category align-items-center pt-3 h-100">
-                        <img class="card-img-top mx-auto" src=".{{ $category->icon }}"></img>
+                    <a href="{{route('category.index', $category)}}" class="text-decortion-none d-flex align-items-center justify-content-center flex-column">
+                     <img class="card-img-top mx-auto" src=".{{ $category->icon }}">
                         <div class="card-body pb-0">
                             <h5 class="card-title text-center mb-1">{{ $category->name }}</h5>
                         </div>
+                    </a>
+                       
                     </div>
                 @endforeach
             </div>
