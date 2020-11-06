@@ -37,6 +37,8 @@
         <x-mobile-modal />
 
         {{ $slot }}
+        
+        
     </div>
 </body>
 <x-footer />

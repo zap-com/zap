@@ -36,12 +36,29 @@
             <!--<button id="notification-button" class="mr-0 mr-md-3 d-none d-md-block">
                 <i class="icon-bell large-icons"></i>
             </button>-->
+            @auth
+                {{-- Notification bell --}}
+                                
+               
+                    
+                
+                <button id="notification-button" class="mr-0 mr-md-3 d-none d-md-block">
+                <i class="icon-bell large-icons"></i>
+                 @if (App\Models\Announcement::toBeRevisedCount() > 0)
+                    <div class="small mt-n2">{{App\Models\Announcement::toBeRevisedCount()}}</span>
+                @endif
+              </button>
+            @endauth
+            
             <a class="mr-0 mr-md-3 d-none d-md-block" href="{{ route('announcement.create') }}"><button
                     class="btn b-btn">{{ __('global.create') }}</button></a>
             @guest
                 <a class="d-none d-md-block" href="{{ route('login') }}"><button id="loginBtn"
                         class="btn b-btn">{{ __('global.login') }}</button></a>
             @else
+
+    
+      
                 <!-- User Dropdown -->
                 <div class="dropdown">
                     <button id="loginBtn" class="btn b-btn  dropdown-toggle" type="button" id="dMenuButton"
@@ -62,7 +79,10 @@
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             {{ __('global.logout') }}
                         </a>
+                        <a class="dropdown-item" href="{{ route('revisor.home') }}">
 
+                            DashBoard
+                        </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>

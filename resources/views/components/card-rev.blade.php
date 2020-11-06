@@ -64,6 +64,7 @@
                         {{ __('revisor.problem') }}
                     </span>
                 </button>
+
                 <div class="d-flex flex-row">
                     <form action="{{ route('revisor.reject', $ad) }}" method="POST">
                         @csrf
@@ -73,6 +74,7 @@
                         @csrf
                         <button class='btn alt-btn' type='submit'>{{ __('revisor.accept') }}</button>
                     </form>
+
 
                 </div>
             </div>

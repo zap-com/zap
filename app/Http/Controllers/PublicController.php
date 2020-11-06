@@ -51,15 +51,21 @@ class PublicController extends Controller
     public function search(Request $req){
             
             $q = $req->input('q');
-            $cat = $req->input('cat');
+            $categoryId = $req->input('cat');
 
           
-         
-            //a volte funziona a volte no
-            // $announcements = Announcement::search($q)->where('category_id', $cat)->get();
+         if(!$categoryId){
+            $announcements = Announcement::search($q)->where('status_id', 2)->get();
+         } else{
+              $announcements = Announcement::search($q)->where('status_id', 2)->where('category_id', $categoryId)->get();
+         }
             
-
-            $announcements = Announcement::search($q)->get();
+           
+            
+   
+            
+            
+            // $announcements = Announcement::search($q)->get();
         
      
             return view('announcement.index', compact('announcements'));

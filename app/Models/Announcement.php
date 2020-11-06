@@ -50,7 +50,7 @@ class Announcement extends Model
             'id' => $this->id,
             'title' => $this->title,
             'description' => $this->description,
-            'category' => $this->category->name,
+            'category' => $this->category,
         ] ;
 
         // Customize array...
@@ -101,6 +101,10 @@ class Announcement extends Model
         }
 
         return 'invalid status';
+    }
+
+    static public function toBeRevisedCount(){
+        return self::where('status_id',1)->count();
     }
 
 
