@@ -30,7 +30,7 @@ fetch('/announcement/json')
           <h5 class="p font-weight-bold card-title slide-title pt-1 pb-0 mb-0">${prodTitle}</h5>
           <button type="button"
                     onClick="location.href='/category/${product.category.slug}'; event.preventDefault(); event.stopPropagation()"
-                    class="btn">${product.category.name}</button>
+                    class="nobtn">${product.category.name}</button>
           <!--<div class="d-flex d-row align-items-center py-0 location-row mb-2">
             <i class="icon-location-pin pr-1"></i>
             <p class="my-0 location-text">{product.location}</p>

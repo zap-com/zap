@@ -33,12 +33,18 @@
 
 <body class="preload">
     <div id="app">
-        <x-nav />
-        <x-mobile-modal />
+        @if ($sticky ?? '' === 1)
+            <x-nav sticky="1" />
+            <x-mobile-modal />
+        @else
+            <x-nav sticky="0" />
+            <x-mobile-modal />
+        @endif
+
 
         {{ $slot }}
-        
-        
+
+
     </div>
 </body>
 <x-footer />

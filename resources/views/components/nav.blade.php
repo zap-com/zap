@@ -1,4 +1,5 @@
-<nav class="container-fluid navbar-light bg-light justify-content-between">
+<nav
+    class="container-fluid {{ $sticky ?? '' === 1 ? 'sticky-top' : '' }} navbar-light bg-light justify-content-between">
     <div class="row">
         <div class="col-12 d-flex flex-row py-2 align-items-center">
             <a class="navbar-brand mr-3" href="{{ route('home') }}" title="{{ __('global.back-home') }}"><img
@@ -89,4 +90,8 @@
             @endguest
         </div>
     </div>
+    @if ($sticky ?? '' === 1)
+        <x-nav-secondary />
+    @else
+    @endif
 </nav>

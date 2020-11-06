@@ -20,6 +20,21 @@ return [
     'revise' => "Revisor Dashboard",
     'in' => "in",
     'by' => "by",
-
+    't' => "thousand",
+    'm' => "millions",
+    'vat' => "VAT Number",
+    'tel' => "Telephone Number",
+    'address' => "Address",
+    'italy' => "Italy",
+    'useful-links' => "Quick links",
+    'my-listings' => "My listings",
+    'bookmarks' => "Bookmarks",
+    'contact' => "Contact us",
+    'help' => "Help center",
+    'faq' => "Frequently Asked Questions",
+    'privacy' => "Privacy Policy",
+    'press' => "Press Kit",
+    'tac' => "Terms of Service",
+    'rights' => "All rights reserved"
 
 ];

@@ -1,4 +1,4 @@
-<x-app>
+<x-app sticky="0">
     <!-- Heading -->
     <div class="container">
         <div class="row">
@@ -11,9 +11,7 @@
             </div>
             <div class="col-12 text-center pt-5 pb-3">
                 <h1 class="text-primary d-inline">Zap</h1><span class="h1">,
-                    il sito
-                    di annunci più
-                    che veloce, fulmineo!</span>
+                    {{ __('home.page-title') }}</span>
             </div>
         </div>
     </div>
@@ -37,7 +35,7 @@
             <div class="d-none d-md-flex col-5">
                 <div class="row pb-4">
                     <div class="col-12">
-                        <h2 class="h4 py-3">Cerca per regione</h2>
+                        <h2 class="h4 py-3">{{ __('home.region-search') }}</h2>
                     </div>
                     <div class="row">
                         <div class="col-6 col-md-3 text-center">
@@ -49,32 +47,28 @@
             <div id="introduction" class="col-12 col-md-7">
                 <div class="row pb-4">
                     <div class="col-12">
-                        <h2 class="h4 py-3">Chi Siamo</h2>
-                        <p>Una digital company in Italia per comprare e vendere <br>Zap, nata nel 2020 come sito
-                            d'annunci
-                            gratuiti, è tra i primi 50 siti più visitati d'Italia</p>
-                        <p>
-                        </p>
+                        <h2 class="h4 py-3">{{ __('home.about-us') }}</h2>
+                        <p>{{ __('home.about-us-p1') }}<br>{{ __('home.about-us-p2') }}</p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-6 col-md-3 text-center">
                         <i class="icons icon-chart text-primary"></i>
-                        <p class="pt-2"><b>50mila</b> annunci visti al mese</p>
+                        <p class="pt-2"><b>50 {{ __('global.t') }}</b> {{ __('home.stat-listings') }}</p>
                     </div>
                     <div class="col-6 col-md-3 text-center">
                         <i class="icons icon-people text-primary"></i>
-                        <p class="pt-2"><b>100mila</b> utenti attivi</p>
+                        <p class="pt-2"><b>100 {{ __('global.t') }}</b> {{ __('home.stat-users') }}</p>
                     </div>
 
                     <div class="col-6 col-md-3 text-center">
                         <i class="icons icon-bubbles text-primary"></i>
-                        <p class="pt-2"><b>3 milioni</b> di articoli venduti</p>
+                        <p class="pt-2"><b>3 {{ __('global.m') }}</b> {{ __('home.stat-sold') }}</p>
                     </div>
 
                     <div class="col-6 col-md-3 text-center">
                         <i class="icons icon-emotsmile text-primary"></i>
-                        <p class="pt-2"><b>500mila</b> clienti soddisfatti</p>
+                        <p class="pt-2"><b>500 {{ __('global.t') }}</b> {{ __('home.stat-satisfied') }}</p>
                     </div>
                 </div>
             </div>
@@ -83,11 +77,11 @@
 
     <section class="container align-items-center justify-content-between py-5">
         <div class="row justify-content-between mx-0">
-            <h2>Prodotti in voga</h2>
+            <h2>{{ __('home.trending') }}</h2>
             <div class="dropdown">
                 <button class="b-btn dropdown-toggle px-3" type="button" id="dMenuButton" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    Dove stai cercando?
+                    {{ __('home.where') }}
                 </button>
                 <div id="regionDropdown" class="dropdown-menu bg-white" aria-labelledby="dMenuButton">
                     <a class="dropdown-item" href="">Abruzzo</a>

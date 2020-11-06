@@ -20,6 +20,8 @@ return [
     'revise' => "Dashboard moderatore",
     'in' => "in",
     'by' => "da",
+    't' => "thousands",
+    'm' => "millions"
 
 
 

@@ -1,4 +1,4 @@
-<x-app>
+<x-app sticky=1>
     @if ($announcements->count() == 0)
         <div class="container">
             <div class="row">
