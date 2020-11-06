@@ -101,7 +101,7 @@ registerBtn.onclick = function () {
   if (registerForm.classList.contains('d-none')) {
     loginForm.classList.add('d-none');
     registerForm.classList.remove('d-none');
-    registerBtn.innerText = 'Sing-in';
+    registerBtn.innerText = 'Sign-in';
   } else {
     console.log('else');
     loginForm.classList.remove('d-none');

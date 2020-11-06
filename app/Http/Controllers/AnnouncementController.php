@@ -32,7 +32,7 @@ class AnnouncementController extends Controller
 
     public function test()
     {
-        $announcements = Announcement::where('status_id', 2)->with('category')->orderBy('created_at', 'desc')->paginate(16);
+        $announcements = Announcement::where('status_id', 1)->with('category')->orderBy('created_at', 'desc')->paginate(16);
         if (Request::wantsJson()) {
             return $announcements;
         }
@@ -74,7 +74,7 @@ class AnnouncementController extends Controller
     public function store(AnnouncementRequest $request)
     {
 
-       
+
         Announcement::create([
             'title' => $request->input('title'),
             'description' => $request->input('description'),

@@ -15,8 +15,8 @@ class RevisorController extends Controller
     public function index()
     {
         $announcement = Announcement::where('status_id', 1)
-                        ->orderBy('created_at', 'desc')
-                        ->first();
+            ->orderBy('created_at', 'desc')
+            ->paginate(16);
         return view('revisor.home', compact('announcement'));
     }
 
@@ -30,7 +30,5 @@ class RevisorController extends Controller
     {
         $announcement->setStatus('rejected');
         return redirect(route('revisor.home'));
-
     }
-
 }

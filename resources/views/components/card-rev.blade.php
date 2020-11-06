@@ -27,18 +27,18 @@
                         {{ $ad->title }}
                     </h5>
                     <div>
-                        {{ __('in') }}
+                        {{ __('global.in') }}
                         <button type="button"
                             onClick="location.href='{{ route('category.index', $ad->category) }}'; event.preventDefault(); event.stopPropagation()"
                             class="nobtn font-weight-bold">{{ $ad->category->name }}</button>,
                         @if ($ad->created_at >= $ad->updated_at)
-                            {{ __('created on') }}
+                            {{ __('revisor.created') }}
                             {{ $ad->created_at }}
                         @else
-                            {{ __('modified on') }}
+                            {{ __('revisor.modified') }}
                             {{ $ad->updated_at }}
                         @endif
-                        {{ __('by') }}
+                        {{ __('global.by') }}
                         <button type="button"
                             onClick="location.href='{{ route('category.index', $ad->category) }}'; event.preventDefault(); event.stopPropagation()"
                             class="nobtn font-weight-bold">{{ $ad->user->name }}</button>
@@ -60,10 +60,19 @@
             <div class="info d-flex flex-row justify-content-between">
                 <button onClick="event.preventDefault()" type="button" class="nobtn text-danger align-self-end"
                     data-toggle="modal" data-target="#warn-modal-{{ $ad->id }}" title="Click to learn more...">
-                    <span class="d-flex align-items-middle"><i class="icon-exclamation large-icons pr-2"></i> 2 problems
+                    <span class="d-flex align-items-middle"><i class="icon-exclamation large-icons pr-2"></i> 2
+                        {{ __('revisor.problem') }}
                     </span>
                 </button>
-                <div> <button class="btn alt-btn mr-1">Decline</button> <button class="btn alt-btn">Accept</button>
+                <div class="d-flex flex-row">
+                    <form action="{{ route('revisor.reject', $ad) }}" method="POST">
+                        @csrf
+                        <button class='btn alt-btn mr-1' type='submit'>{{ __('revisor.decline') }}</button>
+                    </form>
+                    <form action="{{ route('revisor.accept', $ad) }}" method="POST">
+                        @csrf
+                        <button class='btn alt-btn' type='submit'>{{ __('revisor.accept') }}</button>
+                    </form>
 
                 </div>
             </div>
