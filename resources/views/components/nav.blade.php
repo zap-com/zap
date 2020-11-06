@@ -41,13 +41,15 @@
 
 
 
+                @if (Auth::user() && Auth::user()->roles->contains('name', 'revisor') && App\Models\Announcement::toBeRevisedCount() > 0)
+                    <a href="{{ route('revisor.home') }}">
+                        <button id="notification-button" class="mr-0 mr-md-3 d-none d-md-block">
+                            <i class="icon-bell large-icons"></i>
 
-                <button id="notification-button" class="mr-0 mr-md-3 d-none d-md-block">
-                    <i class="icon-bell large-icons"></i>
-                    @if (App\Models\Announcement::toBeRevisedCount() > 0)
-                        <div class="small mt-n2">{{ App\Models\Announcement::toBeRevisedCount() }}</span>
-                    @endif
-                </button>
+                            <div class="small mt-n2">{{ App\Models\Announcement::toBeRevisedCount() }}</span>
+                        </button>
+                    </a>
+                @endif
             @endauth
 
             <a class="mr-0 mr-md-3 d-none d-md-block" href="{{ route('announcement.create') }}"><button
