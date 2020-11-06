@@ -6,5 +6,8 @@ return [
     'decline' => "Decline",
     'created' => "created on",
     'modified' => "updated on",
+    'problem' => "problems",
+    'learnmore' => "Click to learn more"
+
 
 ];

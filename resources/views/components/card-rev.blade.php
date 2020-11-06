@@ -59,7 +59,7 @@
 
             <div class="info d-flex flex-row justify-content-between">
                 <button onClick="event.preventDefault()" type="button" class="nobtn text-danger align-self-end"
-                    data-toggle="modal" data-target="#warn-modal-{{ $ad->id }}" title="Click to learn more...">
+                    data-toggle="modal" data-target="#warn-modal-{{ $ad->id }}" title="{{ __('revisor.learnmore') }}">
                     <span class="d-flex align-items-middle"><i class="icon-exclamation large-icons pr-2"></i> 2
                         {{ __('revisor.problem') }}
                     </span>

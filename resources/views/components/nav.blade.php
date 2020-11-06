@@ -48,13 +48,16 @@
                         data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">{{ Auth::user()->name }}</button></a>
                     <div class="dropdown-menu dropdown-menu-right bg-white" aria-labelledby="dMenuButton">
-                        <a class="dropdown-item" href="{{ route('revisor.home') }}">
-                            {{ __('global.revise') }}
-                        </a>
-                        <a class="dropdown-item" href="{{ route('works') }}">
-                            {{ __('global.careers') }}
-                        </a>
 
+                        @if (Auth::user() && Auth::user()->roles->contains('name', 'revisor'))
+                            <a class="dropdown-item" href="{{ route('revisor.home') }}">
+                                {{ __('global.revise') }}
+                            </a>
+                        @else
+                            <a class="dropdown-item" href="{{ route('works') }}">
+                                {{ __('global.careers') }}
+                            </a>
+                        @endif
                         <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             {{ __('global.logout') }}
