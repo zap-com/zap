@@ -1,6 +1,19 @@
 <x-app>
 
-    @if($announcement->count() == 0 )
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-5">
+                @if ($mode ?? '')
+                    <div class="alert alert-danger">
+                        {{ $mode ?? '' }}
+                    </div>
+                @endif
+            </div>
+            
+        </div>
+    </div>
+
+    @if($announcement->count() == 0 && !$mode)
         <div class="container">
         <div class="row">
             <div class="col-12 text-center my-5">
@@ -9,6 +22,14 @@
         </div>
     </div>
 
+    @elseif($announcement->count() == 0 && $mode)
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center my-5">
+               <h1>Il cestino è vuoto</h1>
+            </div>
+        </div>
+    </div>
     @endif
 
     <div class="container">

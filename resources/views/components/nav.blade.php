@@ -73,6 +73,9 @@
                             <a class="dropdown-item" href="{{ route('revisor.home') }}">
                                 {{ __('global.revise') }}
                             </a>
+                              <a class="dropdown-item" href="{{ route('revisor.trash') }}">
+                                Trash
+                            </a>
                         @else
                             <a class="dropdown-item" href="{{ route('works') }}">
                                 {{ __('global.careers') }}

@@ -18,7 +18,9 @@ class RevisorController extends Controller
         $announcement = Announcement::where('status_id', 1)
             ->orderBy('created_at', 'desc')
             ->paginate(16);
-        return view('revisor.home', compact('announcement'));
+
+        $mode = null;
+        return view('revisor.home', compact('announcement' , 'mode'));
 
     }
 
@@ -32,5 +34,26 @@ class RevisorController extends Controller
     {
         $announcement->setStatus('rejected');
         return redirect(route('revisor.home'));
+    }
+
+    public function restoreAd(Announcement $announcement)
+    {
+        $announcement->setStatus('pending');
+        return redirect()->back();
+    }
+
+    public function deleteAd(Announcement $announcement)
+    {
+        $announcement->delete();
+        return redirect()->back();
+    }
+
+    public function trash()
+    {
+        $announcement = Announcement::where('status_id', 4)->get();
+
+        $mode = "elimina definitivamente gli annunci o ripristinali";
+        return view('revisor.home', compact('announcement', 'mode'));
+
     }
 }

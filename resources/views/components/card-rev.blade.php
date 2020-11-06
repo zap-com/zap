@@ -1,5 +1,7 @@
 @props(['ad'])
 
+
+
 <a id="{{ $ad->id }}" href="{{ route('announcement.show', $ad) }}">
     <div class="d-flex flex-column flex-md-row card listings-card w-100 my-3 p-1">
 
@@ -65,6 +67,22 @@
                     </span>
                 </button>
 
+                     
+
+                @if ($ad['status_id'] == 4)
+                     <div class="d-flex flex-row">
+                    <form action="{{ route('revisor.delete', $ad) }}" method="POST">
+                        @csrf
+                        <button class='btn alt-btn mr-1 bg-danger text-white' type='submit'>Delete</button>
+                    </form>
+                    <form action="{{ route('revisor.restore', $ad) }}" method="POST">
+                        @csrf
+                        <button class='btn alt-btn' type='submit'>Restore</button>
+                    </form>
+
+
+                </div>
+                @else
                 <div class="d-flex flex-row">
                     <form action="{{ route('revisor.reject', $ad) }}" method="POST">
                         @csrf
@@ -77,6 +95,7 @@
 
 
                 </div>
+                @endif
             </div>
         </div>
     </div>

@@ -36,7 +36,7 @@ Route::get('/announcement/{announcement}', [AnnouncementController::class, 'show
 Route::get('/test', [PublicController::class, 'search'])->name('search');
 
 
-//Work
+//Works
 
 Route::prefix('work')->group(function () {
     Route::get('/revisor', [PublicController::class, 'works'])->name('works');
@@ -65,4 +65,9 @@ Route::prefix('revisor')->group(function () {
     Route::get('/dashboard', [RevisorController::class, 'index'])->name('revisor.home');
     Route::post('/dashboard/{announcement}/accept', [RevisorController::class, 'setAccepted'])->name('revisor.accept');
     Route::post('/dashboard/{announcement}/reject', [RevisorController::class, 'setRejected'])->name('revisor.reject');
+    Route::post('/dashboard/{announcement}/restore', [RevisorController::class, 'restoreAd'])->name('revisor.restore');
+    Route::post('/dashboard/{announcement}/delete', [RevisorController::class, 'deleteAd'])->name('revisor.delete');
+
+
+    Route::get('/dashboard/trash/', [RevisorController::class, 'trash'])->name('revisor.trash');
 });
