@@ -7,7 +7,6 @@
                     @foreach ($announcement as $announcement)
                         <x-card-rev :ad='$announcement' />
                     @endforeach
-                    {{ $announcement->links('pagination::bootstrap-4') }}
                 @else
                     <h1>{{ __('revisor.no-announcement') }}</h1>
                 @endif
@@ -17,4 +16,3 @@
 
 
 </x-app>
-
