@@ -37,6 +37,12 @@ html {
     font-family: "asap", sans-serif;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 .p {
     font-family: "asap", sans-serif !important;
 }
@@ -155,6 +161,19 @@ button:focus {
 
 .cat-prev {
     left: -2vw !important;
+}
+
+.trend-next {
+    right: -2vw !important;
+}
+
+.trend-prev {
+    left: -2vw !important;
+}
+
+.swiper-button-next.swiper-button-disabled,
+.swiper-button-prev.swiper-button-disabled {
+    opacity: 0.15;
 }
 
 .swiper-button-prev::after {
@@ -300,6 +319,7 @@ button:focus {
     top: 0px;
     overflow-y: auto;
     transition: top 400ms ease-in-out 0ms;
+    border-radius: 25px;
     background-clip: initial;
 }
 
@@ -874,4 +894,24 @@ input {
 
 #searchbar-wrapper .text-muted {
     color: #ccc !important;
+}
+
+#revContainer {
+    height: 100vh;
+}
+
+.footer {
+    position: relative;
+    top: 100%;
+    bottom: 0;
+    width: 100%;
+    height: fit-content;
+}
+
+g path:hover {
+    fill: #fff;
+}
+
+.regione {
+    transition: all 200ms ease-in-out;
 }

@@ -1,17 +1,21 @@
 <x-app>
-    <div class="container">
-        <div class="row " >
-            <div class="col-12 text-center my-5">
 
-                <h1>Diventa un revisore</h1>
+    <div id="revContainer" class="container pt-5 pb-3">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center">Diventa un revisore</h1>
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="col-12 text-center">
                 <form action="{{ route('work.revisor', Auth::user()) }}" method="POST">
                     @csrf
-                    <button type="submit" class="btn btn b-btn">Voglio diventare un revisore</button>
+                    <button type="submit" class="btn btn-large btn-success">Voglio diventare un revisore</button>
+
                 </form>
             </div>
         </div>
     </div>
-
 
 </x-app>

@@ -37280,6 +37280,9 @@ $(function () {
     $(".nobtn:first-child").val($(this).text());
   });
 });
+$('.regione').on('click', function () {
+  window.location.href = $(this).data('nome-regione');
+});
 $('#searchbar-wrapper').click(function () {
   $('#searchbar').focus();
 });
@@ -37302,12 +37305,12 @@ $('.myBtn').on('click', function () {
   }
 });
 $(function () {
-  $(".dropdown-toggle").on("click", function (e) {
-    $(".dropdown-toggle").toggleClass("active");
+  $(".dropdown-toggle").on("click", function () {
+    $(this).toggleClass("active");
   });
   $(document).on("click", function (e) {
     if ($(e.target).is(".dropdown-toggle") === false && $(".dropdown-toggle").hasClass("active")) {
-      $(".dropdown-toggle").toggleClass("active");
+      $(".dropdown-toggle").removeClass("active");
     }
   });
 });

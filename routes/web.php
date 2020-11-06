@@ -38,12 +38,11 @@ Route::get('/test', [PublicController::class, 'search'])->name('search');
 
 //Work
 
-Route::prefix('work')->group(function(){
+Route::prefix('work')->group(function () {
     Route::get('/revisor', [PublicController::class, 'works'])->name('works');
     Route::post('/revisor/send/{user}', [PublicController::class, 'revisorWork'])->name('work.revisor');
-   
-    Route::get('/revisor/accept/{user}', [AdminController::class, 'acceptRevisor'])->name('work.acceptRevisor');
 
+    Route::get('/revisor/accept/{user}', [AdminController::class, 'acceptRevisor'])->name('work.acceptRevisor');
 });
 
 
@@ -62,9 +61,8 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
-Route::prefix('revisor')->group(function(){
+Route::prefix('revisor')->group(function () {
     Route::get('/dashboard', [RevisorController::class, 'index'])->name('revisor.home');
-    Route::post('/dashboard/{announcement}/accepte', [RevisorController::class, 'setAccepted'])->name('revisor.accept');
+    Route::post('/dashboard/{announcement}/accept', [RevisorController::class, 'setAccepted'])->name('revisor.accept');
     Route::post('/dashboard/{announcement}/reject', [RevisorController::class, 'setRejected'])->name('revisor.reject');
-
 });
