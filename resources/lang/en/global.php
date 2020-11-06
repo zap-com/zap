@@ -19,7 +19,7 @@ return [
     'login' => "Login/Register",
     'revise' => "Revisor Dashboard",
     'in' => "in",
-    'by' => "da",
+    'by' => "by",
 
 
 ];
