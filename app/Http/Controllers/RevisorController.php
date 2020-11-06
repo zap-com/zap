@@ -14,10 +14,12 @@ class RevisorController extends Controller
 
     public function index()
     {
+
         $announcement = Announcement::where('status_id', 1)
             ->orderBy('created_at', 'desc')
             ->paginate(16);
         return view('revisor.home', compact('announcement'));
+
     }
 
     public function setAccepted(Announcement $announcement)

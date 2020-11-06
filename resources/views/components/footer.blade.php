@@ -37,7 +37,7 @@
                         <a href="#!">{{ __('global.bookmarks') }}</a>
                     </li>
                     <li>
-                        <a href="#!">{{ __('global.careers') }}</a>
+                        <a href="{{ route('works') }}">{{ __('global.careers') }}</a>
                     </li>
                     <li>
                         <a href="#!">{{ __('global.contact') }}</a>
