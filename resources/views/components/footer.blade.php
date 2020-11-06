@@ -36,7 +36,7 @@
                         <a href="#!"><i class="fas fa-link mr-2"></i>Annunci seguiti</a>
                     </li>
                     <li>
-                        <a href="#!"><i class="fas fa-link mr-2"></i>Lavora con noi</a>
+                        <a href="{{route('works')}}"><i class="fas fa-link mr-2"></i>Lavora con noi</a>
                     </li>
                     <li>
                         <a href="#!"><i class="fas fa-link mr-2"></i>Contattaci</a>
