@@ -11,7 +11,11 @@
             <div class="col-12 text-center">
                 <form action="{{ route('work.revisor', Auth::user()) }}" method="POST">
                     @csrf
+<<<<<<< HEAD
                     <button type="submit" class="btn  b-btn ">Voglio diventare un revisore</button>
+=======
+                    <button type="submit" class="btn b-btn">Voglio diventare un revisore</button>
+>>>>>>> 86205378ab4f3730a88cc386ce4a5071f4b7d447
 
                 </form>
             </div>
