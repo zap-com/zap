@@ -103,6 +103,10 @@ class Announcement extends Model
         return 'invalid status';
     }
 
+    static public function toBeRevisedCount(){
+        return self::where('status_id',1)->count();
+    }
+
 
     //Development function
     static function publishAll()

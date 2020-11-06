@@ -37275,7 +37275,7 @@ module.exports = function(module) {
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 $(function () {
-  $(".dropdown-menu a").on('click', function () {
+  $(".dropdown-menu label").on('click', function () {
     $(".nobtn:first-child").text($(this).text());
     $(".nobtn:first-child").val($(this).text());
   });
@@ -37301,26 +37301,37 @@ $('.myBtn').on('click', function () {
     $(this).addClass("is-active");
   }
 });
-document.addEventListener('DOMContentLoaded', function () {
-  var dropdowns = document.querySelectorAll('.dropdown-toggle');
-  dropdowns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      dropdowns.forEach(function (b) {
-        return b.classList.toggle('active');
-      });
-      dropdownList.addEventListener('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-      });
-      body.addEventListener('click', function () {
-        if (dropdowns.classList.contains('is_active')) {
-          dropdowns.classList.remove('is_active');
-        }
-      });
-    });
-    var dropdownList = document.querySelectorAll('.show');
+$(function () {
+  $(".dropdown-toggle").on("click", function (e) {
+    $(".dropdown-toggle").toggleClass("active");
+  });
+  $(document).on("click", function (e) {
+    if ($(e.target).is(".dropdown-toggle") === false && $(".dropdown-toggle").hasClass("active")) {
+      $(".dropdown-toggle").toggleClass("active");
+    }
   });
 });
+/**document.addEventListener('DOMContentLoaded', () => {
+
+    let dropdowns = document.querySelectorAll('.dropdown-toggle');
+    let dropdownList = document.querySelectorAll('.dropdown-menu');
+
+    dropdowns.forEach(function (btn) {
+        btn.addEventListener('click', () => {
+            dropdowns.forEach(b => {
+                b.classList.toggle('active');
+            });
+        });
+
+        document.body.addEventListener('click', () => {
+            if (dropdownList.classList.contains('.show')) {
+                dropdowns.forEach(b => {
+                    b.classList.remove('active')
+                })
+            }
+        })
+    })
+});*/
 
 /***/ }),
 

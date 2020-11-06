@@ -54,12 +54,16 @@ class PublicController extends Controller
             $categoryId = $req->input('cat');
 
           
-         
+         if(!$categoryId){
+            $announcements = Announcement::search($q)->where('status_id', 2)->get();
+         } else{
+              $announcements = Announcement::search($q)->where('status_id', 2)->where('category_id', $categoryId)->get();
+         }
             
-            $announcements = Announcement::search($q)->where('status_id', 2)->where('category_id', $categoryId)->get();
+           
             
    
-            dd($announcements);
+            
             
             // $announcements = Announcement::search($q)->get();
         

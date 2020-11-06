@@ -4,7 +4,7 @@ require('./bootstrap');
 
 $(function () {
 
-    $(".dropdown-menu a").on('click', function () {
+    $(".dropdown-menu label").on('click', function () {
 
         $(".nobtn:first-child").text($(this).text());
         $(".nobtn:first-child").val($(this).text());
@@ -38,23 +38,36 @@ $('.myBtn').on('click', function () {
     }
 })
 
-document.addEventListener('DOMContentLoaded', () => {
+$(function () {
+    $(".dropdown-toggle").on("click", function (e) {
+        $(".dropdown-toggle").toggleClass("active");
+    });
+    $(document).on("click", function (e) {
+        if ($(e.target).is(".dropdown-toggle") === false && $(".dropdown-toggle").hasClass("active")) {
+            $(".dropdown-toggle").toggleClass("active");
+        }
+    });
+});
+
+
+/**document.addEventListener('DOMContentLoaded', () => {
 
     let dropdowns = document.querySelectorAll('.dropdown-toggle');
+    let dropdownList = document.querySelectorAll('.dropdown-menu');
+
     dropdowns.forEach(function (btn) {
         btn.addEventListener('click', () => {
-            dropdowns.forEach(b => b.classList.toggle('active'));
-            dropdownList.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
+            dropdowns.forEach(b => {
+                b.classList.toggle('active');
             });
-
-            body.addEventListener('click', () => {
-                if (dropdowns.classList.contains('is_active')) {
-                    dropdowns.classList.remove('is_active');
-                }
-            })
         });
-        let dropdownList = document.querySelectorAll('.show')
-    });
-})
+
+        document.body.addEventListener('click', () => {
+            if (dropdownList.classList.contains('.show')) {
+                dropdowns.forEach(b => {
+                    b.classList.remove('active')
+                })
+            }
+        })
+    })
+});*/

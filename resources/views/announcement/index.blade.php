@@ -1,4 +1,16 @@
 <x-app>
+    @if ($announcements->count() == 0)
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mt-5">
+
+                    <h1>Non ci sono risultati per la tua ricerca</h1>
+                </div>
+            </div>
+        </div>
+    @endif
+
+
     <div class="container">
         <div class="row">
 
