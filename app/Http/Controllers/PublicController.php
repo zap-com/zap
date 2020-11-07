@@ -56,6 +56,8 @@ class PublicController extends Controller
           
          if(!$categoryId){
             $announcements = Announcement::search($q)->where('status_id', 2)->get();
+         }else if(!$q){
+            $announcements = Announcement::where('category_id', $categoryId)->get();
          } else{
               $announcements = Announcement::search($q)->where('status_id', 2)->where('category_id', $categoryId)->get();
          }

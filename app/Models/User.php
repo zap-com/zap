@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Role;
+use App\Models\Announcement;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -45,7 +46,7 @@ class User extends Authenticatable
     //Relations
     public function announcents()
     {
-        return $this->hasMany(Post::class);
+        return $this->hasMany(Announcement::class);
     }
 
     public function roles()
