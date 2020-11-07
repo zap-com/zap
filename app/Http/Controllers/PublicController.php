@@ -36,40 +36,35 @@ class PublicController extends Controller
         return view('work.revisor');
     }
 
-    public function revisorWork(User $user){
+    public function revisorWork(User $user)
+    {
         $admins =  User::getAdmins();
-        
 
-        if($admins->count() == 0){
-            return redirect(route('home'))->with('message','Non ci sono Admin, in questo sito comanda l\'anarchia');
+
+        if ($admins->count() == 0) {
+            return redirect(route('home'))->with('message', 'Non ci sono Admin, in questo sito comanda l\'anarchia');
         }
         Notification::send($user, new RevisorRequestNotification($user));
 
-        return redirect(route('home'))->with('message','Richiesta inviata, ti faremo sapere al più presto');
+        return redirect(route('home'))->with('message', 'Richiesta inviata, ti faremo sapere al più presto');
     }
 
-    public function search(Request $req){
-            
-            $q = $req->input('q');
-            $categoryId = $req->input('cat');
+    public function search(Request $req)
+    {
 
-          
-         if(!$categoryId){
+        $q = $req->input('q');
+        $categoryId = $req->input('cat');
+
+
+        if (!$categoryId) {
             $announcements = Announcement::search($q)->where('status_id', 2)->get();
-         }else if(!$q){
+        } else if (!$q) {
             $announcements = Announcement::where('category_id', $categoryId)->get();
-         } else{
-              $announcements = Announcement::search($q)->where('status_id', 2)->where('category_id', $categoryId)->get();
-         }
-            
-           
-            
-   
-            
-            
-            // $announcements = Announcement::search($q)->get();
-        
-     
-            return view('announcement.index', compact('announcements'));
+        } else {
+            $announcements = Announcement::search($q)->where('status_id', 2)->where('category_id', $categoryId)->get();
+        }
+
+
+        return view('announcement.index', compact('announcements'));
     }
 }

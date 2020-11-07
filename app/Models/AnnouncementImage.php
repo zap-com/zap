@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class AnnouncementImage extends Model
 {
     use HasFactory;
+    
     public function announcements()
     {
         return $this->belongsTo(Announcement::class);

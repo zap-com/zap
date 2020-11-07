@@ -7,6 +7,7 @@ use App\Models\Category;
 use Laravel\Scout\Searchable;
 
 use Spatie\Sluggable\HasSlug;
+use App\Models\AnnouncementImage;
 use Spatie\Sluggable\SlugOptions;
 use App\Models\AnnouncementStatus;
 use Illuminate\Database\Eloquent\Model;
@@ -36,6 +37,10 @@ class Announcement extends Model
     public function status()
     {
         return $this->belongsTo(AnnouncementStatus::class);
+    }
+    public function images()
+    {
+        return $this->hasMany(AnnouncementImage::class);
     }
 
     //FullText research

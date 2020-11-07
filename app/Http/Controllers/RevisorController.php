@@ -20,8 +20,7 @@ class RevisorController extends Controller
             ->paginate(16);
 
         $mode = null;
-        return view('revisor.home', compact('announcement' , 'mode'));
-
+        return view('revisor.home', compact('announcement', 'mode'));
     }
 
     public function setAccepted(Announcement $announcement)
@@ -54,6 +53,5 @@ class RevisorController extends Controller
 
         $mode = "elimina definitivamente gli annunci o ripristinali";
         return view('revisor.home', compact('announcement', 'mode'));
-
     }
 }
