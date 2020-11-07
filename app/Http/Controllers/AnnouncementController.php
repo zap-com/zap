@@ -7,7 +7,7 @@ use App\Models\Announcement;
 use App\Models\AnnouncementImage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\AnnouncementRequest;
 

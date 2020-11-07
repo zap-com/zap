@@ -8,6 +8,7 @@ use App\Models\Announcement;
 use App\Notifications\RevisorRequestNotification;
 use Illuminate\Http\Request;
 
+
 use Illuminate\Support\Facades\Notification;
 
 class PublicController extends Controller
@@ -28,6 +29,7 @@ class PublicController extends Controller
 
     public function indexCarousel(Announcement $announcement, Request $request)
     {
+        dd($announcement->images);
         return $request->json($announcement->images);
     }
 
