@@ -5,11 +5,11 @@
             {{ session('message') }}
         </div>
     @endif
-
+{{$secret}}
 
     <div class="container">
         <div id="prodCol" class="row mx-1 mx-md-0 my-4 py-2">
-            <form class="col-12 col-md-6 pt-3" method="POST" action="{{ route('announcement.store') }}"
+            <form class="col-12 col-md-6 pt-3" method="POST" id="form" action="{{ route('announcement.store') }}"
                 enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
@@ -67,14 +67,28 @@
                     </div>
                 </div>
 
+                <input type="hidden" name="secret" value="{{$secret}}">
+            <div class="col-12  pt-3">
+                <div id="drophere" class=" dropzone" ></div>
+
+            </div>
+
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">
                         Post your ad
                     </button>
                 </div>
 
+            
+            
             </form>
+
+           
         </div>
     </div>
     </div>
+
+
+
+
 </x-app>

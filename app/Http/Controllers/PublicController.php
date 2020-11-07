@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Notification;
 
 class PublicController extends Controller
 {
+
+
+  
     /**
      * Show the application dashboard.
      *
@@ -21,6 +24,11 @@ class PublicController extends Controller
     {
         $categories = Category::orderBy('id')->get();
         return view('home', compact('categories'));
+    }
+
+    public function indexCarousel(Announcement $announcement, Request $request)
+    {
+        return $request->json($announcement->images);
     }
 
     public function category(Category $category)

@@ -5,6 +5,8 @@
 @import '~bootstrap/scss/bootstrap';
 
 @import 'authForm';
+@import '~dropzone/dist/basic';
+@import '~dropzone/dist/dropzone';
 
 :root {
     --color-main: #f46161;

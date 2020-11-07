@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Category;
-use Illuminate\Support\Str;
 use App\Models\Announcement;
+use App\Models\AnnouncementImage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\AnnouncementRequest;
 
 
@@ -18,11 +19,11 @@ class AnnouncementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 
         $announcements = Announcement::where('status_id', 2)->with('category')->orderBy('created_at', 'desc')->paginate(16);
-        if (Request::wantsJson()) {
+        if ($request->ajax()) {
             return $announcements;
         }
 
@@ -30,10 +31,10 @@ class AnnouncementController extends Controller
         return view('announcement.index', compact('announcements'));
     }
 
-    public function test()
+    public function test(Request $request)
     {
         $announcements = Announcement::where('status_id', 1)->with('category')->orderBy('created_at', 'desc')->paginate(16);
-        if (Request::wantsJson()) {
+        if ($request->ajax()) {
             return $announcements;
         }
 
@@ -60,8 +61,20 @@ class AnnouncementController extends Controller
      */
     public function create()
     {
+        $secret = base_convert(sha1(uniqid(mt_rand())),16,32);
+        return view('announcement.create', compact('secret'));
+    }
 
-        return view('announcement.create');
+    public function UploadImages(Request $request)
+    {
+       $secret = $request->input('secret');
+
+       $fileName = $request->file('file')->store("public/temp/{$secret}");
+
+       session()->push("images.{$secret}", $fileName);
+        
+       
+        return response()->json(session()->get("images.{$secret}"));
     }
 
     /**
@@ -73,15 +86,35 @@ class AnnouncementController extends Controller
      */
     public function store(AnnouncementRequest $request)
     {
+        
 
-
-        Announcement::create([
+        $a = Announcement::create([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'price' => $request->input('price'),
             'category_id' => $request->input('category_id'),
             'user_id' => Auth::user()->id
         ]);
+
+        $secret = $request->input('secret');
+
+        $images = session()->get("images.{$secret}");
+
+        foreach ($images as  $image) {
+            $i = new AnnouncementImage();
+
+            $fileName = basename($image);
+            $newFileName =  "/public/announcements/{$a->id}/{$fileName}";
+            Storage::move($image,$newFileName);
+
+            $i->file = $newFileName;
+            $i->announcement_id = $a->id;
+            $i->save();
+        }
+
+        File::deleteDirectory(storage_path("/app/public/temp/{$secret}"));
+
+      
 
         return redirect(route('home'))->with('message', 'Annuncio Creato');
     }

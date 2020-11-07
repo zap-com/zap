@@ -24,12 +24,18 @@ Auth::routes();
 //Public Routes
 Route::get('/', [PublicController::class, 'index'])->name('home');
 
-
 Route::get('/category/{category}', [PublicController::class, 'category'])->name('category.index');
 Route::get('/announcement/catjson', [AnnouncementController::class, 'catjson'])->name('category.json');
 Route::get('/announcement', [AnnouncementController::class, 'index'])->name('announcement.index');
 Route::get('/announcement/json', [AnnouncementController::class, 'json'])->name('announcement.json');
 Route::get('/announcement/{announcement}', [AnnouncementController::class, 'show'])->name('announcement.show');
+
+
+//carouserl
+
+Route::get('/carosel/{announcement}', [PublicController::class, 'indexCarousel']);
+
+
 
 //Search route
 
@@ -50,6 +56,8 @@ Route::prefix('work')->group(function () {
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/ad/create', [AnnouncementController::class, 'create'])->name('announcement.create');
+
+    Route::post('/announcement/uploadImages', [AnnouncementController::class, 'uploadImages']);
 
     Route::post('/announcement/store', [AnnouncementController::class, 'store'])->name('announcement.store');
 
