@@ -81,45 +81,71 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/authForm.js":
-/*!**********************************!*\
-  !*** ./resources/js/authForm.js ***!
-  \**********************************/
+/***/ "./resources/js/places.js":
+/*!********************************!*\
+  !*** ./resources/js/places.js ***!
+  \********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-var registerBtn = document.querySelector('#registerBtn');
-var loginForm = document.querySelector('#formLogin');
-var registerForm = document.querySelector('#formRegister');
+/* $(document).ready(function () {
+    $("#lat_area").addClass("d-none");
+    $("#long_area").addClass("d-none");
+});
 
-registerBtn.onclick = function () {
-  if (registerForm.classList.contains('d-none')) {
-    loginForm.classList.add('d-none');
-    registerForm.classList.remove('d-none');
-    registerBtn.innerText = 'Sign-in';
-  } else {
-    console.log('else');
-    loginForm.classList.remove('d-none');
-    registerForm.classList.add('d-none');
-    registerBtn.innerText = 'Register now';
-  }
-};
+google.maps.event.addDomListener(window, 'load', initialize);
+
+function initialize() {
+    var input = document.getElementById('autocomplete');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+    autocomplete.addListener('place_changed', function () {
+        var place = autocomplete.getPlace();
+        $('#latitude').val(place.geometry['location'].lat());
+        $('#longitude').val(place.geometry['location'].lng());
+        $("#lat_area").removeClass("d-none");
+        $("#long_area").removeClass("d-none");
+    });
+} */
+var placesAutocomplete = places({
+  appId: 'plJEYXAMRTHF',
+  apiKey: 'ce563e532d0eb5b14fda8a4614f302e7',
+  language: 'it',
+  container: document.querySelector('#address-input')
+});
+placesAutocomplete.on('change', function (e) {
+  return console.log(e.suggestion.administrative);
+});
+placesAutocomplete.on('change', function (e) {
+  return console.log(e.suggestion.name);
+});
+placesAutocomplete.on('change', function (e) {
+  return console.log(e.suggestion.latlng);
+});
+placesAutocomplete.on('change', function (e) {
+  return console.log(e.suggestion);
+});
+placesAutocomplete.on('change', function (e) {
+  return console.log(e.suggestion.latlng.lat);
+});
+placesAutocomplete.on('change', function (e) {
+  return document.getElementById('hiddenplace').value = JSON.stringify(e.suggestion);
+});
 
 /***/ }),
 
-/***/ 5:
-/*!****************************************!*\
-  !*** multi ./resources/js/authForm.js ***!
-  \****************************************/
+/***/ 1:
+/*!**************************************!*\
+  !*** multi ./resources/js/places.js ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /mnt/d/root/dev/wa/zap_presto/resources/js/authForm.js */"./resources/js/authForm.js");
+module.exports = __webpack_require__(/*! /mnt/d/root/dev/wa/zap_presto/resources/js/places.js */"./resources/js/places.js");
 
 
 /***/ })

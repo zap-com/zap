@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -145,14 +145,14 @@ fetch('/announcement/catjson').then(function (response) {
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!*******************************************!*\
   !*** multi ./resources/js/catCarousel.js ***!
   \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\sebou\wa\hack18\zap_presto\resources\js\catCarousel.js */"./resources/js/catCarousel.js");
+module.exports = __webpack_require__(/*! /mnt/d/root/dev/wa/zap_presto/resources/js/catCarousel.js */"./resources/js/catCarousel.js");
 
 
 /***/ })
