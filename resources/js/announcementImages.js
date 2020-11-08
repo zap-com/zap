@@ -34,13 +34,13 @@ window.addEventListener("load", () => {
 
                 const data = res.data;
 
-                console.log(data);
+               
 
                 data.forEach(el => {
                     let file = {
                         serverId: el.id
                     };
-                    console.log(el);
+                    
                     drop.options.addedfile.call(drop, file);
                     drop.options.thumbnail.call(drop, file, el.src);
                 });
@@ -61,7 +61,7 @@ window.addEventListener("load", () => {
                 dataType: "json"
             });
 
-            console.log("removed");
+            
         });
     }
 });

@@ -41611,19 +41611,17 @@ window.addEventListener("load", function () {
                 case 2:
                   res = _context.sent;
                   data = res.data;
-                  console.log(data);
                   data.forEach(function (el) {
                     var file = {
                       serverId: el.id
                     };
-                    console.log(el);
 
                     _drop.options.addedfile.call(_drop, file);
 
                     _drop.options.thumbnail.call(_drop, file, el.src);
                   });
 
-                case 6:
+                case 5:
                 case "end":
                   return _context.stop();
               }
@@ -41652,7 +41650,6 @@ window.addEventListener("load", function () {
         },
         dataType: "json"
       });
-      console.log("removed");
     });
   }
 });
