@@ -31,9 +31,14 @@ Route::get('/announcement/json', [AnnouncementController::class, 'json'])->name(
 Route::get('/announcement/{announcement}', [AnnouncementController::class, 'show'])->name('announcement.show');
 
 
+//locale
+
+Route::get('/local/{locale}', [PublicController::class, 'locale'])->name('locale');
+
 //carouserl
 
 Route::get('/carosel/{announcement}', [PublicController::class, 'indexCarousel']);
+
 
 
 

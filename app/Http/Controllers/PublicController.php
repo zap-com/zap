@@ -33,6 +33,12 @@ class PublicController extends Controller
         return $request->json($announcement->images);
     }
 
+    public function locale($locale)
+    {
+        session()->put('locale', $locale);
+        return redirect()->back();
+    }
+
     public function category(Category $category)
     {
         $announcements = Announcement::where('category_id', $category->id)->where('status_id', 2)->get();
