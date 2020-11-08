@@ -20,6 +20,8 @@ return [
     'revise' => "Revisor Dashboard",
     'in' => "in",
     'by' => "by",
+    'switch-italian' => "Visualizza il sito in Italiano",
+    'switch-english' => "View the website in English",
     't' => "thousand",
     'm' => "millions",
     'vat' => "VAT Number",

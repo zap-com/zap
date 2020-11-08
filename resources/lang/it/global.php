@@ -18,10 +18,25 @@ return [
     'create' => "Inserisci un annuncio",
     'login' => "Login/Registrati",
     'revise' => "Dashboard moderatore",
+    'switch-italian' => "Visualizza il sito in Italiano",
     'in' => "in",
     'by' => "da",
-    't' => "thousands",
-    'm' => "millions"
+    't' => "mila",
+    'm' => "milioni",
+    'vat' => "Partita IVA",
+    'tel' => "Numero di telefono",
+    'address' => "Indirizzo",
+    'italy' => "Italia",
+    'useful-links' => "Link utili",
+    'my-listings' => "I miei annunci",
+    'bookmarks' => "Annunci salvati",
+    'contact' => "Contattaci",
+    'help' => "Help center",
+    'faq' => "Domande frequenti",
+    'privacy' => "Privacy Policy",
+    'press' => "Press Kit",
+    'tac' => "Termini & Condizioni",
+    'rights' => "Tutti i diritti riservati"
 
 
 

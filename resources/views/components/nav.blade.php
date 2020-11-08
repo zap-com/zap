@@ -56,7 +56,7 @@
             <a class="mr-0 mr-md-3 d-none d-md-block" href="{{ route('announcement.create') }}"><button
                     class="btn b-btn">{{ __('global.create') }}</button></a>
             @guest
-                <a class="d-none d-md-block" href="{{ route('login') }}"><button id="loginBtn"
+                <a class="d-none d-md-block mr-md-3" href="{{ route('login') }}"><button id="loginBtn"
                         class="btn b-btn">{{ __('global.login') }}</button></a>
             @else
 
@@ -64,7 +64,7 @@
 
                 <!-- User Dropdown -->
                 <div class="dropdown">
-                    <button id="loginBtn" class="btn b-btn  dropdown-toggle" type="button" id="dMenuButton"
+                    <button id="loginBtn" class="btn b-btn mr-md-3  dropdown-toggle" type="button" id="dMenuButton"
                         data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">{{ Auth::user()->name }}</button></a>
                     <div class="dropdown-menu dropdown-menu-right bg-white" aria-labelledby="dMenuButton">
@@ -73,7 +73,7 @@
                             <a class="dropdown-item" href="{{ route('revisor.home') }}">
                                 {{ __('global.revise') }}
                             </a>
-                              <a class="dropdown-item" href="{{ route('revisor.trash') }}">
+                            <a class="dropdown-item" href="{{ route('revisor.trash') }}">
                                 Trash
                             </a>
                         @else
@@ -91,6 +91,21 @@
                     </div>
                 </div>
             @endguest
+
+            @if (session()->get('locale') == 'en')
+                <button onclick="location.href='{{ route('locale', 'it') }}'" id="notification-button"
+                    class="d-none d-md-flex flex-column justify-content-center"
+                    title="{{ __('global.switch-italian') }}">
+                    <img src="{{ asset('icons/italian.svg') }}"></img>
+                </button>
+            @else
+                <button onclick="location.href='{{ route('locale', 'en') }}'" id="notification-button"
+                    class="d-none d-md-flex flex-column justify-content-center"
+                    title="{{ __('global.switch-english') }}">
+                    <img src="{{ asset('icons/english.svg') }}"></img>
+                </button>
+
+            @endif
         </div>
     </div>
     @if ($sticky ?? '' === 1)

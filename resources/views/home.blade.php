@@ -1,20 +1,4 @@
 <x-app sticky="0">
-    <!-- Heading -->
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                @if (session('message'))
-                    <div class="alert alert-success">
-                        {{ session('message') }}
-                    </div>
-                @endif
-            </div>
-            <div class="col-12 text-center pt-5 pb-3">
-                <h1 class="text-primary d-inline">Zap</h1><span class="h1">,
-                    {{ __('home.page-title') }}</span>
-            </div>
-        </div>
-    </div>
 
     <section class="container">
         <div class="row">
@@ -79,11 +63,12 @@
         <div class="row justify-content-between mx-0">
             <h2>{{ __('home.trending') }}</h2>
             <div class="dropdown">
-                <button class="b-btn dropdown-toggle px-3" type="button" id="dMenuButton" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
+                <button class="b-btn dropdown-toggle dropdown-menu-right px-3" type="button" id="dMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{ __('home.where') }}
                 </button>
-                <div id="regionDropdown" class="dropdown-menu bg-white" aria-labelledby="dMenuButton">
+                <div id="regionDropdown" class="dropdown-menu dropdown-menu-right bg-white"
+                    aria-labelledby="dMenuButton">
                     <a class="dropdown-item" href="">Abruzzo</a>
                     <a class="dropdown-item" href="">Basilicata</a>
                     <a class="dropdown-item" href="">Calabria</a>
