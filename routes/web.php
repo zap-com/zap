@@ -64,6 +64,11 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/announcement/uploadImages', [AnnouncementController::class, 'uploadImages']);
 
+
+    Route::delete('/announcement/removeImage', [AnnouncementController::class, 'removeImage']);
+
+    Route::get('/ad/images', [AnnouncementController::class, 'getImages']);
+
     Route::post('/announcement/store', [AnnouncementController::class, 'store'])->name('announcement.store');
 
     Route::get('/announcement/edit/{announcement}', [AnnouncementController::class, 'edit'])->name('announcement.edit');

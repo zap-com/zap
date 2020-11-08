@@ -16,8 +16,7 @@ class AnnouncementController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     *     * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
@@ -59,22 +58,76 @@ class AnnouncementController extends Controller
      *fa
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        $secret = base_convert(sha1(uniqid(mt_rand())),16,32);
+        $secret = $request->old('secret', base_convert(sha1(uniqid(mt_rand())), 16, 32));
         return view('announcement.create', compact('secret'));
     }
 
+
+    /**
+     * Upload Announcement Images (temp)
+     *
+     * @param Request $request
+     * @return void
+     */
     public function UploadImages(Request $request)
     {
-       $secret = $request->input('secret');
+        $secret = $request->input('secret');
 
-       $fileName = $request->file('file')->store("public/temp/{$secret}");
+        $fileName = $request->file('file')->store("public/temp/{$secret}");
 
-       session()->push("images.{$secret}", $fileName);
+        session()->push("images.{$secret}", $fileName);
+
+
+        return response()->json([
+            'id' => $fileName,
+
+        ]);
+    }
+
+    /**
+     * Remove Announcement Images (temp)
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function removeImage(Request $request)
+    {
+        $secret = $request->input('secret');
+        $fileName = $request->input('id');
+
+        session()->push("removedImages.{$secret}", $fileName);
+
+        Storage::delete($fileName);
+
+        return response()->json(['success' => 'true']);
+    }
+    /**
+     * AJAX
+     * Return Images if they exist
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function getImages(Request $request)
+    {
+        $secret = $request->input('secret');
+        $images = session()->get("images.{$secret}", []);
+        $removedImages = session()->get("removedImages.{$secret}", []);
+        $images = array_diff($images, $removedImages);
+        $data = [];
+
+        foreach ($images as $image) {
+            $data[] = [
+                'id' => $image,
+                'src' => Storage::url($image)
+            ];
+        }
+
         
-       
-        return response()->json(session()->get("images.{$secret}"));
+
+        return response()->json($data);
     }
 
     /**
@@ -86,7 +139,7 @@ class AnnouncementController extends Controller
      */
     public function store(AnnouncementRequest $request)
     {
-        
+
 
         $a = Announcement::create([
             'title' => $request->input('title'),
@@ -98,14 +151,17 @@ class AnnouncementController extends Controller
 
         $secret = $request->input('secret');
 
-        $images = session()->get("images.{$secret}");
+        $images = session()->get("images.{$secret}", []);
+        $removedImages = session()->get("removedImages.{$secret}", []);
+
+        $images = array_diff($images, $removedImages);
 
         foreach ($images as  $image) {
             $i = new AnnouncementImage();
 
             $fileName = basename($image);
             $newFileName =  "/public/announcements/{$a->id}/{$fileName}";
-            Storage::move($image,$newFileName);
+            Storage::move($image, $newFileName);
 
             $i->file = $newFileName;
             $i->announcement_id = $a->id;
@@ -114,7 +170,7 @@ class AnnouncementController extends Controller
 
         File::deleteDirectory(storage_path("/app/public/temp/{$secret}"));
 
-      
+
 
         return redirect(route('home'))->with('message', 'Annuncio Creato');
     }
