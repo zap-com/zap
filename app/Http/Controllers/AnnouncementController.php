@@ -60,7 +60,7 @@ class AnnouncementController extends Controller
      */
     public function create(Request $request)
     {
-        $secret = $request->old('secret', base_convert(sha1(uniqid(mt_rand())), 16, 32));
+        $secret = base_convert(sha1(uniqid(mt_rand())), 16, 32);
         return view('announcement.create', compact('secret'));
     }
 
@@ -80,54 +80,7 @@ class AnnouncementController extends Controller
         session()->push("images.{$secret}", $fileName);
 
 
-        return response()->json([
-            'id' => $fileName,
-
-        ]);
-    }
-
-    /**
-     * Remove Announcement Images (temp)
-     *
-     * @param Request $request
-     * @return void
-     */
-    public function removeImage(Request $request)
-    {
-        $secret = $request->input('secret');
-        $fileName = $request->input('id');
-
-        session()->push("removedImages.{$secret}", $fileName);
-
-        Storage::delete($fileName);
-
-        return response()->json(['success' => 'true']);
-    }
-    /**
-     * AJAX
-     * Return Images if they exist
-     *
-     * @param Request $request
-     * @return void
-     */
-    public function getImages(Request $request)
-    {
-        $secret = $request->input('secret');
-        $images = session()->get("images.{$secret}", []);
-        $removedImages = session()->get("removedImages.{$secret}", []);
-        $images = array_diff($images, $removedImages);
-        $data = [];
-
-        foreach ($images as $image) {
-            $data[] = [
-                'id' => $image,
-                'src' => Storage::url($image)
-            ];
-        }
-
-        
-
-        return response()->json($data);
+        return response()->json(session()->get("images.{$secret}"));
     }
 
     /**
@@ -149,6 +102,8 @@ class AnnouncementController extends Controller
             'user_id' => Auth::user()->id
         ]);
 
+        $place = $request->input('hiddenplace');
+        dd(json_decode($place));
         $secret = $request->input('secret');
 
         $images = session()->get("images.{$secret}", []);

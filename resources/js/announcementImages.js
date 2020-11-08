@@ -12,6 +12,7 @@ window.addEventListener("load", () => {
 
         const drop = new Dropzone("#drophere", {
             url: "/announcement/uploadImages",
+            clickable: ".finput",
             params: {
                 _token: csrfToken,
                 secret

@@ -11823,17 +11823,17 @@ a {
   border: none;
   border-radius: 25px;
   height: 40px;
-  transition: color 0.2s ease-in-out, background-color 0.2 ease-in-out;
+  transition: all 0.2s ease-in-out;
   color: white;
   font-weight: bold;
 }
 
 .alt-btn {
-  background-color: none;
+  background-color: transparent;
   border: 2px solid #fb8289;
   border-radius: 25px;
   height: 40px;
-  transition: color 0.2s ease-in-out, border-color 0.2 ease-in-out;
+  transition: all 0.2s ease-in-out;
   color: #fb8289;
   font-weight: bold;
   box-sizing: border-box;
@@ -11947,8 +11947,16 @@ div.dropdown-multicol2 > div.dropdown-col {
   width: 40em;
 }
 
-input {
+.form-control {
   border-radius: 10px !important;
+}
+
+#price.form-control {
+  border-radius: 10px 0 0 10px !important;
+}
+
+.input-group-append .input-group-text {
+  border-radius: 0 10px 10px 0;
 }
 
 #time-dropdown .dropdown-item {
@@ -12300,5 +12308,52 @@ g path:hover {
 
 .regione {
   transition: all 200ms ease-in-out;
+}
+
+.dropzone {
+  background-color: #f8f9fa;
+  border-radius: 25px;
+  border: 3px dashed #ddd;
+  transition: all 200ms ease-in-out;
+  min-height: 75%;
+}
+
+.dropzone.dz-drag-hover {
+  border: 3px dashed #fb8289;
+}
+
+.msg {
+  position: static;
+  top: 85vh;
+  width: inherit;
+  max-width: inherit;
+  z-index: 200;
+}
+
+.alert {
+  border-radius: 25px;
+  border: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+}
+
+div.dz-default.dz-message {
+  display: none;
+}
+
+.dropzone .dz-preview.dz-image-preview {
+  background-color: transparent;
+}
+
+.finput {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-weight: bold;
+  flex: 1 0 100%;
+}
+
+.finput span {
+  color: #f46161;
 }
 

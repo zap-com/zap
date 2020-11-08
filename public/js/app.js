@@ -41588,6 +41588,7 @@ window.addEventListener("load", function () {
 
     var _drop = new Dropzone("#drophere", {
       url: "/announcement/uploadImages",
+      clickable: ".finput",
       params: {
         _token: csrfToken,
         secret: secret
