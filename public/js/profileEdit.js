@@ -81,91 +81,30 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/cardCarousel.js":
-/*!**************************************!*\
-  !*** ./resources/js/cardCarousel.js ***!
-  \**************************************/
+/***/ "./resources/js/profileEdit.js":
+/*!*************************************!*\
+  !*** ./resources/js/profileEdit.js ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-function truncateString(str, num) {
-  // If the length of str is less than or equal to num
-  // just return str--don't truncate it.
-  if (str.length <= num) {
-    return str;
-  } // Return str truncated with '...' concatenated to the end of str.
 
-
-  return str.slice(0, num) + '...';
-}
-
-fetch('/announcement/json').then(function (response) {
-  return response.json();
-}).then(function (data) {
-  data.forEach(function (product) {
-    var trendingWrapper = document.querySelector('#trending-wrapper');
-    var prodTitle = truncateString(product.title, 24);
-    var prodDescription = truncateString(product.description, 120);
-    var trendCard = document.createElement('a');
-    trendCard.href = "/announcement/" + product.slug;
-    /**if (product.price <= 0) {
-        var prodPrice = "Gratis";
-    } else {
-        var prodPrice = accounting.formatMoney(product.price, { symbol: " €", format: "%v %s" });
-    };*/
-
-    trendCard.classList.add('d-flex', 'card', 'product-card', 'swiper-slide', 'mb-0', 'h-100');
-    trendCard.innerHTML = "\n        <img src=\"https://placehold.it/200x150/999/CCC\" class=\"card-img-top px-1 pt-1 pb-0\" alt=\"{product.title}\">\n        <div class=\"card-body pt-1 px-2\">\n          <h5 class=\"p font-weight-bold card-title slide-title pt-1 pb-0 mb-0\">".concat(prodTitle, "</h5>\n          <button type=\"button\"\n                    onClick=\"location.href='/category/").concat(product.category.slug, "'; event.preventDefault(); event.stopPropagation()\"\n                    class=\"nobtn\">").concat(product.category.name, "</button>\n          <!--<div class=\"d-flex d-row align-items-center py-0 location-row mb-2\">\n            <i class=\"icon-location-pin pr-1\"></i>\n            <p class=\"my-0 location-text\">{product.location}</p>\n          </div>-->\n          <p class=\"card-text text-muted pt-0 slide-description\">").concat(prodDescription, "\n          </p >\n        </div >\n            <p class=\"product-price align-self-end text-right mb-0 p-2\">").concat(product.price, " \u20AC</p>\n        ");
-    trendingWrapper.appendChild(trendCard);
-  });
-  var trendingSwiper = new Swiper('#trending-slider', {
-    // Optional parameters
-    loop: false,
-    speed: 600,
-    slidesPerView: 4,
-    spaceBetween: 30,
-    slidesPerGroup: 2,
-    breakpoints: {
-      // when window width is >= 320px
-      320: {
-        slidesPerView: 1,
-        slidesPerGroup: 1,
-        spaceBetween: 10
-      },
-      // when window width is >= 640px
-      640: {
-        slidesPerView: 2,
-        slidesPerGroup: 2
-      },
-      1000: {
-        slidesPerView: 4,
-        slidesPerGroup: 2,
-        spaceBetween: 20
-      }
-    },
-    // Navigation arrows
-    navigation: {
-      nextEl: '.trend-next',
-      prevEl: '.trend-prev'
-    }
-  });
-});
 
 /***/ }),
 
-/***/ 4:
-/*!********************************************!*\
-  !*** multi ./resources/js/cardCarousel.js ***!
-  \********************************************/
+/***/ 3:
+/*!*******************************************!*\
+  !*** multi ./resources/js/profileEdit.js ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /mnt/d/root/dev/wa/zap_presto/resources/js/cardCarousel.js */"./resources/js/cardCarousel.js");
+module.exports = __webpack_require__(/*! /mnt/d/root/dev/wa/zap_presto/resources/js/profileEdit.js */"./resources/js/profileEdit.js");
 
 
 /***/ })

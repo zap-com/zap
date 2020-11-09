@@ -479,7 +479,7 @@ a {
     background-color: #fb8289;
     border: none;
     border-radius: 25px;
-    height: 40px;
+    height: calc(1.6em + 0.75rem + 2px);
     transition: all 0.2s ease-in-out;
     color: white;
     font-weight: bold;
@@ -489,7 +489,7 @@ a {
     background-color: transparent;
     border: 2px solid #fb8289;
     border-radius: 25px;
-    height: 40px;
+    height: calc(1.6em + 0.75rem + 2px);
     transition: all 0.2s ease-in-out;
     color: #fb8289;
     font-weight: bold;
@@ -990,4 +990,11 @@ div.dz-default.dz-message {
 
 .finput span {
     color: $primary;
+}
+
+.avatar-large {
+    padding: 0.75rem;
+    background-color: trasparent;
+    border: 1px solid #ccc;
+    border-radius: 200px;
 }
