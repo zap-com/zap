@@ -23,10 +23,10 @@ class AnnouncementController extends Controller
     {
 
         $announcements = Announcement::where('status_id', 2)->with('category')->orderBy('created_at', 'desc')->paginate(16);
+        $announcements->map(function ($el) {
+            return $el->images = $el->images;
+        });
         if ($request->ajax()) {
-            $announcements->map(function ($el) {
-                return $el->images = $el->images;
-            });
             return $announcements;
         }
 
@@ -164,26 +164,22 @@ class AnnouncementController extends Controller
             'price' => $request->input('price'),
             'category_id' => $request->input('category_id'),
             'user_id' => Auth::user()->id,
-
+            'place_id' => Place::firstOrCreate(
+                [
+                    "name" => $placeJson->name,
+                    "region" => $placeJson->region,
+                    'country_code' => $placeJson->country_code,
+                ],
+                [
+                    'name' => $placeJson->name,
+                    'region' => $placeJson->region,
+                    'region_code' => $placeJson->region_code,
+                    'country_code' => $placeJson->country_code,
+                    'post_code' => $placeJson->post_code,
+                    'cordinates' => 1,
+                ]
+            )->id
         ]);
-
-        $a->place_id = Place::firstOrCreate(
-            [
-                "name" => $placeJson->name,
-                "region" => $placeJson->region,
-                'country_code' => $placeJson->country_code,
-            ],
-            [
-                'name' => $placeJson->name,
-                'region' => $placeJson->region,
-                'region_code' => $placeJson->region_code,
-                'country_code' => $placeJson->country_code,
-                'post_code' => $placeJson->post_code,
-                'cordinates' => 1,
-            ]
-        )->id;
-
-        $a->save();
 
         $secret = $request->input('secret');
 

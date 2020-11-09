@@ -15,16 +15,17 @@
             <div class="swiper-button-next swiper-button-disabled" tabindex="-1" role="button" aria-label="Next slide"
                 aria-controls="swiper-wrapper-dcc92a682754ce49" aria-disabled="true"></div>
         </div>-->
-        <div class="small-gallery swiper-container card-img-top">
-            <div class="swiper-wrapper s0">
-                <img src="https://placehold.it/200x150/999/CCC" alt="{{ $ad->title }}" style="width: 100%;">
+        <div class="small-gallery {{ 'small-gallery-' . $ad->id }} swiper-container card-img-top"
+            data-id="{{ $ad->id }}">
+            <div class="swiper-wrapper {{ 's' . $ad->id }}">
+                @foreach ($ad->images as $image)
+                    <img src="{{ $image->getUrl(200, 150) }}" class="swiper-slide" alt="{{ $ad->title }}"
+                        style="width: 100%;">
+                @endforeach
             </div>
+            <div class="swiper-button-prev swiper-button-prev-{{ $ad->id }}"></div>
+            <div class="swiper-button-next swiper-button-next-{{ $ad->id }}"></div>
         </div>
-
-        @foreach ($ad->images as $image)
-        <img src="{{$image->getUrl(200,150)}}" alt="img">
-            
-        @endforeach
 
         <div class="card-body d-flex flex-column pt-1 pb-1 px-2">
             <h5 class="card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold">
