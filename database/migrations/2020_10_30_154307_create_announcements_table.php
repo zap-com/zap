@@ -26,6 +26,10 @@ class CreateAnnouncementsTable extends Migration
             $table->foreign('category_id')->references('id')->on('categories');
             $table->unsignedBigInteger('status_id')->default(1);
             $table->foreign('status_id')->references('id')->on('announcement_statuses');
+            $table->unsignedBigInteger('place_id')->nullable();
+            $table->foreign('place_id')->references('id')->on('places');
+          
+            
             $table->timestamps();
         });
     }

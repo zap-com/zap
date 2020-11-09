@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use App\Models\User;
+use App\Models\Place;
+
+
 use App\Models\Category;
 use Laravel\Scout\Searchable;
-
 use Spatie\Sluggable\HasSlug;
 use App\Models\AnnouncementImage;
 use Spatie\Sluggable\SlugOptions;
@@ -20,7 +22,7 @@ class Announcement extends Model
     use Searchable;
 
 
-    protected $fillable = ['title', 'description', 'price', 'user_id', 'category_id', 'status_id'];
+    protected $fillable = ['title', 'description', 'price', 'user_id', 'category_id', 'status_id', 'place_id', 'image_id' ];
 
     //RELAZIONI
     public function user()
@@ -42,6 +44,10 @@ class Announcement extends Model
     {
         return $this->hasMany(AnnouncementImage::class);
     }
+    public function place()
+    {
+        return $this->belongsTo(Place::class);
+    }
 
     //FullText research
     /**
@@ -56,7 +62,7 @@ class Announcement extends Model
             'title' => $this->title,
             'description' => $this->description,
             'category' => $this->category,
-        ] ;
+        ];
 
         // Customize array...
 
@@ -98,9 +104,9 @@ class Announcement extends Model
     public function setStatus($status)
     {
         $statusesCode = AnnouncementStatus::where('status', $status)->first();
-      
+
         if ($statusesCode) {
-            $this->status_id= $statusesCode->id;
+            $this->status_id = $statusesCode->id;
             $this->save();
             return $this->status_id;
         }
@@ -108,8 +114,9 @@ class Announcement extends Model
         return 'invalid status';
     }
 
-    static public function toBeRevisedCount(){
-        return self::where('status_id',1)->count();
+    static public function toBeRevisedCount()
+    {
+        return self::where('status_id', 1)->count();
     }
 
 
@@ -118,7 +125,7 @@ class Announcement extends Model
     {
         $announcements = self::all();
 
-        $announcements->map(function ($el){
+        $announcements->map(function ($el) {
             $el->setStatus('accepted');
         });
 

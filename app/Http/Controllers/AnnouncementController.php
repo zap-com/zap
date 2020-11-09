@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Place;
 use App\Models\Category;
+use App\Jobs\ResizeImageJob;
 use App\Models\Announcement;
+use Illuminate\Http\Request;
 use App\Models\AnnouncementImage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\AnnouncementRequest;
-use App\Jobs\ResizeImageJob;
 
 class AnnouncementController extends Controller
 {
@@ -23,7 +24,7 @@ class AnnouncementController extends Controller
 
         $announcements = Announcement::where('status_id', 2)->with('category')->orderBy('created_at', 'desc')->paginate(16);
         if ($request->ajax()) {
-            $announcements->map(function($el){
+            $announcements->map(function ($el) {
                 return $el->images = $el->images;
             });
             return $announcements;
@@ -48,7 +49,7 @@ class AnnouncementController extends Controller
     {
         $announcements = Announcement::where('status_id', 2)->with('category')->orderBy('visit', 'desc')->get()->take(8);
 
-        $announcements->map(function($el){
+        $announcements->map(function ($el) {
             return $el->images = $el->images;
         });
         return response()->json($announcements);
@@ -137,11 +138,11 @@ class AnnouncementController extends Controller
         foreach ($images as $image) {
             $data[] = [
                 'id' => $image,
-                'src' => AnnouncementImage::getUrlByFilePath($image, 120,120)
+                'src' => AnnouncementImage::getUrlByFilePath($image, 120, 120)
             ];
         }
 
-        
+
 
         return response()->json($data);
     }
@@ -155,15 +156,34 @@ class AnnouncementController extends Controller
      */
     public function store(AnnouncementRequest $request)
     {
-
+        $placeJson = json_decode($request->input('hiddenplace'));
 
         $a = Announcement::create([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'price' => $request->input('price'),
             'category_id' => $request->input('category_id'),
-            'user_id' => Auth::user()->id
+            'user_id' => Auth::user()->id,
+
         ]);
+
+        $a->place_id = Place::firstOrCreate(
+            [
+                "name" => $placeJson->name,
+                "region" => $placeJson->region,
+                'country_code' => $placeJson->country_code,
+            ],
+            [
+                'name' => $placeJson->name,
+                'region' => $placeJson->region,
+                'region_code' => $placeJson->region_code,
+                'country_code' => $placeJson->country_code,
+                'post_code' => $placeJson->post_code,
+                'cordinates' => 1,
+            ]
+        )->id;
+
+        $a->save();
 
         $secret = $request->input('secret');
 
