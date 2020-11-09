@@ -133,7 +133,7 @@ placesAutocomplete.on('change', function (e) {
   return console.log(e.suggestion.latlng.lat);
 });
 placesAutocomplete.on('change', function (e) {
-  return document.getElementById('hiddenplace').value = JSON.stringify(e.suggestion);
+  return document.getElementById('hiddenplace').value = JSON.stringify(e[(suggestion.name, suggestion.administrative, suggestion.county, suggestion.countryCode, suggestion.postcode, suggestion.latlng)]);
 });
 
 /***/ }),

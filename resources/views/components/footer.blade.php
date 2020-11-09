@@ -13,7 +13,7 @@
                         <p class="my-0">{{ __('global.vat') }}: 09825600019</p>
                     </li>
                     <li>
-                        <p class="my-0">{{ __('global.tel') }} 080 1234567</p>
+                        <p class="my-0">{{ __('global.tel') }}: 080 1234567</p>
                     </li>
                     <li>
                         <p class="my-0">{{ __('global.address') }}: Via da Qui 15,

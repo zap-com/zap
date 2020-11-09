@@ -11377,10 +11377,8 @@ html {
   font-family: "asap", sans-serif;
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+#app {
+  min-height: calc(100vh - 225px);
 }
 
 .p {
@@ -11683,6 +11681,30 @@ button:focus {
   transition: top 400ms ease-in-out 0ms;
   border-radius: 25px;
   background-clip: initial;
+}
+
+.dropdown ::-webkit-scrollbar {
+  width: 5px;
+  padding-right: 10px;
+}
+
+/* Track */
+
+.dropdown ::-webkit-scrollbar-track {
+  border-radius: 50px;
+}
+
+/* Handle */
+
+.dropdown ::-webkit-scrollbar-thumb {
+  background: #dddddd;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+
+.dropdown ::-webkit-scrollbar-thumb:hover {
+  background: #d2d2d2;
 }
 
 a {
@@ -12052,9 +12074,9 @@ div.dropdown-multicol2 > div.dropdown-col {
 
 #regionDropdown {
   overflow-y: scroll;
+  overflow-x: visible;
   height: 200px;
-  width: 100%;
-  border-radius: 25px 0 0 25px;
+  border-radius: 25px 5px 5px 25px;
 }
 
 #introduction .icons {

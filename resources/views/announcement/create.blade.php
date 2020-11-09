@@ -1,21 +1,7 @@
 <x-app>
 
 
-    {{ $secret }}
-    @if (session('message'))
-        <div class="container">
-            <div class="p-0 msg">
-                <div class="msgwrapper alert d-flex flex-row justify-content-between">
-                    <span>{{ session('message') }}</span>
-                    <button type="button" class="nobtn font-weight-bold text-danger" data-dismiss="alert"
-                        aria-label="Close">
-                        <span aria-hidden="true">Close</span>
-                    </button>
-                </div>
-
-            </div>
-        </div>
-    @endif
+    <div style="visibility: hidden">{{ $secret }}</div>
 
     <div class="container">
         <div id="prodCol" class="row mx-1 mx-md-0 my-4 py-2">
