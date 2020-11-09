@@ -26,9 +26,11 @@ var placesAutocomplete = places({
     container: document.querySelector('#address-input')
 });
 
+
+
 placesAutocomplete.on('change', e => console.log(e.suggestion.administrative));
 placesAutocomplete.on('change', e => console.log(e.suggestion.name));
 placesAutocomplete.on('change', e => console.log(e.suggestion.latlng));
 placesAutocomplete.on('change', e => console.log(e.suggestion));
 placesAutocomplete.on('change', e => console.log(e.suggestion.latlng.lat));
-placesAutocomplete.on('change', e => document.getElementById('hiddenplace').value = JSON.stringify(e[suggestion.name, suggestion.administrative, suggestion.county, suggestion.countryCode, suggestion.postcode, suggestion.latlng]));
+placesAutocomplete.on('change', e => document.getElementById('hiddenplace').value = JSON.stringify([e.suggestion.name, e.suggestion.administrative, e.suggestion.hit.county[1], e.suggestion.countryCode, e.suggestion.postcode, e.suggestion.latlng]));

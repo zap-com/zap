@@ -67,9 +67,9 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-group"><label for="address-input">Location/City/Address</label>
-                            <input type="text" name="address-input" id="address-input" class="form-control    "
-                                placeholder="Where are we going?">
+                        <div class="form-group"><label for="address-input">{{ __('announcement.place') }}</label>
+                            <input type="text" name="address-input" id="address-input" class="form-control"
+                                placeholder="{{ __('announcement.place-ph') }}">
                             <input type="hidden" id="hiddenplace" name="hiddenplace" value="">
                         </div>
                         {{-- <div class="form-group">

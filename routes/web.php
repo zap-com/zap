@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PublicController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 
+use App\Http\Controllers\PublicController;
 use App\Http\Controllers\RevisorController;
 use App\Http\Controllers\AnnouncementController;
 
@@ -76,6 +77,10 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/announcement/update/{announcement}', [AnnouncementController::class, 'update'])->name('announcement.update');
 
     Route::delete('/announcement/delete/{announcement}', [AnnouncementController::class, 'destroy'])->name('announcement.destroy');
+
+    Route::get('/profile/edit', [UserController::class, 'edit'])->name('profile.edit');
+
+    Route::post('profile/update/{id}', [UserController::class, 'update'])->name('profile.update');
 });
 
 
