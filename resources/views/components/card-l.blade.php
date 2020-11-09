@@ -20,6 +20,12 @@
                 <img src="https://placehold.it/200x150/999/CCC" alt="{{ $ad->title }}" style="width: 100%;">
             </div>
         </div>
+
+        @foreach ($ad->images as $image)
+        <img src="{{$image->getUrl(200,150)}}" alt="img">
+            
+        @endforeach
+
         <div class="card-body d-flex flex-column pt-1 pb-1 px-2">
             <h5 class="card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold">
                 {{ $ad->title }}

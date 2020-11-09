@@ -94,3 +94,6 @@ Route::prefix('revisor')->group(function () {
 
     Route::get('/dashboard/trash/', [RevisorController::class, 'trash'])->name('revisor.trash');
 });
+
+
+

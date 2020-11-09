@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\AnnouncementRequest;
-
+use App\Jobs\ResizeImageJob;
 
 class AnnouncementController extends Controller
 {
@@ -23,6 +23,9 @@ class AnnouncementController extends Controller
 
         $announcements = Announcement::where('status_id', 2)->with('category')->orderBy('created_at', 'desc')->paginate(16);
         if ($request->ajax()) {
+            $announcements->map(function($el){
+                return $el->images = $el->images;
+            });
             return $announcements;
         }
 
@@ -44,6 +47,10 @@ class AnnouncementController extends Controller
     public function json()
     {
         $announcements = Announcement::where('status_id', 2)->with('category')->orderBy('visit', 'desc')->get()->take(8);
+
+        $announcements->map(function($el){
+            return $el->images = $el->images;
+        });
         return response()->json($announcements);
     }
 
@@ -76,6 +83,15 @@ class AnnouncementController extends Controller
         $secret = $request->input('secret');
 
         $fileName = $request->file('file')->store("public/temp/{$secret}");
+
+        // ResizeImageJob::dispatch( $fileName,
+        // 120,
+        // 120);
+        dispatch(new ResizeImageJob(
+            $fileName,
+            120,
+            120
+        ));
 
         session()->push("images.{$secret}", $fileName);
 
@@ -121,7 +137,7 @@ class AnnouncementController extends Controller
         foreach ($images as $image) {
             $data[] = [
                 'id' => $image,
-                'src' => Storage::url($image)
+                'src' => AnnouncementImage::getUrlByFilePath($image, 120,120)
             ];
         }
 
@@ -163,7 +179,25 @@ class AnnouncementController extends Controller
             $newFileName =  "/public/announcements/{$a->id}/{$fileName}";
             Storage::move($image, $newFileName);
 
-            $i->file = $newFileName;
+            // ResizeImageJob::dispatch($newFileName,
+            // 200,
+            // 150);
+            // ResizeImageJob::dispatch($newFileName,
+            // 800,
+            // 800);
+
+            dispatch(new ResizeImageJob(
+                $newFileName,
+                200,
+                150
+            ));
+            dispatch(new ResizeImageJob(
+                $newFileName,
+                800,
+                800
+            ));
+
+            $i->file =  "announcements/{$a->id}/{$fileName}";
             $i->announcement_id = $a->id;
             $i->save();
         }
