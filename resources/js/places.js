@@ -1,5 +1,3 @@
-
-
 /* $(document).ready(function () {
     $("#lat_area").addClass("d-none");
     $("#long_area").addClass("d-none");
@@ -20,17 +18,29 @@ function initialize() {
 } */
 
 var placesAutocomplete = places({
-    appId: 'plJEYXAMRTHF',
-    apiKey: 'ce563e532d0eb5b14fda8a4614f302e7',
-    language: 'it',
-    container: document.querySelector('#address-input')
+    appId: "plJEYXAMRTHF",
+    apiKey: "ce563e532d0eb5b14fda8a4614f302e7",
+    language: "it",
+    container: document.querySelector("#address-input")
 });
 
+placesAutocomplete.on("change", e => console.log(e.suggestion.administrative));
+placesAutocomplete.on("change", e => console.log(e.suggestion.name));
+placesAutocomplete.on("change", e => console.log(e.suggestion.latlng));
+placesAutocomplete.on("change", e => console.log(e.suggestion));
+placesAutocomplete.on("change", e => console.log(e.suggestion.latlng.lat));
+placesAutocomplete.on("change", e => {
 
-
-placesAutocomplete.on('change', e => console.log(e.suggestion.administrative));
-placesAutocomplete.on('change', e => console.log(e.suggestion.name));
-placesAutocomplete.on('change', e => console.log(e.suggestion.latlng));
-placesAutocomplete.on('change', e => console.log(e.suggestion));
-placesAutocomplete.on('change', e => console.log(e.suggestion.latlng.lat));
-placesAutocomplete.on('change', e => document.getElementById('hiddenplace').value = JSON.stringify([e.suggestion.name, e.suggestion.administrative, e.suggestion.hit.county[1], e.suggestion.countryCode, e.suggestion.postcode, e.suggestion.latlng]));
+    let json = {
+        name: e.suggestion.name,
+        region: e.suggestion.administrative,
+        region_code: e.suggestion.hit.county[1] || e.suggestion.hit.county[0] ,
+        country_code: e.suggestion.countryCode ,
+        post_code: e.suggestion.postcode || e.suggestion.hit.objectID,
+        cordinates: e.suggestion.latlng
+    }
+    console.log(json);
+    document.getElementById("hiddenplace").value = JSON.stringify(json)
+}
+    
+);
