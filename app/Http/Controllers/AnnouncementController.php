@@ -37,7 +37,7 @@ class AnnouncementController extends Controller
     public function test(Request $request)
     {
         $announcements = Announcement::where('status_id', 1)->with('category')->orderBy('created_at', 'desc')->paginate(16);
-        if ($request->ajax()) {
+        if ($request->wantsJson()) {
             return $announcements;
         }
 
