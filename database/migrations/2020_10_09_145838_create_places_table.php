@@ -20,8 +20,9 @@ class CreatePlacesTable extends Migration
             $table->string('region_code');
             $table->string('country_code');
             $table->string('post_code');
-            $table->string('cordinates');
-     
+            $table->double('latitude')->nullable();
+            $table->double('longitude')->nullable();
+
             $table->timestamps();
         });
     }

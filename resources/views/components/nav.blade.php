@@ -96,13 +96,13 @@
                 <button onclick="location.href='{{ route('locale', 'it') }}'" id="notification-button"
                     class="d-none d-md-flex flex-column justify-content-center"
                     title="{{ __('global.switch-italian') }}">
-                    <img src="{{ asset('icons/italian.svg') }}"></img>
+                    <img src="{{ asset('icons/italian.svg') }}">
                 </button>
             @else
                 <button onclick="location.href='{{ route('locale', 'en') }}'" id="notification-button"
                     class="d-none d-md-flex flex-column justify-content-center"
                     title="{{ __('global.switch-english') }}">
-                    <img src="{{ asset('icons/english.svg') }}"></img>
+                    <img src="{{ asset('icons/english.svg') }}">
                 </button>
 
             @endif

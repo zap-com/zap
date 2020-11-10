@@ -8,13 +8,14 @@
             <div id="category-dropdown" class="dropdown-menu dropdown-multicol2" aria-labelledby="dropdownMenuButton">
                 @foreach ($categories as $category)
                     <div class="card dropdown-col card-category align-items-center pt-3 h-100">
-                    <a href="{{route('category.index', $category)}}" class="text-decortion-none d-flex align-items-center justify-content-center flex-column">
-                     <img class="card-img-top mx-auto" src=".{{ $category->icon }}">
-                        <div class="card-body pb-0">
-                            <h5 class="card-title text-center mb-1">{{ $category->name }}</h5>
-                        </div>
-                    </a>
-                       
+                        <a href="{{ route('category.index', $category) }}"
+                            class="text-decortion-none d-flex align-items-center justify-content-center flex-column">
+                            <img class="card-img-top mx-auto" src=".{{ $category->icon }}">
+                            <div class="card-body pb-0">
+                                <h5 class="card-title text-center mb-1">{{ $category->name }}</h5>
+                            </div>
+                        </a>
+
                     </div>
                 @endforeach
             </div>
@@ -40,14 +41,23 @@
             </div>
         </div>
         <div class="dropdown nav-dropdown">
+
             <button class="btn b-btn c-btn dropdown-toggle mr-3" type="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 Località
             </button>
             <div id="place-dropdown" class="dropdown-menu p-3" aria-labelledby="dropdownMenuButton">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Dove vuoi cercare?">
-                </div>
+            <form action="{{route('search.locality')}}" method="GET">
+                @csrf
+                    <div class="form-group">
+
+                        <input type="text" id="address-input" name="address-input" class="form-control"
+                            placeholder="Dove vuoi cercare?">
+                        <input type="hidden" id="hiddenplace" name="hiddenplace" value="">
+                        <button type="submit">Cerca</button>
+                    </div>
+                </form>
+
             </div>
         </div>
         <div class="dropdown nav-dropdown">

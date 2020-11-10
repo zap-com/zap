@@ -27,5 +27,8 @@
     </div>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="{{ asset('js/infiniteScroll.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
+
+    <script src="{{ asset('js/places.js') }}"></script>
 
 </x-app>

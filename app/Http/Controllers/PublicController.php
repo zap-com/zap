@@ -85,6 +85,14 @@ class PublicController extends Controller
         return view('announcement.index', compact('announcements'));
     }
 
+    public function searchByLocality(Request $request)
+    {
+        $q = json_decode($request->input('hiddenplace'));
+        $announcements = Place::getAnnouncementByDistance($q->cordinates->lat,$q->cordinates->lng );
+
+        return view('announcement.index', compact('announcements'));
+    }
+
     public function regions($regione)
     {
         $announcements = Place::regionAnnouncements($regione);

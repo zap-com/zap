@@ -176,11 +176,14 @@ class AnnouncementController extends Controller
                     'region_code' => $placeJson->region_code,
                     'country_code' => $placeJson->country_code,
                     'post_code' => $placeJson->post_code,
-                    'cordinates' => 1,
+                    'latitude' => $placeJson->cordinates->lat,
+                    'longitude' => $placeJson->cordinates->lng
+
                 ]
             )->id
         ]);
 
+      
         $secret = $request->input('secret');
 
         $images = session()->get("images.{$secret}", []);

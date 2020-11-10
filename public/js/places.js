@@ -17372,6 +17372,7 @@ placesAutocomplete.on("change", function (e) {
     post_code: e.suggestion.postcode || e.suggestion.hit.objectID,
     cordinates: e.suggestion.latlng
   };
+  console.log(json);
   document.getElementById("hiddenplace").value = JSON.stringify(json);
 });
 

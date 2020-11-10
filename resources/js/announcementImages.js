@@ -42,6 +42,7 @@ window.addEventListener("load", () => {
                     };
                     
                     drop.options.addedfile.call(drop, file);
+                    
                     drop.options.thumbnail.call(drop, file, el.src);
                 });
             }
