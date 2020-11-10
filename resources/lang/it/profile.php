@@ -10,4 +10,6 @@ return [
     'password' => 'Inserisci la tua password per confermare',
     'password-ph' => 'La tua password',
     'edit-submit' => 'Conferma e aggiorna',
+    'edited' => 'Il tuo profilo è stato aggiornato',
+    'error-password' => 'Password sbagliata!'
 ];

@@ -222,7 +222,7 @@ class AnnouncementController extends Controller
 
 
 
-        return redirect(route('home'))->with('message', 'Annuncio Creato');
+        return redirect(route('home'))->with('message', __('announcement.message-created'));
     }
 
 
@@ -263,7 +263,7 @@ class AnnouncementController extends Controller
         $announcement->update($request->all());
 
 
-        return redirect(route('announcement.index'))->with('message', 'Annuncio Aggiornato');
+        return redirect(route('announcement.index'))->with('message', __('announcement.message-updated'));
     }
 
     /**
@@ -276,6 +276,6 @@ class AnnouncementController extends Controller
     {
 
         $announcement->delete();
-        return redirect(route('announcement.index'))->with('message', 'Annuncio eliminato');
+        return redirect(route('announcement.index'))->with('message', __('announcement.message-deleted'));
     }
 }

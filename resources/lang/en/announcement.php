@@ -15,7 +15,8 @@ return [
     'image-tip' => 'Drag and drop your images or',
     'image-cta' => 'click here to upload',
     'submit' => 'Submit your ad',
-
-
+    'message-created' => 'Your ad has been created',
+    'message-updated' => 'The ad has been updated',
+    'message-deleted' => 'The ad has been deleted',
 
 ];

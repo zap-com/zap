@@ -10,4 +10,6 @@ return [
     'profile.password' => 'Input your password to confirm',
     'password-ph' => 'Your password',
     'edit-submit' => 'Confirm and update',
+    'edited' => 'Your account has been updated successfully',
+    'error-password' => 'Wrong password!'
 ];

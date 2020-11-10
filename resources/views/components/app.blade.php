@@ -48,7 +48,7 @@
                         <span>{{ session('message') }}</span>
                         <button type="button" class="nobtn font-weight-bold text-danger" data-dismiss="alert"
                             aria-label="Close">
-                            <span aria-hidden="true">Close</span>
+                            <span aria-hidden="true">{{ __('global.close') }}</span>
                         </button>
                     </div>
 

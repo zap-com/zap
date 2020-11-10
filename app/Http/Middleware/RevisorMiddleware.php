@@ -18,10 +18,9 @@ class RevisorMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user() && Auth::user()->roles->contains('name','revisor')){
+        if (Auth::user() && Auth::user()->roles->contains('name', 'revisor')) {
             return $next($request);
-           
         }
-        return redirect('/')->with('message', 'access denied');
+        return redirect('/')->with('message', __('global.accessdenied'));
     }
 }

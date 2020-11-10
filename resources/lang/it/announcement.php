@@ -15,6 +15,9 @@ return [
     'image-tip' => 'Trascina qua le tue immagini o',
     'image-cta' => 'clicca qui per caricarle',
     'submit' => 'Inserisci il tuo annuncio',
+    'message-created' => 'Il tuo annuncio è stato creato',
+    'message-updated' => 'L\'annuncio è stato aggiornato',
+    'message-deleted' => 'L\'annuncio è stato cancellato',
 
 
 

@@ -14,10 +14,11 @@ class AdminController extends Controller
         $this->middleware('auth.admin');
     }
 
-    public function acceptRevisor(User $user){
+    public function acceptRevisor(User $user)
+    {
         $user->makeUserRevisor();
 
         Notification::send($user, new RevisorAcceptedNotification($user));
-        return redirect(route('home'))->with('message',"utente {$user->name} è ora un revisore");
+        return redirect(route('home'))->with('message', "{$user->name} __('global.maderevisor')");
     }
 }
