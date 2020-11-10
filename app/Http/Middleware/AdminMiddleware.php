@@ -17,11 +17,10 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user() && Auth::user()->roles->contains('name','admin')){
+        if (Auth::user() && Auth::user()->roles->contains('name', 'admin')) {
             return $next($request);
-           
         }
 
-        return redirect(route('home'))->with('message','Access denied');
+        return redirect(route('home'))->with('message', __('global.accessdenied'));
     }
 }

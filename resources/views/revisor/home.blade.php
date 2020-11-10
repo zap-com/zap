@@ -9,27 +9,27 @@
                     </div>
                 @endif
             </div>
-            
+
         </div>
     </div>
 
-    @if($announcement->count() == 0 && !$mode)
+    @if ($announcement->count() == 0 && !$mode)
         <div class="container">
-        <div class="row">
-            <div class="col-12 text-center my-5">
-               <h1>Non ci sono annunci da revisionare</h1>
+            <div class="row">
+                <div class="col-12 text-center my-5">
+                    <h1>Non ci sono annunci da revisionare</h1>
+                </div>
             </div>
         </div>
-    </div>
 
     @elseif($announcement->count() == 0 && $mode)
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center my-5">
-               <h1>Il cestino è vuoto</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center my-5">
+                    <h1>Il cestino è vuoto</h1>
+                </div>
             </div>
         </div>
-    </div>
     @endif
 
     <div class="container">
@@ -45,6 +45,6 @@
             </div>
         </div>
     </div>
-
-
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="{{ asset('js/globalslider.js') }}"></script>
 </x-app>

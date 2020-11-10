@@ -37,6 +37,10 @@ return [
     'privacy' => "Privacy Policy",
     'press' => "Press Kit",
     'tac' => "Terms of Service",
-    'rights' => "All rights reserved"
+    'rights' => "All rights reserved",
+    'close' => "Close",
+    'maderevisor' => "has been made revisor",
+    'noadmins' => "There are no admin, this website is anarchy!",
+    'request-sent' => "Your request has been sent, we will let you know as soon as possible",
 
 ];

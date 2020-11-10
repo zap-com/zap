@@ -59,11 +59,11 @@ class PublicController extends Controller
 
 
         if ($admins->count() == 0) {
-            return redirect(route('home'))->with('message', 'Non ci sono Admin, in questo sito comanda l\'anarchia');
+            return redirect(route('home'))->with('message', __('global.noadmins'));
         }
         Notification::send($user, new RevisorRequestNotification($user));
 
-        return redirect(route('home'))->with('message', 'Richiesta inviata, ti faremo sapere al più presto');
+        return redirect(route('home'))->with('message', __('global.request-sent'));
     }
 
     public function search(Request $req)

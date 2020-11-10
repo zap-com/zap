@@ -14,7 +14,7 @@ const mix = require('laravel-mix');
 mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/places.js', 'public/js/places.js')
     .js('resources/js/preload.js', 'public/js/preload.js')
-    .js('resources/js/profileEdit.js', 'public/js/profileEdit.js')
+    .js('resources/js/globalslider.js', 'public/js/globalslider.js')
     .js('resources/js/cardCarousel.js', 'public/js/cardCarousel.js')
     .js('resources/js/catCarousel.js', 'public/js/catCarousel.js')
     .js('resources/js/authForm.js', 'public/js/authForm.js')

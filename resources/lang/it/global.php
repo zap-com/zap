@@ -36,8 +36,11 @@ return [
     'privacy' => "Privacy Policy",
     'press' => "Press Kit",
     'tac' => "Termini & Condizioni",
-    'rights' => "Tutti i diritti riservati"
-
+    'rights' => "Tutti i diritti riservati",
+    'close' => "Chiudi",
+    'maderevisor' => "è diventato un revisore",
+    'noadmins' => "Non ci sono admin, in questo sito comanda l'anarchia",
+    'request-sent' => "Richiesta inviata, ti faremo sapere al più presto",
 
 
 ];
