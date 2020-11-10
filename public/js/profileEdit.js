@@ -104,7 +104,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /mnt/d/root/dev/wa/zap_presto/resources/js/profileEdit.js */"./resources/js/profileEdit.js");
+module.exports = __webpack_require__(/*! C:\Users\sebou\wa\hack18\zap_presto\resources\js\profileEdit.js */"./resources/js/profileEdit.js");
 
 
 /***/ })

@@ -17,6 +17,8 @@ function initialize() {
     });
 } */
 
+const _ = require('lodash');
+
 var placesAutocomplete = places({
     appId: "plJEYXAMRTHF",
     apiKey: "ce563e532d0eb5b14fda8a4614f302e7",
@@ -33,7 +35,7 @@ placesAutocomplete.on("change", e => {
 
     let json = {
         name: e.suggestion.name,
-        region: e.suggestion.administrative,
+        region: _.kebabCase(e.suggestion.administrative.replace('/', '-')),
         region_code: e.suggestion.hit.county[1] || e.suggestion.hit.county[0] ,
         country_code: e.suggestion.countryCode ,
         post_code: e.suggestion.postcode || e.suggestion.hit.objectID,
