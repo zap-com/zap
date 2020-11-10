@@ -15,14 +15,13 @@ const updateDom = data => {
         const card = document.createElement("div");
         let adDescription = truncateString(ad.description, 200);
         card.classList.add("d-flex", "flex-column", "flex-md-row", "card", "listings-card", "w-100", "my-3", "p-1");
-
+        card.setAttribute("data-id", ad.id);
         card.innerHTML = `
-            <div class="small-gallery swiper-container card-img-top">
+            <div class="small-gallery smjs smjs-${ad.id} swiper-container card-img-top">
                 <div class="swiper-wrapper ${'s' + ad.id}">
-                    <img src="https://placehold.it/200x150/999/CCC" alt="${ad.title}" style="width: 100%;}">
                 </div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev swiper-button-prev-${ad.id}"></div>
+                <div class="swiper-button-next swiper-button-next-${ad.id}"></div>
             </div>
             <div class="card-body d-flex flex-column pt-1 pb-1 px-2">
             <h5 class="card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold"> 
@@ -36,7 +35,7 @@ const updateDom = data => {
             </div>
         </div>`;
         wrapper.appendChild(card);
-        if (product.images.length > 0) {
+        if (ad.images.length > 0) {
             ad.images.forEach(image => {
                 let gWrapper = document.querySelector(`.s${ad.id}`);
                 let galleryImg = document.createElement('img');
@@ -49,8 +48,29 @@ const updateDom = data => {
                 gWrapper.appendChild(galleryImg)
             })
         } else {
+            let gWrapper = document.querySelector(`.s${ad.id}`);
+            let galleryImg = document.createElement('img');
             var prodImage = 'https://placehold.it/200x150/999/CCC'
+            galleryImg.src = prodImage;
+            galleryImg.classList.add('swiper-slide')
+            galleryImg.alt = ad.title;
+            gWrapper.appendChild(galleryImg)
         }
+        var smallGallery = new Swiper(`.smjs-${ad.id}`, {
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+            // Optional parameters
+            loop: false,
+            speed: 600,
+            slidesPerView: 'auto',
+            // Navigation arrows
+            navigation: {
+                nextEl: `.swiper-button-next-${ad.id}`,
+                prevEl: `.swiper-button-prev-${ad.id}`,
+            }
+        })
     })
 }
 
