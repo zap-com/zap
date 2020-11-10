@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -168,14 +168,14 @@ fetch('/announcement/json').then(function (response) {
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /*!********************************************!*\
   !*** multi ./resources/js/cardCarousel.js ***!
   \********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /mnt/d/root/dev/wa/zap_presto/resources/js/cardCarousel.js */"./resources/js/cardCarousel.js");
+module.exports = __webpack_require__(/*! C:\Users\sebou\wa\hack18\zap_presto\resources\js\cardCarousel.js */"./resources/js/cardCarousel.js");
 
 
 /***/ })

@@ -26,7 +26,7 @@ class AnnouncementController extends Controller
         $announcements->map(function ($el) {
             return $el->images = $el->images;
         });
-        if ($request->ajax()) {
+        if ($request->wantsJson()) {
             return $announcements;
         }
 

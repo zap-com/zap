@@ -87,7 +87,6 @@ class PublicController extends Controller
 
     public function regions($regione)
     {
-
         $announcements = Place::regionAnnouncements($regione);
         return view('announcement.index', compact('announcements'));
     }
