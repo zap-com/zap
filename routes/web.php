@@ -32,6 +32,11 @@ Route::get('/announcement/json', [AnnouncementController::class, 'json'])->name(
 Route::get('/announcement/{announcement}', [AnnouncementController::class, 'show'])->name('announcement.show');
 
 
+//Regioni
+
+Route::get('places/{regione}',[PublicController::class, 'regions'] )->name('region');
+
+
 //locale
 
 Route::get('/local/{locale}', [PublicController::class, 'locale'])->name('locale');

@@ -18,4 +18,23 @@ class Place extends Model
     {
         return $this->hasMany(Announcement::class);
     }
+
+    //FUNZIONI  
+
+    static public function regionAnnouncements($region_code)
+    {
+        $city = self::where('region', $region_code)->get();
+
+        $announcements = collect([]);
+
+        $city->map(function ($el) use ($announcements) {
+            return $el->announcements->map(
+                function ($e) use ($announcements) {
+                    $announcements->push($e);
+                }
+            );
+        });
+
+        return $announcements;
+    }
 }

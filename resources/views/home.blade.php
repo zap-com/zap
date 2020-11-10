@@ -69,23 +69,24 @@
                 </button>
                 <div id="regionDropdown" class="dropdown-menu dropdown-menu-right bg-white"
                     aria-labelledby="dMenuButton">
-                    <a class="dropdown-item" href="">Abruzzo</a>
-                    <a class="dropdown-item" href="">Basilicata</a>
-                    <a class="dropdown-item" href="">Calabria</a>
-                    <a class="dropdown-item" href="">Campania</a>
-                    <a class="dropdown-item" href="">Emilia-Romagna</a>
-                    <a class="dropdown-item" href="">Friuli-Venezia Giulia</a>
-                    <a class="dropdown-item" href="">Lazio</a>
-                    <a class="dropdown-item" href="">Liguria</a>
-                    <a class="dropdown-item" href="">Lombardia</a>
-                    <a class="dropdown-item" href="">Marche</a>
-                    <a class="dropdown-item" href="">Molise</a>
-                    <a class="dropdown-item" href="">Piemonte</a>
-                    <a class="dropdown-item" href="">Puglia</a>
-                    <a class="dropdown-item" href="">Sardegna</a>
-                    <a class="dropdown-item" href="">Sicilia</a>
-                    <a class="dropdown-item" href="">Toscana</a>
-                    <a class="dropdown-item" href="">Trentino-Alto Adige</a>
+                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'Abruzzo']) }}">Abruzzo</a>
+                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'Basilicata']) }}">Basilicata</a>
+                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'Calabria']) }}">Calabria</a>
+                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'Campania']) }}">Campania</a>
+                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'Emilia-Romagna']) }}">Emilia-Romagna</a>
+                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'Friuli Venezia Giulia']) }}">Friuli-Venezia Giulia</a>
+                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'Lazio']) }}">Lazio</a>
+                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'Liguria']) }}">Liguria</a>
+                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'Lombardia']) }}">Lombardia</a>
+                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'Marche']) }}">Marche</a>
+                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'Molise']) }}">Molise</a>
+                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'Piemonte']) }}">Piemonte</a>
+                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'Puglia']) }}">Puglia</a>
+                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'Sardegna']) }}">Sardegna</a>
+                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'Sicilia']) }}">Sicilia</a>
+                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'Toscana']) }}">Toscana</a>
+                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'Trentino-Alto Adige/Südtirol']) }}">Trentino-Alto
+                        Adige</a>
                     <a class="dropdown-item" href="">Umbria</a>
                     <a class="dropdown-item" href="">Valle d'Aosta</a>
                     <a class="dropdown-item" href="">Veneto</a>

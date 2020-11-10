@@ -3,19 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Place;
 use App\Models\Category;
 use App\Models\Announcement;
-use App\Notifications\RevisorRequestNotification;
 use Illuminate\Http\Request;
 
 
 use Illuminate\Support\Facades\Notification;
+use App\Notifications\RevisorRequestNotification;
 
 class PublicController extends Controller
 {
 
 
-  
+
     /**
      * Show the application dashboard.
      *
@@ -81,6 +82,13 @@ class PublicController extends Controller
         }
 
 
+        return view('announcement.index', compact('announcements'));
+    }
+
+    public function regions($regione)
+    {
+
+        $announcements = Place::regionAnnouncements($regione);
         return view('announcement.index', compact('announcements'));
     }
 }
