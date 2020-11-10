@@ -1,26 +1,31 @@
 @props(['ad'])
 
-
-
 <a id="{{ $ad->id }}" href="{{ route('announcement.show', $ad) }}">
     <div class="d-flex flex-column flex-md-row card listings-card w-100 my-3 p-1">
-
-        <!--<div
-            class="small-gallery swiper-container card-img-top swiper-container-fade swiper-container-initialized swiper-container-horizontal">
-            <div class="swiper-wrapper s0" id="swiper-wrapper-dcc92a682754ce49" aria-live="polite">
-                <img src="https://placehold.it/200x150/999/CCC" alt="hero Product" class="swiper-slide swiper-slide-active"
-                    role="group" aria-label="1 / 1"
-                    style="width: 310px; opacity: 1; transform: translate3d(0px, 0px, 0px);">
-            </div>
-            <div class="swiper-button-prev swiper-button-disabled" tabindex="-1" role="button" aria-label="Previous slide"
-                aria-controls="swiper-wrapper-dcc92a682754ce49" aria-disabled="true"></div>
-            <div class="swiper-button-next swiper-button-disabled" tabindex="-1" role="button" aria-label="Next slide"
-                aria-controls="swiper-wrapper-dcc92a682754ce49" aria-disabled="true"></div>
-        </div>-->
-        <div class="small-gallery swiper-container card-img-top">
-            <div class="swiper-wrapper s0">
-                <img src="https://placehold.it/200x150/999/CCC" alt="{{ $ad->title }}" style="width: 100%;">
-            </div>
+        <div class="small-gallery {{ 'small-gallery-' . $ad->id }} swiper-container card-img-top"
+            data-id="{{ $ad->id }}">
+            @if (count($ad->images) > 1)
+                <div class="swiper-wrapper {{ 's' . $ad->id }}">
+                    @foreach ($ad->images as $image)
+                        <img src="{{ $image->getUrl(200, 150) }}" class="swiper-slide" alt="{{ $ad->title }}"
+                            style="width: 100%;">
+                    @endforeach
+                </div>
+                <div class="swiper-button-prev swiper-button-prev-{{ $ad->id }}"></div>
+                <div class="swiper-button-next swiper-button-next-{{ $ad->id }}"></div>
+            @elseif (count($ad->images) == 1)
+                <div class="swiper-wrapper {{ 's' . $ad->id }}">
+                    @foreach ($ad->images as $image)
+                        <img src="{{ $image->getUrl(200, 150) }}" class="swiper-slide" alt="{{ $ad->title }}"
+                            style="width: 100%;">
+                    @endforeach
+                </div>
+            @else
+                <div class="swiper-wrapper {{ 's' . $ad->id }}">
+                    <img src="{{ asset('images/placeholder_small.jpg') }}" class="swiper-slide" alt="{{ $ad->title }}"
+                        style="width: 100%;">
+                </div>
+            @endif
         </div>
         <div class="card-body d-flex flex-column pt-1 pb-1 px-2">
             <div class="d-flex flex-row justify-content-between">
@@ -67,34 +72,34 @@
                     </span>
                 </button>
 
-                     
+
 
                 @if ($ad['status_id'] == 4)
-                     <div class="d-flex flex-row">
-                    <form action="{{ route('revisor.delete', $ad) }}" method="POST">
-                        @csrf
-                        <button class='btn b-btn mr-1 text-white' type='submit'>Delete</button>
-                    </form>
-                    <form action="{{ route('revisor.restore', $ad) }}" method="POST">
-                        @csrf
-                        <button class='btn alt-btn' type='submit'>Restore</button>
-                    </form>
+                    <div class="d-flex flex-row">
+                        <form action="{{ route('revisor.delete', $ad) }}" method="POST">
+                            @csrf
+                            <button class='btn b-btn mr-1 text-white' type='submit'>Delete</button>
+                        </form>
+                        <form action="{{ route('revisor.restore', $ad) }}" method="POST">
+                            @csrf
+                            <button class='btn alt-btn' type='submit'>Restore</button>
+                        </form>
 
 
-                </div>
+                    </div>
                 @else
-                <div class="d-flex flex-row">
-                    <form action="{{ route('revisor.reject', $ad) }}" method="POST">
-                        @csrf
-                        <button class='btn alt-btn mr-1' type='submit'>{{ __('revisor.decline') }}</button>
-                    </form>
-                    <form action="{{ route('revisor.accept', $ad) }}" method="POST">
-                        @csrf
-                        <button class='btn alt-btn' type='submit'>{{ __('revisor.accept') }}</button>
-                    </form>
+                    <div class="d-flex flex-row">
+                        <form action="{{ route('revisor.reject', $ad) }}" method="POST">
+                            @csrf
+                            <button class='btn alt-btn mr-1' type='submit'>{{ __('revisor.decline') }}</button>
+                        </form>
+                        <form action="{{ route('revisor.accept', $ad) }}" method="POST">
+                            @csrf
+                            <button class='btn alt-btn' type='submit'>{{ __('revisor.accept') }}</button>
+                        </form>
 
 
-                </div>
+                    </div>
                 @endif
             </div>
         </div>

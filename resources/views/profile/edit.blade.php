@@ -22,7 +22,7 @@
                         <label for="email">{{ __('profile.email') }}</label>
                         <input type="text" name="email" id="email"
                             class="form-control @error('email') is-invalid @enderror"
-                            placeholder="{{ __('announcement.email-ph') }}" autocomplete="false"></input>
+                            placeholder="{{ __('profile.email-ph') }}" autocomplete="false"></input>
                         @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -33,12 +33,13 @@
             </div>
 
             <div class="row mx-1 justify-content-end mt-5">
-                <div class="col-12 d-flex flex-row align-items-end justify-content-between px-0">
-                    <div class="form-group flex-grow-1 pr-3">
+                <div
+                    class="col-12 d-flex flex-column flex-md-row align-items-start align-items-md-end justify-content-between px-0">
+                    <div class="form-group flex-grow-1  pr-0 pr-md-3">
                         <label for="password">{{ __('profile.password') }}</label>
                         <input type="password" name="password" id="password"
-                            class="form-control @error('email') is-invalid @enderror"
-                            placeholder="{{ __('announcement.password-ph') }}" autocomplete="off"></input>
+                            class="form-control w-100 @error('email') is-invalid @enderror"
+                            placeholder="{{ __('profile.password-ph') }}" autocomplete="off"></input>
                         @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

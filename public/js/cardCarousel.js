@@ -119,7 +119,7 @@ fetch('/announcement/json').then(function (response) {
       var prodArr = prodEl.split("/");
       var prodImage = "/storage/" + prodArr[0] + "/" + prodArr[1] + "/crop200x150_" + prodArr[2];
     } else {
-      var prodImage = 'https://placehold.it/200x150/999/CCC';
+      var prodImage = '/images/placeholder_small.jpg';
     }
 
     if (product.price <= 0) {

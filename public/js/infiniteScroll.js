@@ -887,35 +887,51 @@ function truncateString(str, num) {
 
 var updateDom = function updateDom(data) {
   var wrapper = document.getElementById('listCol');
-  console.log(data);
   data.forEach(function (ad) {
-    var card = document.createElement("div");
-    var adDescription = truncateString(ad.description, 200);
-    card.classList.add("d-flex", "flex-column", "flex-md-row", "card", "listings-card", "w-100", "my-3", "p-1");
-    card.setAttribute("data-id", ad.id);
-    card.innerHTML = "\n            <div class=\"small-gallery smjs smjs-".concat(ad.id, " swiper-container card-img-top\">\n                <div class=\"swiper-wrapper ").concat('s' + ad.id, "\">\n                </div>\n                <div class=\"swiper-button-prev swiper-button-prev-").concat(ad.id, "\"></div>\n                <div class=\"swiper-button-next swiper-button-next-").concat(ad.id, "\"></div>\n            </div>\n            <div class=\"card-body d-flex flex-column pt-1 pb-1 px-2\">\n            <h5 class=\"card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold\"> \n                <a href=\"/announcement/").concat(ad.slug, "\"> ").concat(ad.title, " </a>\n            </h5>\n        \n            <p class=\"card-text text-muted mt-2 pt-0 slide-description flex-grow-1\">").concat(adDescription, "</p>\n            <div class=\"info \">\n                <a class=\"mr-auto \" href=\"/category/").concat(ad.category.slug, "\">").concat(ad.category.name, "</a>\n                <p class=\"product-price text-right mb-auto p-2\" >").concat(ad.price, " \u20AC</p>\n            </div>\n        </div>");
-    wrapper.appendChild(card);
+    if (!document.querySelector(".s".concat(ad.id))) {
+      var card = document.createElement("div");
+      var adDescription = truncateString(ad.description, 200);
+      card.classList.add("d-flex", "flex-column", "flex-md-row", "card", "listings-card", "w-100", "my-3", "p-1");
+      card.setAttribute("data-id", ad.id);
+      card.innerHTML = "\n            <div class=\"small-gallery smjs smjs-".concat(ad.id, " swiper-container card-img-top\">\n                <div class=\"swiper-wrapper ").concat('s' + ad.id, "\">\n                </div>\n                <div class=\"swiper-button-prev swiper-button-prev-").concat(ad.id, "\"></div>\n                <div class=\"swiper-button-next swiper-button-next-").concat(ad.id, "\"></div>\n            </div>\n            <div class=\"card-body d-flex flex-column pt-1 pb-1 px-2\">\n            <h5 class=\"card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold\"> \n                <a href=\"/announcement/").concat(ad.slug, "\"> ").concat(ad.title, " </a>\n            </h5>\n        \n            <p class=\"card-text text-muted mt-2 pt-0 slide-description flex-grow-1\">").concat(adDescription, "</p>\n            <div class=\"info \">\n                <a class=\"mr-auto \" href=\"/category/").concat(ad.category.slug, "\">").concat(ad.category.name, "</a>\n                <p class=\"product-price text-right mb-auto p-2\" >").concat(ad.price, " \u20AC</p>\n            </div>\n        </div>");
+      wrapper.appendChild(card);
 
-    if (ad.images.length > 0) {
-      ad.images.forEach(function (image) {
+      if (ad.images.length > 1) {
+        ad.images.forEach(function (image) {
+          var gWrapper = document.querySelector(".s".concat(ad.id));
+          var galleryImg = document.createElement('img');
+          var prodEl = image.file;
+          var prodArr = prodEl.split("/");
+          var prodImage = "/storage/" + prodArr[0] + "/" + prodArr[1] + "/crop200x150_" + prodArr[2];
+          galleryImg.src = prodImage;
+          galleryImg.alt = ad.title;
+          galleryImg.classList.add('swiper-slide');
+          gWrapper.appendChild(galleryImg);
+        });
+      } else if (ad.images.length == 1) {
+        ad.images.forEach(function (image) {
+          var gWrapper = document.querySelector(".s".concat(ad.id));
+          var galleryImg = document.createElement('img');
+          var prodEl = image.file;
+          var prodArr = prodEl.split("/");
+          var prodImage = "/storage/" + prodArr[0] + "/" + prodArr[1] + "/crop200x150_" + prodArr[2];
+          galleryImg.src = prodImage;
+          galleryImg.alt = ad.title;
+          galleryImg.classList.add('swiper-slide');
+          gWrapper.appendChild(galleryImg);
+        });
+      } else {
         var gWrapper = document.querySelector(".s".concat(ad.id));
         var galleryImg = document.createElement('img');
-        var prodEl = image.file;
-        var prodArr = prodEl.split("/");
-        var prodImage = "/storage/" + prodArr[0] + "/" + prodArr[1] + "/crop200x150_" + prodArr[2];
+        var prodImage = '/images/placeholder_small.jpg';
         galleryImg.src = prodImage;
-        galleryImg.alt = ad.title;
         galleryImg.classList.add('swiper-slide');
+        galleryImg.alt = ad.title;
+        console.log(ad.id);
+        console.log(ad.images);
+        console.log(gWrapper);
         gWrapper.appendChild(galleryImg);
-      });
-    } else {
-      var gWrapper = document.querySelector(".s".concat(ad.id));
-      var galleryImg = document.createElement('img');
-      var prodImage = 'https://placehold.it/200x150/999/CCC';
-      galleryImg.src = prodImage;
-      galleryImg.classList.add('swiper-slide');
-      galleryImg.alt = ad.title;
-      gWrapper.appendChild(galleryImg);
+      }
     }
 
     var smallGallery = new Swiper(".smjs-".concat(ad.id), {
@@ -935,26 +951,6 @@ var updateDom = function updateDom(data) {
     });
   });
 };
-
-var smg = document.querySelectorAll('.small-gallery');
-smg.forEach(function (gallery) {
-  var id = gallery.getAttribute('data-id');
-  var smallGallery = new Swiper(".small-gallery-".concat(id), {
-    effect: 'fade',
-    fadeEffect: {
-      crossFade: true
-    },
-    // Optional parameters
-    loop: false,
-    speed: 600,
-    slidesPerView: 'auto',
-    // Navigation arrows
-    navigation: {
-      nextEl: ".swiper-button-next-".concat(id),
-      prevEl: ".swiper-button-prev-".concat(id)
-    }
-  });
-});
 
 var getTotalPages = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
@@ -1010,7 +1006,7 @@ var fetchData = /*#__PURE__*/function () {
             lastPage = _context2.sent;
 
             if (!(currentPage <= lastPage)) {
-              _context2.next = 11;
+              _context2.next = 12;
               break;
             }
 
@@ -1030,8 +1026,6 @@ var fetchData = /*#__PURE__*/function () {
           case 9:
             data = _context2.sent;
             updateDom(data.data);
-
-          case 11:
             currentPage++;
 
           case 12:

@@ -81,45 +81,48 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/authForm.js":
-/*!**********************************!*\
-  !*** ./resources/js/authForm.js ***!
-  \**********************************/
+/***/ "./resources/js/globalslider.js":
+/*!**************************************!*\
+  !*** ./resources/js/globalslider.js ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-var registerBtn = document.querySelector('#registerBtn');
-var loginForm = document.querySelector('#formLogin');
-var registerForm = document.querySelector('#formRegister');
-
-registerBtn.onclick = function () {
-  if (registerForm.classList.contains('d-none')) {
-    loginForm.classList.add('d-none');
-    registerForm.classList.remove('d-none');
-    registerBtn.innerText = 'Sign-in';
-  } else {
-    console.log('else');
-    loginForm.classList.remove('d-none');
-    registerForm.classList.add('d-none');
-    registerBtn.innerText = 'Register now';
-  }
-};
+var smg = document.querySelectorAll('.small-gallery');
+smg.forEach(function (gallery) {
+  var id = gallery.getAttribute('data-id');
+  var smallGallery = new Swiper(".small-gallery-".concat(id), {
+    effect: 'fade',
+    fadeEffect: {
+      crossFade: true
+    },
+    // Optional parameters
+    loop: false,
+    speed: 600,
+    slidesPerView: 'auto',
+    // Navigation arrows
+    navigation: {
+      nextEl: ".swiper-button-next-".concat(id),
+      prevEl: ".swiper-button-prev-".concat(id)
+    }
+  });
+});
 
 /***/ }),
 
-/***/ 6:
-/*!****************************************!*\
-  !*** multi ./resources/js/authForm.js ***!
-  \****************************************/
+/***/ 3:
+/*!********************************************!*\
+  !*** multi ./resources/js/globalslider.js ***!
+  \********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /mnt/d/root/dev/wa/zap_presto/resources/js/authForm.js */"./resources/js/authForm.js");
+module.exports = __webpack_require__(/*! /mnt/d/root/dev/wa/zap_presto/resources/js/globalslider.js */"./resources/js/globalslider.js");
 
 
 /***/ })

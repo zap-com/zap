@@ -24,31 +24,51 @@
         <div id="prodCol" class="row mx-1 mx-md-0 mb-4">
             <div id="product-wrapper" class="col-12 flex-grow-0 p-0">
                 <div class="d-flex flex-column card listings-card w-100 p-3 m-0">
-                    <div class="small-gallery swiper-container card-img-top w-100">
-                        <img src="https://placehold.it/800x800/ddd/fff" alt="{{ $announcement->title }}" class="w-100">
-                        <!--<div class="swiper-wrapper ${'s' + index}">
-                        </div>
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-button-next"></div>-->
+                    <div class="small-gallery {{ 'small-gallery-' . $announcement->id }} swiper-container card-img-top w-100"
+                        data-id="{{ $announcement->id }}">
+                        @if (count($announcement->images) > 1)
+                            <div class="swiper-wrapper {{ 's' . $announcement->id }}">
+                                @foreach ($announcement->images as $image)
+                                    <img src="{{ $image->getUrl() }}" class="swiper-slide"
+                                        alt="{{ $announcement->title }}" style="width: 100%;">
+                                @endforeach
+                            </div>
+                            <div class="swiper-button-prev swiper-button-prev-{{ $announcement->id }}"></div>
+                            <div class="swiper-button-next swiper-button-next-{{ $announcement->id }}"></div>
+                        @elseif(count($announcement->images) == 1)
+                            <div class="swiper-wrapper {{ 's' . $announcement->id }}">
+                                @foreach ($announcement->images as $image)
+                                    <img src="{{ $image->getUrl() }}" class="swiper-slide"
+                                        alt="{{ $announcement->title }}" style="width: 100%;">
+                                @endforeach
+                            </div>
+                        @else
+                            <div class="swiper-wrapper {{ 's' . $announcement->id }}">
+                                <img src="{{ asset('images/placeholder.jpg') }}" class="swiper-slide"
+                                    alt="{{ $announcement->title }}" style="width: 100%;">
+                            </div>
+                        @endif
                     </div>
-                    <div class="card-body d-flex flex-column pt-1 pb-1">
-                        <h4 class="card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold">{{ $announcement->title }}
-                        </h4>
-                        <a class="h6 text-uppercase pt-2"
-                            href="/category/{{ $announcement->category->slug }}">{{ $announcement->category->name }}</a>
-                        <!--<div class="d-flex d-row align-items-center py-0 location-row mb-2">
+                </div>
+                <div class="card-body d-flex flex-column pt-1 pb-1">
+                    <h4 class="card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold">{{ $announcement->title }}
+                    </h4>
+                    <a class="h6 text-uppercase pt-2"
+                        href="/category/{{ $announcement->category->slug }}">{{ $announcement->category->name }}</a>
+                    <!--<div class="d-flex d-row align-items-center py-0 location-row mb-2">
                             <i class="icon-location-pin pr-1"></i>
                             <p class="my-0 location-text">${product.location}</p>
                         </div>-->
-                        <p class="card-text text-muted pt-3 slide-description flex-grow-1">
-                            {{ $announcement->description }}
-                        </p>
-                        </p>
-                        <p class="product-price align-self-end text-right mb-auto p-2">{{ $announcement->price }} €</p>
-                    </div>
+                    <p class="card-text text-muted pt-3 slide-description flex-grow-1">
+                        {{ $announcement->description }}
+                    </p>
+                    </p>
+                    <p class="product-price align-self-end text-right mb-auto p-2">{{ $announcement->price }} €</p>
                 </div>
             </div>
         </div>
     </div>
-
+    </div>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="{{ asset('js/globalslider.js') }}"></script>
 </x-app>
