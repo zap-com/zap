@@ -17,15 +17,24 @@ fetch('/announcement/json')
             let prodDescription = truncateString(product.description, 120);
             let trendCard = document.createElement('a')
             trendCard.href = "/announcement/" + product.slug;
-            /**if (product.price <= 0) {
+
+            if (product.images.length > 0) {
+                let prodEl = product.images[0].file;
+                let prodArr = prodEl.split("/");
+                var prodImage = "/storage/" + prodArr[0] + "/" + prodArr[1] + "/crop200x150_" + prodArr[2]
+            } else {
+                var prodImage = 'https://placehold.it/200x150/999/CCC'
+            }
+
+            if (product.price <= 0) {
                 var prodPrice = "Gratis";
             } else {
-                var prodPrice = accounting.formatMoney(product.price, { symbol: " €", format: "%v %s" });
-            };*/
+                var prodPrice = product.price + " €";
+            };
             trendCard.classList.add('d-flex', 'card', 'product-card', 'swiper-slide', 'mb-0', 'h-100')
             trendCard.innerHTML =
                 `
-        <img src="https://placehold.it/200x150/999/CCC" class="card-img-top px-1 pt-1 pb-0" alt="{product.title}">
+                <img src="${prodImage}" class="card-img-top px-1 pt-1 pb-0" alt="${prodTitle}">
         <div class="card-body pt-1 px-2">
           <h5 class="p font-weight-bold card-title slide-title pt-1 pb-0 mb-0">${prodTitle}</h5>
           <button type="button"
@@ -38,7 +47,7 @@ fetch('/announcement/json')
           <p class="card-text text-muted pt-0 slide-description">${prodDescription}
           </p >
         </div >
-            <p class="product-price align-self-end text-right mb-0 p-2">${product.price} €</p>
+            <p class="product-price align-self-end text-right mb-0 p-2">${prodPrice}</p>
         `
             trendingWrapper.appendChild(trendCard)
         })

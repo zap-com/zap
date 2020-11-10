@@ -29,6 +29,7 @@ class AnnouncementRequest extends FormRequest
             'description' => 'required',
             'price' => 'required|integer',
             'category_id' => 'required|numeric|min:1',
+            'hiddenplace' => 'required'
         ];
     }
     public function messages()

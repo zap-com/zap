@@ -81,45 +81,30 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/authForm.js":
-/*!**********************************!*\
-  !*** ./resources/js/authForm.js ***!
-  \**********************************/
+/***/ "./resources/js/profileEdit.js":
+/*!*************************************!*\
+  !*** ./resources/js/profileEdit.js ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-var registerBtn = document.querySelector('#registerBtn');
-var loginForm = document.querySelector('#formLogin');
-var registerForm = document.querySelector('#formRegister');
 
-registerBtn.onclick = function () {
-  if (registerForm.classList.contains('d-none')) {
-    loginForm.classList.add('d-none');
-    registerForm.classList.remove('d-none');
-    registerBtn.innerText = 'Sign-in';
-  } else {
-    console.log('else');
-    loginForm.classList.remove('d-none');
-    registerForm.classList.add('d-none');
-    registerBtn.innerText = 'Register now';
-  }
-};
 
 /***/ }),
 
-/***/ 6:
-/*!****************************************!*\
-  !*** multi ./resources/js/authForm.js ***!
-  \****************************************/
+/***/ 3:
+/*!*******************************************!*\
+  !*** multi ./resources/js/profileEdit.js ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /mnt/d/root/dev/wa/zap_presto/resources/js/authForm.js */"./resources/js/authForm.js");
+module.exports = __webpack_require__(/*! /mnt/d/root/dev/wa/zap_presto/resources/js/profileEdit.js */"./resources/js/profileEdit.js");
 
 
 /***/ })
