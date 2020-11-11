@@ -1,5 +1,7 @@
 @props(['ad'])
 
+
+
 <a id="{{ $ad->id }}" href="{{ route('announcement.show', $ad) }}">
     <div class="d-flex flex-column flex-md-row card listings-card w-100 my-3 p-1">
         <div class="small-gallery {{ 'small-gallery-' . $ad->id }} swiper-container card-img-top"
@@ -67,8 +69,8 @@
             <div class="info d-flex flex-row justify-content-between">
                 <button onClick="event.preventDefault()" type="button" class="nobtn text-danger align-self-end"
                     data-toggle="modal" data-target="#warn-modal-{{ $ad->id }}" title="{{ __('revisor.learnmore') }}">
-                    <span class="d-flex align-items-middle"><i class="icon-exclamation large-icons pr-2"></i> 2
-                        {{ __('revisor.problem') }}
+                    <span class="d-flex align-items-middle"><i class="icon-exclamation large-icons pr-2"></i> {{$ad->problems()}}
+                        {{ __('revisor.problem') }} 
                     </span>
                 </button>
 

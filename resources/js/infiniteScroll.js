@@ -11,6 +11,7 @@ function truncateString(str, num) {
 const updateDom = data => {
     const wrapper = document.getElementById('listCol');
     data.forEach(ad => {
+        console.log(ad);
         if (!document.querySelector(`.s${ad.id}`)) {
             const card = document.createElement("div");
             let adDescription = truncateString(ad.description, 200);
@@ -27,7 +28,9 @@ const updateDom = data => {
             <h5 class="card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold"> 
                 <a href="/announcement/${ad.slug}"> ${ad.title} </a>
             </h5>
-        
+            ${ad.place ? '<p class="card-text text-muted mt-2 pt-0 slide-description flex-grow-1">'+ ad.place.name +'</p>' : ''}
+            
+ 
             <p class="card-text text-muted mt-2 pt-0 slide-description flex-grow-1">${adDescription}</p>
             <div class="info ">
                 <a class="mr-auto " href="/category/${ad.category.slug}">${ad.category.name}</a>
@@ -67,9 +70,7 @@ const updateDom = data => {
                 galleryImg.src = prodImage;
                 galleryImg.classList.add('swiper-slide')
                 galleryImg.alt = ad.title;
-                console.log(ad.id)
-                console.log(ad.images)
-                console.log(gWrapper)
+               
                 gWrapper.appendChild(galleryImg)
             }
         }
