@@ -29,7 +29,7 @@
                         @if (count($announcement->images) > 1)
                             <div class="swiper-wrapper {{ 's' . $announcement->id }}">
                                 @foreach ($announcement->images as $image)
-                                    <img src="{{ $image->getUrl() }}" class="swiper-slide"
+                                    <img src="{{ $image->getUrl(900,500) }}" class="swiper-slide"
                                         alt="{{ $announcement->title }}" style="width: 100%;">
                                 @endforeach
                             </div>
@@ -38,7 +38,7 @@
                         @elseif(count($announcement->images) == 1)
                             <div class="swiper-wrapper {{ 's' . $announcement->id }}">
                                 @foreach ($announcement->images as $image)
-                                    <img src="{{ $image->getUrl() }}" class="swiper-slide"
+                                    <img src="{{ $image->getUrl(900,500) }}" class="swiper-slide"
                                         alt="{{ $announcement->title }}" style="width: 100%;">
                                 @endforeach
                             </div>

@@ -212,8 +212,8 @@ class AnnouncementController extends Controller
             ));
             dispatch(new ResizeImageJob(
                 $newFileName,
-                800,
-                800
+                900,
+                500
             ));
 
             $i->file =  "announcements/{$a->id}/{$fileName}";

@@ -40,11 +40,28 @@ class ResizeImageJob implements ShouldQueue
         $w = $this->width;
         $h = $this->height;
 
-        $srcPath = storage_path() . "/app". "/" . $this->path . '/' . $this->fileName;
-        $destPath = storage_path() . "/app" ."/". $this->path . "/crop{$w}x{$h}_" . $this->fileName;
+        $srcPath = storage_path() . "/app" . "/" . $this->path . '/' . $this->fileName;
+        $destPath = storage_path() . "/app" . "/" . $this->path . "/crop{$w}x{$h}_" . $this->fileName;
 
-        Image::load($srcPath)
-            ->crop(Manipulations::CROP_CENTER, $w,$h)
+        if($w < 500){
+            Image::load($srcPath)
+            ->crop(Manipulations::CROP_CENTER, $w, $h)
+            ->watermark(public_path('/images/zaplogo.png'))
+            ->watermarkOpacity(40)
+            -> watermarkHeight(15, Manipulations::UNIT_PERCENT)
+            ->watermarkWidth(15, Manipulations::UNIT_PERCENT)
+            ->watermarkPadding(5.5, 12.5, Manipulations::UNIT_PERCENT)
             ->save($destPath);
+        }else{
+            Image::load($srcPath)
+            ->crop(Manipulations::CROP_CENTER, $w, $h)
+            ->watermark(public_path('/images/zaplogo.png'))
+            ->watermarkOpacity(40)
+            ->watermarkHeight(12.5, Manipulations::UNIT_PERCENT)
+            ->watermarkWidth(12.5, Manipulations::UNIT_PERCENT)
+            ->watermarkPadding(5, 6.5, Manipulations::UNIT_PERCENT)
+            ->save($destPath);
+        }
+        
     }
 }
