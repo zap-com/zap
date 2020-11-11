@@ -31,4 +31,5 @@
 
     <script src="{{ asset('js/places.js') }}"></script>
 
+    <script src="{{ asset('js/globalslider.js') }}"></script>
 </x-app>
