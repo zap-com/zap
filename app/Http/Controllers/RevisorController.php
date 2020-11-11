@@ -43,6 +43,10 @@ class RevisorController extends Controller
 
     public function deleteAd(Announcement $announcement)
     {
+        $announcement->images
+        ->map(function($e){
+            $e->delete();
+        });
         $announcement->delete();
         return redirect()->back();
     }
