@@ -32,6 +32,8 @@
             <h5 class="card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold">
                 {{ $ad->title }}
             </h5>
+            <p class="small">{{$ad->place->name ?? ''}}</p>
+
             <!--
                 <div class="d-flex d-row align-items-center py-0 location-row">
                 <i class="icon-location-pin pr-1"></i>

@@ -42,7 +42,7 @@ class PublicController extends Controller
 
     public function category(Category $category)
     {
-        $announcements = Announcement::where('category_id', $category->id)->where('status_id', 2)->get();
+        $announcements = Announcement::where('category_id', $category->id)->where('status_id', 2)->orderBy('created_at','desc')->get();
 
         return view('category.index', compact('announcements'));
     }
