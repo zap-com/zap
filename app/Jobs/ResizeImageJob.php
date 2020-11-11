@@ -42,26 +42,27 @@ class ResizeImageJob implements ShouldQueue
 
         $srcPath = storage_path() . "/app" . "/" . $this->path . '/' . $this->fileName;
         $destPath = storage_path() . "/app" . "/" . $this->path . "/crop{$w}x{$h}_" . $this->fileName;
+        $paddingX = 5;
+        $paddingY= 6.5;
+        $height = 12.5;
+        $width = 12.5;
 
         if($w < 500){
-            Image::load($srcPath)
-            ->crop(Manipulations::CROP_CENTER, $w, $h)
-            ->watermark(public_path('/images/zaplogo.png'))
-            ->watermarkOpacity(40)
-            -> watermarkHeight(15, Manipulations::UNIT_PERCENT)
-            ->watermarkWidth(15, Manipulations::UNIT_PERCENT)
-            ->watermarkPadding(5.5, 12.5, Manipulations::UNIT_PERCENT)
-            ->save($destPath);
-        }else{
-            Image::load($srcPath)
-            ->crop(Manipulations::CROP_CENTER, $w, $h)
-            ->watermark(public_path('/images/zaplogo.png'))
-            ->watermarkOpacity(40)
-            ->watermarkHeight(12.5, Manipulations::UNIT_PERCENT)
-            ->watermarkWidth(12.5, Manipulations::UNIT_PERCENT)
-            ->watermarkPadding(5, 6.5, Manipulations::UNIT_PERCENT)
-            ->save($destPath);
+            $paddingX = 5.5;
+            $paddingY= 12.5;
+            $height = 15;
+            $width = 15;
         }
+        
+            Image::load($srcPath)
+            ->crop(Manipulations::CROP_CENTER, $w, $h)
+            ->watermark(public_path('/images/zaplogo.png'))
+            ->watermarkOpacity(40)
+            ->watermarkHeight($height, Manipulations::UNIT_PERCENT)
+            ->watermarkWidth($width, Manipulations::UNIT_PERCENT)
+            ->watermarkPadding($paddingX, $paddingY, Manipulations::UNIT_PERCENT)
+            ->save($destPath);
+     
         
     }
 }
