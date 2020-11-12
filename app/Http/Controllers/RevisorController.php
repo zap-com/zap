@@ -55,7 +55,7 @@ class RevisorController extends Controller
     {
         $announcement = Announcement::where('status_id', 4)->get();
 
-        $mode = "elimina definitivamente gli annunci o ripristinali";
+        $mode = __('revisor.delete-message');
         return view('revisor.home', compact('announcement', 'mode'));
     }
 }
