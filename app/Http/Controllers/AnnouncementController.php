@@ -10,9 +10,11 @@ use Illuminate\Http\Request;
 use App\Models\AnnouncementImage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use App\Jobs\GoogleVisonSafeImageJob;
+
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\AnnouncementRequest;
-use App\Jobs\GoogleVisonLabelImageJob;
+use App\Jobs\GoogleVisionImgLabelJob;
 
 class AnnouncementController extends Controller
 {
@@ -214,7 +216,8 @@ class AnnouncementController extends Controller
             $i->announcement_id = $a->id;
             $i->save();
             
-            dispatch(new GoogleVisonLabelImageJob($i->id));
+            dispatch(new GoogleVisonSafeImageJob($i->id));
+            dispatch(new GoogleVisionImgLabelJob($i->id));
         }
 
         File::deleteDirectory(storage_path("/app/public/temp/{$secret}"));

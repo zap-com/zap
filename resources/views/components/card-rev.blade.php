@@ -66,17 +66,20 @@
                     more</button>
             </p>
 
-        <div class="info d-flex flex-row {{$ad->problems() > 0 ? "justify-content-between" : "justify-content-end"}}">
+            <div
+                class="info d-flex flex-row {{ $ad->problems() > 0 ? 'justify-content-between' : 'justify-content-end' }}">
 
-                @if ($ad->problems() > 0 )
-                <button onClick="event.preventDefault()" type="button" class="nobtn text-danger align-self-end"
-                data-toggle="modal" data-target="#warn-modal-{{ $ad->id }}" title="{{ __('revisor.learnmore') }}">
-                <span class="d-flex align-items-middle"><i class="icon-exclamation large-icons pr-2"></i> {{$ad->problems()}}
-                    {{ __('revisor.problem') }} 
-                </span>
-            </button>
+                @if ($ad->problems() > 0)
+                    <button onClick="event.preventDefault()" type="button" class="nobtn text-danger align-self-end"
+                        data-toggle="modal" data-target="#warn-modal-{{ $ad->id }}"
+                        title="{{ __('revisor.learnmore') }}">
+                        <span class="d-flex align-items-middle"><i class="icon-exclamation large-icons pr-2"></i>
+                            {{ $ad->problems() }}
+                            {{ __('revisor.problem') }}
+                        </span>
+                    </button>
                 @endif
-                
+
 
 
 
@@ -123,6 +126,41 @@
             </div>
             <div class="modal-body">
                 ...
+                @foreach ($ad->images as $image)
+
+                    @if ($image->labels)
+                        <div class="d-flex justify-content-between align-items-center">
+                            <img src="{{ $image->getUrl(200, 150) }}" class="swiper-slide d-block"
+                                alt="{{ $ad->title }}" style='width:70%;'>
+
+                            <div class="tags">
+
+                                <label for="adult">Adult</label>
+                                <progress id="adult" value="{{$image->adult}}" max="6"> {{($image->adult * 100) /6 }} </progress>
+
+                                <label for="spoof">Spoof</label>
+                                <progress id="spoof" value="{{$image->spoof}}" max="6"> {{($image->spoof * 100) /6 }}</progress>
+
+                                <label for="medical">Medical</label>
+                                <progress id="medical" value="{{$image->medical}}" max="6"> {{($image->medical * 100) /6 }} </progress>
+
+                                <label for="violence">Violence</label>
+                                <progress id="violence" value="{{$image->violence}}" max="6"> {{($image->violence * 100) /6 }}</progress>
+
+                                <label for="racy">Racy</label>
+                                <progress id="racy" value="{{$image->racy}}" max="6">{{($image->racy * 100) /6 }} </progress>
+
+                            </div>
+
+                        </div>
+                        @foreach ($image->labels as $label)
+                            <span class="badge badge-pill badge-secondary">{{ $label }}</span>
+
+
+                        @endforeach
+                    @endif
+
+                @endforeach
             </div>
         </div>
     </div>
