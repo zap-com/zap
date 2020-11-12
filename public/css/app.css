@@ -12448,7 +12448,7 @@ div.dz-default.dz-message {
   z-index: 4000;
 }
 
-.ap-dropdown-menu {
+.modal-body .ap-dropdown-menu {
   margin-top: 1rem;
   position: absolute !important;
   width: 100vw;
