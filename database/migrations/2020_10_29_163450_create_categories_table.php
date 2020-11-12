@@ -19,6 +19,7 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('name_it');
             $table->string('icon');
             $table->string('slug');
             $table->timestamps();
@@ -35,6 +36,7 @@ class CreateCategoriesTable extends Migration
 
             $c = new Category();
             $c->name = $cat->name;
+            $c->name_it = $cat->name_it;
             $c->icon = $cat->icon;
             $c->save();
         }
