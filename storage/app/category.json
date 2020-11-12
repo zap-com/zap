@@ -1,69 +1,86 @@
 [{
-        "name": "Auto",
+        "name": "Cars",
+        "name_it": "Auto",
         "icon": "./icons/car.svg"
     },
     {
-        "name": "Moto",
+        "name": "Motorbikes",
+        "name_it": "Moto",
         "icon": "./icons/motorbikes.svg"
     },
     {
-        "name": "Moda",
+        "name": "Fashion",
+        "name_it": "Moda",
         "icon": "./icons/fashion.svg"
     },
     {
-        "name": "Case",
+        "name": "Real Estate",
+        "name_it": "Case",
         "icon": "./icons/estate.svg"
     },
     {
-        "name": "Elettronica",
+        "name": "Computers and Electronic",
+        "name_it": "Elettronica",
         "icon": "./icons/electronic.svg"
     },
     {
-        "name": "Telefoni e accessori",
+        "name": "Cellphones and accessories",
+        "name_it": "Telefoni e accessori",
         "icon": "./icons/phones.svg"
     },
     {
-        "name": "Sport e svago",
+        "name": "Sports and Leisure",
+        "name_it": "Sport e svago",
         "icon": "./icons/sport.svg"
     },
     {
-        "name": "Tv e audio",
+        "name": "TV, Audio and Cameras",
+        "name_it": "Tv e audio",
         "icon": "./icons/tv.svg"
     },
     {
-        "name": "Bici",
+        "name": "Bikes",
+        "name_it": "Bici",
         "icon": "./icons/bike.svg"
     },
     {
-        "name": "Videogiochi e console",
+        "name": "Videogames and Consoles",
+        "name_it": "Videogiochi e console",
         "icon": "./icons/games.svg"
     },
     {
-        "name": "Casa e giardino",
+        "name": "Home and Garden",
+        "name_it": "Casa e giardino",
         "icon": "./icons/home.svg"
     },
     {
-        "name": "Elettrodomestici",
+        "name": "Appliances",
+        "name_it": "Elettrodomestici",
         "icon": "./icons/appliances.svg"
     },
     {
-        "name": "Libri, Film e Musica",
+        "name": "Books, Movies and Music",
+        "name_it": "Libri, Film e Musica",
         "icon": "./icons/books.svg"
     },
     {
-        "name": "Arte e collezionismo",
+        "name": "Art and collectibles",
+        "name_it": "Arte e collezionismo",
         "icon": "./icons/art.svg"
     },
     {
-        "name": "Lavoro",
+        "name": "Jobs",
+        "name_it": "Lavoro",
         "icon": "./icons/jobs.svg"
     },
     {
-        "name": "Servizi",
+        "name": "Services",
+        "name_it": "Servizi",
         "icon": "./icons/services.svg"
     },
     {
-        "name": "Altro",
+        "name": "Other",
+        "name_it": "Altro",
         "icon": "./icons/other.svg"
     }
 ]
