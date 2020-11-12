@@ -14,8 +14,14 @@ fetch('/announcement/json')
         data.forEach(product => {
             let trendingWrapper = document.querySelector('#trending-wrapper')
             let prodTitle = truncateString(product.title, 24);
-            if (localStorage.getItem('locale') == 'it-IT') { var catName = product.category.name_it }
-            else { var catName = product.category.name }
+            if (localStorage.getItem('locale') == 'it-IT') {
+                var catName = product.category.name_it;
+                var inplace = " a "
+            }
+            else {
+                var catName = product.category.name;
+                var inplace = " in "
+            }
             let prodDescription = truncateString(product.description, 120);
             let trendCard = document.createElement('a')
             trendCard.href = "/announcement/" + product.slug;
@@ -41,7 +47,8 @@ fetch('/announcement/json')
           <h5 class="p font-weight-bold card-title slide-title pt-1 pb-0 mb-0">${prodTitle}</h5>
           <button type="button"
                     onClick="location.href='/category/${product.category.slug}'; event.preventDefault(); event.stopPropagation()"
-                    class="nobtn">${catName}</button>
+                    class="btn nobtn">${catName}</button>
+                    ${product.place ? `<span>${inplace}</span>` + '<p class="btn nobtn">' + product.place.name + '</p>' : ''}
           <!--<div class="d-flex d-row align-items-center py-0 location-row mb-2">
             <i class="icon-location-pin pr-1"></i>
             <p class="my-0 location-text">{product.location}</p>

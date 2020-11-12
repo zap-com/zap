@@ -3,14 +3,14 @@
     <div class="container">
         <div id="accCol" class="row py-2  my-4 mx-1 mx-md-0">
             <div class="col flex-grow-0 my-auto">
-                <img src="https://placehold.it/200x200/CCC/999" alt="Mario Rossi" class="img-responsive profile-photo"
-                    width="75">
+                <img src="{{ asset('images/starstruck.png') }}" alt="{{ $announcement->user->name }}"
+                    class="img-responsive profile-photo" width="75">
             </div>
             <div class="col mr-3 align-items-start my-auto">
                 <h2 class="p h5 mb-1">{{ $announcement->user->name }}</h2>
                 <!--<p class="text-muted mb-0">2 prodotti</p>-->
             </div>
-            <div class="col align-items-start my-auto justify-content-right  flex-grow-2">
+            <div class="col d-none d-md-block align-items-start my-auto justify-content-right  flex-grow-2">
                 <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
                     <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio"
                         name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating"
@@ -29,7 +29,7 @@
                         @if (count($announcement->images) > 1)
                             <div class="swiper-wrapper {{ 's' . $announcement->id }}">
                                 @foreach ($announcement->images as $image)
-                                    <img src="{{ $image->getUrl(900,500) }}" class="swiper-slide"
+                                    <img src="{{ $image->getUrl(900, 500) }}" class="swiper-slide"
                                         alt="{{ $announcement->title }}" style="width: 100%;">
                                 @endforeach
                             </div>
@@ -38,7 +38,7 @@
                         @elseif(count($announcement->images) == 1)
                             <div class="swiper-wrapper {{ 's' . $announcement->id }}">
                                 @foreach ($announcement->images as $image)
-                                    <img src="{{ $image->getUrl(900,500) }}" class="swiper-slide"
+                                    <img src="{{ $image->getUrl(900, 500) }}" class="swiper-slide"
                                         alt="{{ $announcement->title }}" style="width: 100%;">
                                 @endforeach
                             </div>
@@ -51,19 +51,33 @@
                     </div>
                 </div>
                 <div class="card-body d-flex flex-column pt-1 pb-1">
-                    <h4 class="card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold">{{ $announcement->title }}
-                    </h4>
-                    <a class="h6 text-uppercase pt-2"
-                        href="/category/{{ $announcement->category->slug }}">{{ $announcement->category->name }}</a>
-                    <!--<div class="d-flex d-row align-items-center py-0 location-row mb-2">
-                            <i class="icon-location-pin pr-1"></i>
-                            <p class="my-0 location-text">${product.location}</p>
-                        </div>-->
+                    <div class="d-flex flex-row">
+                        <div class="d-flex flex-column">
+                            <h4 class="card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold">
+                                {{ $announcement->title }}
+                            </h4>
+                            <p class="pt-2">
+                                <a class="h6 text-uppercase" href="/category/{{ $announcement->category->slug }}">
+                                    @if (session()->get('locale') == 'it')
+                                        {{ $announcement->category->name_it }}
+                                    @else
+                                        {{ $announcement->category->name }}
+                                    @endif
+                                </a>
+                                @if ($announcement->place->name ?? '')
+                                    <span class="px-1 h6"> {{ __('global.inplace') }} </span>
+                                    <span class="h6">{{ $announcement->place->name ?? '' }}</span>
+                                @endif
+                            </p>
+                        </div>
+                        <p class="product-price align-self-end text-right mb-auto flex-grow-1">
+                            {{ $announcement->price }} €
+                        </p>
+                    </div>
                     <p class="card-text text-muted pt-3 slide-description flex-grow-1">
                         {{ $announcement->description }}
                     </p>
                     </p>
-                    <p class="product-price align-self-end text-right mb-auto p-2">{{ $announcement->price }} €</p>
                 </div>
             </div>
         </div>

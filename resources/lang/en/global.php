@@ -55,5 +55,6 @@ return [
     'no-results' => "There are no results for your query",
     'trash' => "Trashbin",
     'inplace' => "in",
+    'go' => "Go",
 
 ];

@@ -95,6 +95,7 @@ button:focus {
 }
 
 #notification-button {
+    position: relative;
     font-size: 20px;
     width: 40px;
     height: 40px;
@@ -431,6 +432,12 @@ a {
     object-fit: cover;
 }
 
+.modal-content .card-img-top {
+    border-radius: 25px;
+    height: 187.5px !important;
+    object-fit: cover;
+}
+
 
 #product-wrapper .listings-card {
     border: 0;
@@ -466,6 +473,11 @@ a {
 
 .listings-card .card-title {
     font-size: 16px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 
 #product-wrapper .listings-card .card-title {
@@ -474,6 +486,13 @@ a {
 
 .listings-card .product-price {
     font-size: 20px;
+    font-weight: bold;
+}
+
+#prodCol .product-price {
+    font-size: 2rem;
+    color: $faded;
+    line-height: 1;
     font-weight: bold;
 }
 
@@ -936,6 +955,17 @@ div.dropdown-multicol3>div.dropdown-col {
 }
 
 .text-desc {
+    line-height: 1.7 !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+
+.revcard .text-desc {
+    line-height: 1.5;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -944,7 +974,7 @@ div.dropdown-multicol3>div.dropdown-col {
     -webkit-box-orient: vertical;
 }
 
-.showtext {
+.revcard .showtext {
     display: block;
     overflow: visible;
     -webkit-line-clamp: none;
@@ -1069,4 +1099,159 @@ div.dz-default.dz-message {
     text-align: left;
     box-shadow: 0 0 transparent;
     transform: translateX(-1rem);
+}
+
+.modal-content .badge {
+    font-size: 80%;
+    background-color: $faded;
+}
+
+.redpr progress,
+/* All HTML5 progress enabled browsers */
+.redpr progress[role]
+
+/* polyfill */
+    {
+
+    /* Turns off styling - not usually needed, but good to know. */
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+
+    /* Needs to be in here for Safari polyfill so background images work as expected. */
+    background-size: auto;
+    height: 6px;
+
+
+}
+
+progress::-moz-progress-bar {
+    background-color: #d2d2d2;
+    border-radius: 25px;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #f2f2f2;
+    border-radius: 25px;
+}
+
+progress::-webkit-progress-value {
+    background-color: #d2d2d2;
+    border-radius: 25px;
+}
+
+progress[value^="0"]::-webkit-progress-value,
+progress[value^="0"]::-moz-progress-bar {
+    background-color: #d2d2d2;
+    border-radius: 25px;
+}
+
+
+
+progress[value^="1"]::-webkit-progress-value,
+progress[value^="2"]::-webkit-progress-value {
+    background-color: #b7fdd5;
+    border-radius: 25px;
+}
+
+progress[value^="1"]::-moz-progress-bar,
+progress[value^="2"]::-moz-progress-bar {
+    background-color: #b7fdd5;
+    border-radius: 25px;
+}
+
+
+progress[value^="3"]::-webkit-progress-value,
+progress[value^="4"]::-webkit-progress-value {
+    background-color: #fab581;
+    border-radius: 25px;
+}
+
+progress[value^="3"]::-moz-progress-bar,
+progress[value^="4"]::-moz-progress-bar {
+    background-color: #fab581;
+    border-radius: 25px;
+}
+
+progress[value^="5"]::-moz-progress-bar,
+progress[value^="6"]::-moz-progress-bar,
+progress[value^="7"]::-moz-progress-bar,
+progress[value^="8"]::-moz-progress-bar {
+    background-color: #f17d84;
+    border-radius: 25px;
+}
+
+progress[value^="5"]::-webkit-progress-value,
+progress[value^="6"]::-webkit-progress-value,
+progress[value^="7"]::-webkit-progress-value,
+progress[value^="8"]::-webkit-progress-value {
+    background-color: #f17d84;
+    border-radius: 25px;
+}
+
+progress[value^="9"]::-moz-progress-bar,
+progress[value="100"]::-moz-progress-bar {
+    background-color: #d2d2d2;
+    border-radius: 25px;
+}
+
+progress[value^="9"]::-webkit-progress-value,
+progress[value="100"]::-webkit-progress-value {
+    background-color: #d2d2d2;
+    border-radius: 25px;
+}
+
+
+
+progress[value^="110"]::-moz-progress-bar {
+    background-color: #d2d2d2 !important;
+    border-radius: 25px;
+}
+
+.wobile {
+    width: 100% !important;
+}
+
+@media (min-width: 768px) {
+    .revcard.modal-dialog {
+        max-width: 600px;
+        margin: 1.75rem auto;
+    }
+
+    .wobile {
+        width: 50% !important;
+    }
+}
+
+@media (max-width:767px) {
+    .revcard.modal-dialog {
+        width: 100vw;
+        margin: 0;
+        height: 100vh;
+    }
+
+    .revcard .warn-modal {
+        border-radius: 0;
+        border: 0 transparent;
+        height: 100vh;
+    }
+
+    .revcard .modal-body {
+        overflow-y: scroll;
+    }
+}
+
+.wrn.show {
+    z-index: 5000 !important;
+}
+
+.counter.counter-lg {
+    font-size: 10px;
+    background-color: $faded;
+    color: white;
+    padding: 2px 4px;
+    border-radius: 30px;
+    position: absolute;
+    top: -5px !important;
+    right: -5px;
 }

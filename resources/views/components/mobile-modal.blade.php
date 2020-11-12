@@ -43,7 +43,7 @@
                         <i class="icons icon-logout mx-3"></i>
                         <p class="m-0">{{ __('global.logout') }}</p>
                     </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    <form id="logout-form-mobile" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
                 @endguest

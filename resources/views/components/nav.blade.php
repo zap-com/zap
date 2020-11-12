@@ -58,7 +58,7 @@
                         <button id="notification-button" class="mr-0 mr-md-3 d-none d-md-block">
                             <i class="icon-bell large-icons"></i>
 
-                            <div class="small mt-n2">{{ App\Models\Announcement::toBeRevisedCount() }}</span>
+                            <span class="counter counter-lg">{{ App\Models\Announcement::toBeRevisedCount() }}</span>
                         </button>
                     </a>
                 @endif

@@ -38,7 +38,7 @@
                 <i class="icon-location-pin pr-1"></i>
                 {{-- <p class="my-0 location-text">{{ $location }}</p> --}}
             </div> -->
-            <p class="card-text text-muted mt-2 pt-0 slide-description flex-grow-1">
+            <p class="card-text text-muted mt-2 pt-0 slide-description flex-grow-1 text-desc">
                 {{ $out = strlen($ad->description) > 200 ? substr($ad->description, 0, 200) . '...' : $ad->description }}
             </p>
             <div class="info d-flex flex-row justify-content-between">

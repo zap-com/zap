@@ -41,7 +41,13 @@
                                 class="form-control @error('category_id') is-invalid @enderror">
                                 <option value="0" selected>{{ __('announcement.choose') }}</option>
                                 @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    <option value="{{ $category->id }}">
+                                        @if (session()->get('locale') == 'it')
+                                            {{ $category->name_it }}
+                                        @else
+                                            {{ $acategory->name }}
+                                        @endif
+                                    </option>
                                 @endforeach
                             </select>
                             @error('category_id')
@@ -69,17 +75,18 @@
                         </div>
                         <div class="form-group">
                             <label for="address-input">{{ __('announcement.place') }}</label>
-                            <input type="text" name="address-input" id="address-input" class="form-control @error('hiddenplace') is-invalid @enderror"
+                            <input type="text" name="address-input" id="address-input"
+                                class="form-control @error('hiddenplace') is-invalid @enderror"
                                 placeholder="{{ __('announcement.place-ph') }}">
-                                @error('hiddenplace')
+                            @error('hiddenplace')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                             <input type="hidden" id="hiddenplace" name="hiddenplace" value="">
-                           
+
                         </div>
-                        
+
                         {{-- <div class="form-group">
                             <label for="autocomplete"> Location/City/Address </label>
                             <input type="text" name="autocomplete" id="autocomplete" class="form-control"

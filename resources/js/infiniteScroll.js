@@ -13,11 +13,11 @@ const updateDom = data => {
     data.forEach(ad => {
         if (localStorage.getItem('locale') == 'it-IT') {
             var catName = ad.category.name_it
-            var inplace = 'a'
+            var inplace = ' a '
         }
         else {
             var catName = ad.category.name
-            var inplace = "in"
+            var inplace = " in "
         }
 
         if (!document.querySelector(`.s${ad.id}`)) {
@@ -42,7 +42,7 @@ const updateDom = data => {
             <p class="card-text text-muted mt-2 pt-0 slide-description flex-grow-1">${adDescription}</p>
             <div class="info ">
             <a class="mr-auto btn nobtn font-weight-bold" onClick="location.href='${ad.category.slug}'; event.preventDefault(); event.stopPropagation()">${catName}</a>
-                ${ad.place ? `<span class="px-1">${inplace}</span>` + '<p class="font-weight-bold btn nobtn">' + ad.place.name + '</p>' : ''}
+                ${ad.place ? `<span>${inplace}</span>` + '<p class="font-weight-bold btn nobtn">' + ad.place.name + '</p>' : ''}
                 <p class="product-price text-right mb-auto p-2 flex-grow-1" >${ad.price} €</p>
             </div>
         </div>`;
@@ -62,7 +62,7 @@ const updateDom = data => {
                 <p class="card-text text-muted mt-2 pt-0 slide-description flex-grow-1">${adDescription}</p>
                 <div class="info ">
                     <a class="mr-auto btn nobtn font-weight-bold" onClick="location.href='${ad.category.slug}'; event.preventDefault(); event.stopPropagation()">${catName}</a>
-                    ${ad.place ? `<span class="px-1">${inplace}</span>` + '<p class="font-weight-bold btn nobtn">' + ad.place.name + '</p>' : ''}
+                    ${ad.place ? `<span>${inplace}</span>` + '<p class="font-weight-bold btn nobtn">' + ad.place.name + '</p>' : ''}
                     <p class="product-price text-right mb-auto p-2 flex-grow-1" >${ad.price} €</p>
                 </div>
             </div>`;

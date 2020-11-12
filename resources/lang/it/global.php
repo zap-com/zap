@@ -54,4 +54,5 @@ return [
     'no-results' => "Non ci sono risultati per la tua ricerca",
     'trash' => "Cestino",
     'inplace' => "a",
+    'go' => "Vai",
 ];

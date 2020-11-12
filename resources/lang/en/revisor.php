@@ -12,6 +12,11 @@ return [
     'delete-message' => "Here you can restore or permanently delete the listings refused by moderators",
     'delete' => "Delete",
     'restore' => "Restore",
-    'empty-trash' => "The trashbin is empty"
+    'empty-trash' => "The trashbin is empty",
+    'adult' => "Adult",
+    'spoof' => "Spoof",
+    'medical' => "Medical",
+    'violence' => "Violence",
+    'racy' => "Racy",
 
 ];

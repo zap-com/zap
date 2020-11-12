@@ -91,3 +91,27 @@
         </div>
     </div>
 </div>
+
+<div id="price-modal" class="modal zap-modal sec-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog h-100" role="document">
+        <div class="modal-content h-100">
+            <div class="modal-header">
+                <h4>{{ __('global.price') }}</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body dropdown-multicol3 px-0 text-left">
+                <form action="/search" method="get" class="form-row px-3">
+                    <div class="col">
+                        <input type="text" name="min" class="form-control" placeholder="Min">
+                    </div>
+                    <div class="col">
+                        <input type="text" name="max" class="form-control" placeholder="Max">
+                    </div>
+                    <button class="btn b-btn" type="submit">{{ __('global.go') }}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

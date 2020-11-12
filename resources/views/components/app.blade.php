@@ -66,6 +66,13 @@
         @endif
     </div>
     <x-searchmodal />
+    @if ($revisor ?? '' === 1)
+        @if ($announcement)
+            @foreach ($announcement ?? '' as $announcement)
+                <x-warnmodal :ad='$announcement' />
+            @endforeach
+        @endif
+    @endif
     <x-footer />
 </body>
 

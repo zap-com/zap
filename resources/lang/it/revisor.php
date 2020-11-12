@@ -12,6 +12,11 @@ return [
     'delete-message' => "Qua puoi ripristinare o cancellare definitivamente gli annunci scartati dai revisori",
     'delete' => "Cancella",
     'restore' => "Ripristina",
-    'empty-trash' => "Il cestino è vuoto"
+    'empty-trash' => "Il cestino è vuoto",
+    'adult' => "Adulto",
+    'spoof' => "Parodia",
+    'medical' => "Medico",
+    'violence' => "Violento",
+    'racy' => "Volgare",
 
 ];

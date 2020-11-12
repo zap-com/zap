@@ -42,29 +42,28 @@
         </button>
 
         <div class="dropdown nav-dropdown">
-            <button class="btn alt-btn dropdown-toggle mr-3" type="button" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
+            <button class="btn alt-btn dropdown-toggle mr-3 d-none d-md-block" type="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
                 {{ __('global.price') }}
             </button>
             <div id="price-dropdown" class="dropdown-menu p-3" aria-labelledby="dropdownMenuButton">
-                <div class="form-group">
-                    <label for="formControlRange">{{ __('global.price') }}</label>
-                    <input type="range" class="form-control-range" id="formControlRange">
-                </div>
-                <div class="form-row">
-                    <form action="/search" method="get">
-                        <div class="col">
-                            <input type="text" name="min" class="form-control" placeholder="Min">
-                        </div>
-                        <div class="col">
-                            <input type="text" name="max" class="form-control" placeholder="Max">
-                        </div>
-                        <button type="submit">Vai</button>
-                    </form>
-
-                </div>
+                <form action="/search" method="get" class="form-row">
+                    <div class="col">
+                        <input type="text" name="min" class="form-control" placeholder="Min">
+                    </div>
+                    <div class="col">
+                        <input type="text" name="max" class="form-control" placeholder="Max">
+                    </div>
+                    <button class="btn b-btn" type="submit">{{ __('global.go') }}</button>
+                </form>
             </div>
         </div>
+
+        <button class="btn alt-btn dropdown-toggle mr-3 d-block d-md-none" type="button" data-toggle="modal"
+            data-target="#price-modal">
+            {{ __('global.price') }}
+        </button>
+
         <div class="dropdown nav-dropdown">
 
             <button class="btn alt-btn dropdown-toggle mr-3 d-none d-md-block" type="button" data-toggle="dropdown"

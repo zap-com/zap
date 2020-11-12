@@ -113,8 +113,10 @@ fetch('/announcement/json').then(function (response) {
 
     if (localStorage.getItem('locale') == 'it-IT') {
       var catName = product.category.name_it;
+      var inplace = " a ";
     } else {
       var catName = product.category.name;
+      var inplace = " in ";
     }
 
     var prodDescription = truncateString(product.description, 120);
@@ -137,7 +139,7 @@ fetch('/announcement/json').then(function (response) {
 
     ;
     trendCard.classList.add('d-flex', 'card', 'product-card', 'swiper-slide', 'mb-0', 'h-100');
-    trendCard.innerHTML = "\n                <img src=\"".concat(prodImage, "\" class=\"card-img-top px-1 pt-1 pb-0\" alt=\"").concat(prodTitle, "\">\n        <div class=\"card-body pt-1 px-2\">\n          <h5 class=\"p font-weight-bold card-title slide-title pt-1 pb-0 mb-0\">").concat(prodTitle, "</h5>\n          <button type=\"button\"\n                    onClick=\"location.href='/category/").concat(product.category.slug, "'; event.preventDefault(); event.stopPropagation()\"\n                    class=\"nobtn\">").concat(catName, "</button>\n          <!--<div class=\"d-flex d-row align-items-center py-0 location-row mb-2\">\n            <i class=\"icon-location-pin pr-1\"></i>\n            <p class=\"my-0 location-text\">{product.location}</p>\n          </div>-->\n          <p class=\"card-text text-muted pt-0 slide-description\">").concat(prodDescription, "\n          </p >\n        </div >\n            <p class=\"product-price align-self-end text-right mb-0 p-2\">").concat(prodPrice, "</p>\n        ");
+    trendCard.innerHTML = "\n                <img src=\"".concat(prodImage, "\" class=\"card-img-top px-1 pt-1 pb-0\" alt=\"").concat(prodTitle, "\">\n        <div class=\"card-body pt-1 px-2\">\n          <h5 class=\"p font-weight-bold card-title slide-title pt-1 pb-0 mb-0\">").concat(prodTitle, "</h5>\n          <button type=\"button\"\n                    onClick=\"location.href='/category/").concat(product.category.slug, "'; event.preventDefault(); event.stopPropagation()\"\n                    class=\"btn nobtn\">").concat(catName, "</button>\n                    ").concat(product.place ? "<span>".concat(inplace, "</span>") + '<p class="btn nobtn">' + product.place.name + '</p>' : '', "\n          <!--<div class=\"d-flex d-row align-items-center py-0 location-row mb-2\">\n            <i class=\"icon-location-pin pr-1\"></i>\n            <p class=\"my-0 location-text\">{product.location}</p>\n          </div>-->\n          <p class=\"card-text text-muted pt-0 slide-description\">").concat(prodDescription, "\n          </p >\n        </div >\n            <p class=\"product-price align-self-end text-right mb-0 p-2\">").concat(prodPrice, "</p>\n        ");
     trendingWrapper.appendChild(trendCard);
   });
   var trendingSwiper = new Swiper('#trending-slider', {
