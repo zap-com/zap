@@ -131,7 +131,6 @@
                 </button>
             </div>
             <div class="modal-body">
-                ...
                 @foreach ($ad->images as $image)
 
                     @if ($image->labels)
