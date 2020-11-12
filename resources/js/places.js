@@ -26,13 +26,6 @@ var placesAutocomplete = places({
     container: document.querySelector("#address-input")
 });
 
-var pl_2 = places({
-    appId: "plJEYXAMRTHF",
-    apiKey: "c36ed29d68decfe7547d4897d1d9c568",
-    language: "it",
-    container: document.querySelector("#addressinputmobile")
-});
-
 placesAutocomplete.on("change", e => {
 
     let json = {
@@ -45,6 +38,15 @@ placesAutocomplete.on("change", e => {
     }
     document.getElementById("hiddenplace").value = JSON.stringify(json)
 });
+
+var pl_2 = places({
+    appId: "plJEYXAMRTHF",
+    apiKey: "c36ed29d68decfe7547d4897d1d9c568",
+    language: "it",
+    container: document.querySelector("#addressinputmobile")
+});
+
+
 
 pl_2.on("change", e => {
 
