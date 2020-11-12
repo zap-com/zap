@@ -90,13 +90,13 @@
             @endguest
 
             @if (session()->get('locale') == 'en')
-                <button onclick="location.href='{{ route('locale', 'it') }}'" id="notification-button"
+                <button onclick="location.href='{{ route('locale', 'it') }}'; localStorage.setItem('locale','it-IT')" id="notification-button"
                     class="d-none d-md-flex flex-column justify-content-center"
                     title="{{ __('global.switch-italian') }}">
                     <img src="{{ asset('icons/italian.svg') }}">
                 </button>
             @else
-                <button onclick="location.href='{{ route('locale', 'en') }}'" id="notification-button"
+                <button onclick="location.href='{{ route('locale', 'en') }}'; localStorage.setItem('locale','en-GB')" id="notification-button"
                     class="d-none d-md-flex flex-column justify-content-center"
                     title="{{ __('global.switch-english') }}">
                     <img src="{{ asset('icons/english.svg') }}">

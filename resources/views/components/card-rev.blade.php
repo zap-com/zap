@@ -66,13 +66,17 @@
                     more</button>
             </p>
 
-            <div class="info d-flex flex-row justify-content-between">
+        <div class="info d-flex flex-row {{$ad->problems() > 0 ? "justify-content-between" : "justify-content-end"}}">
+
+                @if ($ad->problems() > 0 )
                 <button onClick="event.preventDefault()" type="button" class="nobtn text-danger align-self-end"
-                    data-toggle="modal" data-target="#warn-modal-{{ $ad->id }}" title="{{ __('revisor.learnmore') }}">
-                    <span class="d-flex align-items-middle"><i class="icon-exclamation large-icons pr-2"></i> {{$ad->problems()}}
-                        {{ __('revisor.problem') }} 
-                    </span>
-                </button>
+                data-toggle="modal" data-target="#warn-modal-{{ $ad->id }}" title="{{ __('revisor.learnmore') }}">
+                <span class="d-flex align-items-middle"><i class="icon-exclamation large-icons pr-2"></i> {{$ad->problems()}}
+                    {{ __('revisor.problem') }} 
+                </span>
+            </button>
+                @endif
+                
 
 
 

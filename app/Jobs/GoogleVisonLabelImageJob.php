@@ -55,6 +55,9 @@ class GoogleVisonLabelImageJob implements ShouldQueue
         $violence = $safe->getViolence();
         $racy = $safe->getRacy();
 
+
+        // $likelihoodName = ['UNKNOWN', 'VERY_UNLIKELY', 'UNLIKELY',
+        // 'POSSIBLE', 'LIKELY', 'VERY_LIKELY'];
         $likeliHoodName = ['1', '2','3','4','5','6'];
 
         $i->adult = $likeliHoodName[$adult];

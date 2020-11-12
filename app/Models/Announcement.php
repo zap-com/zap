@@ -141,6 +141,8 @@ class Announcement extends Model
             }
         });
 
+       
+
        $p = $coll->filter(function($e){
             return $e >= 3;
         });
