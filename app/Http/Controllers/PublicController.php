@@ -72,8 +72,14 @@ class PublicController extends Controller
 
         $q = $req->input('q');
         $categoryId = $req->input('cat');
+        $min = $req->input('min');
+        $max = $req->input('max');
         
 
+        if($min && $max){
+            $announcements = Announcement::where('price','>',$min)->where('price','<',$max)->where('status_id', 2)->orderby('created_at','desc')->get();
+            return view('announcement.index', compact('announcements'));
+        }
         session()->put('q', $q);
         session()->put('categoryId', $categoryId);
 

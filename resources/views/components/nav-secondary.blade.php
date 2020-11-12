@@ -52,12 +52,16 @@
                     <input type="range" class="form-control-range" id="formControlRange">
                 </div>
                 <div class="form-row">
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Min">
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Max">
-                    </div>
+                    <form action="/search" method="get">
+                        <div class="col">
+                            <input type="text" name="min" class="form-control" placeholder="Min">
+                        </div>
+                        <div class="col">
+                            <input type="text" name="max" class="form-control" placeholder="Max">
+                        </div>
+                        <button type="submit">Vai</button>
+                    </form>
+
                 </div>
             </div>
         </div>
