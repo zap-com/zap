@@ -1,5 +1,7 @@
 @props(['ad'])
 
+
+
 <a id="{{ $ad->id }}" href="{{ route('announcement.show', $ad) }}">
     <div class="d-flex flex-column flex-md-row card listings-card w-100 my-3 p-1">
         <div class="small-gallery {{ 'small-gallery-' . $ad->id }} swiper-container card-img-top"
@@ -64,13 +66,17 @@
                     more</button>
             </p>
 
-            <div class="info d-flex flex-row justify-content-between">
+        <div class="info d-flex flex-row {{$ad->problems() > 0 ? "justify-content-between" : "justify-content-end"}}">
+
+                @if ($ad->problems() > 0 )
                 <button onClick="event.preventDefault()" type="button" class="nobtn text-danger align-self-end"
-                    data-toggle="modal" data-target="#warn-modal-{{ $ad->id }}" title="{{ __('revisor.learnmore') }}">
-                    <span class="d-flex align-items-middle"><i class="icon-exclamation large-icons pr-2"></i> 2
-                        {{ __('revisor.problem') }}
-                    </span>
-                </button>
+                data-toggle="modal" data-target="#warn-modal-{{ $ad->id }}" title="{{ __('revisor.learnmore') }}">
+                <span class="d-flex align-items-middle"><i class="icon-exclamation large-icons pr-2"></i> {{$ad->problems()}}
+                    {{ __('revisor.problem') }} 
+                </span>
+            </button>
+                @endif
+                
 
 
 
@@ -78,11 +84,11 @@
                     <div class="d-flex flex-row">
                         <form action="{{ route('revisor.delete', $ad) }}" method="POST">
                             @csrf
-                            <button class='btn b-btn mr-1 text-white' type='submit'>Delete</button>
+                            <button class='btn b-btn mr-1 text-white' type='submit'>{{ __('revisor.delete') }}</button>
                         </form>
                         <form action="{{ route('revisor.restore', $ad) }}" method="POST">
                             @csrf
-                            <button class='btn alt-btn' type='submit'>Restore</button>
+                            <button class='btn alt-btn' type='submit'>{{ __('revisor.restore') }}</button>
                         </form>
 
 

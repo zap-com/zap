@@ -17,7 +17,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center my-5">
-                    <h1>Non ci sono annunci da revisionare</h1>
+                    <h1>{{__('revisor.no-ads')}}</h1>
                 </div>
             </div>
         </div>
@@ -26,7 +26,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center my-5">
-                    <h1>Il cestino è vuoto</h1>
+                    <h1>{{__('revisor.empty-trash')}}</h1>
                 </div>
             </div>
         </div>

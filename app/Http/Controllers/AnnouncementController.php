@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\AnnouncementRequest;
+use App\Jobs\GoogleVisonLabelImageJob;
 
 class AnnouncementController extends Controller
 {
@@ -22,7 +23,7 @@ class AnnouncementController extends Controller
     public function index(Request $request)
     {
 
-        $announcements = Announcement::where('status_id', 2)->with('category')->orderBy('created_at', 'desc')->paginate(16);
+        $announcements = Announcement::where('status_id', 2)->with(['category','place'])->orderBy('created_at', 'desc')->paginate(16);
         $announcements->map(function ($el) {
             return $el->images = $el->images;
         });
@@ -47,7 +48,7 @@ class AnnouncementController extends Controller
 
     public function json()
     {
-        $announcements = Announcement::where('status_id', 2)->with('category')->orderBy('visit', 'desc')->get()->take(8);
+        $announcements = Announcement::where('status_id', 2)->with(['category','place'])->orderBy('visit', 'desc')->get()->take(8);
 
         $announcements->map(function ($el) {
             return $el->images = $el->images;
@@ -198,13 +199,6 @@ class AnnouncementController extends Controller
             $newFileName =  "/public/announcements/{$a->id}/{$fileName}";
             Storage::move($image, $newFileName);
 
-            // ResizeImageJob::dispatch($newFileName,
-            // 200,
-            // 150);
-            // ResizeImageJob::dispatch($newFileName,
-            // 800,
-            // 800);
-
             dispatch(new ResizeImageJob(
                 $newFileName,
                 200,
@@ -219,6 +213,8 @@ class AnnouncementController extends Controller
             $i->file =  "announcements/{$a->id}/{$fileName}";
             $i->announcement_id = $a->id;
             $i->save();
+            
+            dispatch(new GoogleVisonLabelImageJob($i->id));
         }
 
         File::deleteDirectory(storage_path("/app/public/temp/{$secret}"));

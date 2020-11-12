@@ -44,7 +44,7 @@ class User extends Authenticatable
     ];
 
     //Relations
-    public function announcents()
+    public function announcements()
     {
         return $this->hasMany(Announcement::class);
     }

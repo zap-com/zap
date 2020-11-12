@@ -22,7 +22,7 @@ class Announcement extends Model
     use Searchable;
 
 
-    protected $fillable = ['title', 'description', 'price', 'user_id', 'category_id', 'status_id', 'place_id', 'image_id' ];
+    protected $fillable = ['title', 'description', 'price', 'user_id', 'category_id', 'status_id', 'place_id', 'image_id'];
 
     //RELAZIONI
     public function user()
@@ -117,6 +117,39 @@ class Announcement extends Model
     static public function toBeRevisedCount()
     {
         return self::where('status_id', 1)->count();
+    }
+
+    public function problems()
+    {
+      
+
+        $coll = collect([]);
+
+        $this->images->map(function ($e) use ($coll) {
+    
+            switch ($e) {
+                case $e->adult > 0:
+                    $coll->push($e->adult);
+                case $e->spoof > 0:
+                    $coll->push($e->spoof);
+                case $e->medical > 0:
+                    $coll->push($e->medical);
+                case $e->violence > 0:
+                    $coll->push($e->violence);
+                case $e->racy > 0:
+                    $coll->push($e->racy);
+            }
+        });
+
+       
+
+       $p = $coll->filter(function($e){
+            return $e >= 3;
+        });
+
+
+
+        return $p->count();
     }
 
 
