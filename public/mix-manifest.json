@@ -7,5 +7,6 @@
     "/js/globalslider.js": "/js/globalslider.js",
     "/js/infiniteScroll.js": "/js/infiniteScroll.js",
     "/js/places.js": "/js/places.js",
-    "/js/preload.js": "/js/preload.js"
+    "/js/preload.js": "/js/preload.js",
+    "/js/price.js": "/js/price.js"
 }

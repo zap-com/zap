@@ -23,11 +23,11 @@
         <div class="dropdown nav-dropdown">
             <button class="btn b-btn c-btn dropdown-toggle mr-3" type="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                Prezzo
+                {{ __('global.price') }}
             </button>
             <div id="price-dropdown" class="dropdown-menu p-3" aria-labelledby="dropdownMenuButton">
                 <div class="form-group">
-                    <label for="formControlRange">Prezzo</label>
+                    <label for="formControlRange">{{ __('global.price') }}</label>
                     <input type="range" class="form-control-range" id="formControlRange">
                 </div>
                 <div class="form-row">
@@ -47,14 +47,16 @@
                 Località
             </button>
             <div id="place-dropdown" class="dropdown-menu p-3" aria-labelledby="dropdownMenuButton">
-            <form action="{{route('search.locality')}}" method="GET">
-                @csrf
+                <form action="{{ route('search.locality') }}" method="GET">
+                    @csrf
                     <div class="form-group">
+                        <div class="d-flex flex-row">
+                            <input type="hidden" id="hiddenplace" name="hiddenplace" value="">
+                            <input type="text" id="address-input" name="address-input" class="form-control"
+                                placeholder="Dove vuoi cercare?">
 
-                        <input type="text" id="address-input" name="address-input" class="form-control"
-                            placeholder="Dove vuoi cercare?">
-                        <input type="hidden" id="hiddenplace" name="hiddenplace" value="">
-                        <button type="submit">Cerca</button>
+                            <button class="btn b-btn ml-3" type="submit">Cerca</button>
+                        </div>
                     </div>
                 </form>
 

@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -168,7 +168,7 @@ fetch('/announcement/json').then(function (response) {
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /*!********************************************!*\
   !*** multi ./resources/js/cardCarousel.js ***!
   \********************************************/

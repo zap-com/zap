@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1064,7 +1064,7 @@ window.addEventListener("scroll", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_
 
 /***/ }),
 
-/***/ 7:
+/***/ 8:
 /*!**********************************************!*\
   !*** multi ./resources/js/infiniteScroll.js ***!
   \**********************************************/

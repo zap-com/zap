@@ -60,7 +60,9 @@
 
     </div>
     <x-footer />
+    @if ($sticky ?? '' === 1)
+        <script src="{{ asset('js/price.js') }}"></script>
+    @endif
 </body>
-
 
 </html>
