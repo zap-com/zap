@@ -84,11 +84,11 @@
                     <div class="d-flex flex-row">
                         <form action="{{ route('revisor.delete', $ad) }}" method="POST">
                             @csrf
-                            <button class='btn b-btn mr-1 text-white' type='submit'>Delete</button>
+                            <button class='btn b-btn mr-1 text-white' type='submit'>{{ __('revisor.delete') }}</button>
                         </form>
                         <form action="{{ route('revisor.restore', $ad) }}" method="POST">
                             @csrf
-                            <button class='btn alt-btn' type='submit'>Restore</button>
+                            <button class='btn alt-btn' type='submit'>{{ __('revisor.restore') }}</button>
                         </form>
 
 
