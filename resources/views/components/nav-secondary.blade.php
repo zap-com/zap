@@ -69,9 +69,9 @@
             </button>
             <div id="time-dropdown" class="dropdown-menu pt-3 pb-0" aria-labelledby="dropdownMenuButton">
                 <div class="form-group pb-0">
-                    <a class="dropdown-item py-3" href="">Oggi</a>
-                    <a class="dropdown-item py-3" href="">Ultima settimana</a>
-                    <a class="dropdown-item py-3" href="">Ultimo mese</a>
+                <a class="dropdown-item py-3" href="{{route('search', ['data' => now()])}}">Oggi</a>
+                    <a class="dropdown-item py-3" href="{{route('search', ['data' => \Carbon\Carbon::today()->subDays(7)])}}">Ultima settimana</a>
+                    <a class="dropdown-item py-3" href="{{route('search', ['data' => \Carbon\Carbon::today()->subDays(30)])}}">Ultimo mese</a>
                 </div>
             </div>
         </div>
