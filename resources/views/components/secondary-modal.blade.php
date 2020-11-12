@@ -67,3 +67,27 @@
         </div>
     </div>
 </div>
+
+<div id="date-modal" class="modal zap-modal sec-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog h-100" role="document">
+        <div class="modal-content h-100">
+            <div class="modal-header">
+                <h4>{{ __('global.date') }}</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body dropdown-multicol3 px-0 text-left">
+                <div class="form-group pb-0">
+                    <a class="dropdown-item py-3"
+                        href="{{ route('search', ['data' => now()]) }}">{{ __('global.today') }}</a>
+                    <a class="dropdown-item py-3"
+                        href="{{ route('search', ['data' => \Carbon\Carbon::today()->subDays(7)]) }}">{{ __('global.last-week') }}</a>
+                    <a class="dropdown-item py-3"
+                        href="{{ route('search', ['data' => \Carbon\Carbon::today()->subDays(30)]) }}">{{ __('global.last-month') }}</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

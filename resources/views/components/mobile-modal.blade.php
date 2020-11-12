@@ -47,7 +47,22 @@
                         @csrf
                     </form>
                 @endguest
+                @if (session()->get('locale') == 'en')
+                    <button
+                        onclick="location.href='{{ route('locale', 'it') }}'; localStorage.setItem('locale','it-IT')"
+                        id="notification-button" class="d-flex flex-column justify-content-center ml-3"
+                        title="{{ __('global.switch-italian') }}">
+                        <img src="{{ asset('icons/italian.svg') }}">
+                    </button>
+                @else
+                    <button
+                        onclick="location.href='{{ route('locale', 'en') }}'; localStorage.setItem('locale','en-GB')"
+                        id="notification-button" class="d-flex flex-column justify-content-center ml-3"
+                        title="{{ __('global.switch-english') }}">
+                        <img src="{{ asset('icons/english.svg') }}">
+                    </button>
 
+                @endif
                 <p id="modalcta" class="text-center w-100 px-3">{{ __('global.modal-cta') }}</p>
                 <lottie-player src="{{ asset('images/happy.json') }}" class="mx-auto" background="transparent" speed="1"
                     loop autoplay>

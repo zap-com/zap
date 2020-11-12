@@ -65,6 +65,7 @@
             <script src="{{ asset('js/places.js') }}"></script>
         @endif
     </div>
+    <x-searchmodal />
     <x-footer />
 </body>
 

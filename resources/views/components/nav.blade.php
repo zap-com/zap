@@ -11,8 +11,13 @@
                     <input id="searchbar" class="form-control mr-sm-2 flex-grow-1" type="search"
                         placeholder="{{ __('global.search') }}" name="q" aria-label="Search" autocomplete="off">
                     <div class="btn-group">
-                        <button type="button" class="nobtn text-muted dropdown-toggle" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false" name="c">
+                        <button id="catsearch" type="button" class="nobtn text-muted dropdown-toggle d-none d-md-block"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="c">
+                            {{ __('global.all-categories') }}
+                        </button>
+                        <button id="catsearchmobile" type="button"
+                            class="nobtn text-muted dropdown-toggle d-block d-md-none" data-toggle="modal"
+                            data-target="#search-modal">
                             {{ __('global.all-categories') }}
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">

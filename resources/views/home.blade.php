@@ -64,8 +64,8 @@
         <div class="row justify-content-between mx-0">
             <h2>{{ __('home.trending') }}</h2>
             <div class="dropdown">
-                <button class="b-btn dropdown-toggle dropdown-menu-right px-3" type="button" id="dMenuButton"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="b-btn dropdown-toggle dropdown-menu-right px-3 d-none d-md-block" type="button"
+                    id="dMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{ __('home.where') }}
                 </button>
                 <div id="regionDropdown" class="dropdown-menu dropdown-menu-right bg-white"
@@ -97,6 +97,10 @@
                     <a class="dropdown-item" href="{{ route('region', ['regione' => 'veneto']) }}">Veneto</a>
                 </div>
             </div>
+            <button class="b-btn dropdown-toggle dropdown-menu-right px-3 d-block d-md-none" type="button"
+                id="dMenuButton" data-toggle="modal" data-target="#region-modal">
+                {{ __('home.where') }}
+            </button>
         </div>
         <div class="row">
             <div class="col-12">
@@ -117,4 +121,5 @@
     <script src="https://cdn.jsdelivr.net/npm/truncate.js@1.1.2/truncate.min.js"></script>
     <script src="{{ asset('js/cardCarousel.js') }}"></script>
     <script src="{{ asset('js/catCarousel.js') }}"></script>
+    <x-regionmodal />
 </x-app>

@@ -88,18 +88,25 @@
             {{ __('global.place') }}
         </button>
         <div class="dropdown nav-dropdown">
-            <button class="btn alt-btn dropdown-toggle mr-3" type="button" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
+            <button class="btn alt-btn dropdown-toggle mr-3 d-none d-md-block" type="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
                 {{ __('global.date') }}
             </button>
             <div id="time-dropdown" class="dropdown-menu pt-3 pb-0" aria-labelledby="dropdownMenuButton">
                 <div class="form-group pb-0">
-                <a class="dropdown-item py-3" href="{{route('search', ['data' => now()])}}">{{ __('global.today') }}</a>
-                    <a class="dropdown-item py-3" href="{{route('search', ['data' => \Carbon\Carbon::today()->subDays(7)])}}">{{ __('global.last-week') }}</a>
-                    <a class="dropdown-item py-3" href="{{route('search', ['data' => \Carbon\Carbon::today()->subDays(30)])}}">{{ __('global.last-month') }}</a>
-                   
+                    <a class="dropdown-item py-3"
+                        href="{{ route('search', ['data' => now()]) }}">{{ __('global.today') }}</a>
+                    <a class="dropdown-item py-3"
+                        href="{{ route('search', ['data' => \Carbon\Carbon::today()->subDays(7)]) }}">{{ __('global.last-week') }}</a>
+                    <a class="dropdown-item py-3"
+                        href="{{ route('search', ['data' => \Carbon\Carbon::today()->subDays(30)]) }}">{{ __('global.last-month') }}</a>
+
                 </div>
             </div>
         </div>
+        <button class="btn alt-btn dropdown-toggle mr-3 d-block d-md-none" type="button" data-toggle="modal"
+            data-target="#date-modal">
+            {{ __('global.date') }}
+        </button>
     </div>
 </div>
