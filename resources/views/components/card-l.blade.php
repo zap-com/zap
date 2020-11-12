@@ -32,7 +32,6 @@
             <h5 class="card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold">
                 {{ $ad->title }}
             </h5>
-            <p class="small">{{ $ad->place->name ?? '' }}</p>
 
             <!--
                 <div class="d-flex d-row align-items-center py-0 location-row">
@@ -40,7 +39,7 @@
                 {{-- <p class="my-0 location-text">{{ $location }}</p> --}}
             </div> -->
             <p class="card-text text-muted mt-2 pt-0 slide-description flex-grow-1">
-                {{ substr($ad->description, 0, 200) }}...
+                {{ $out = strlen($ad->description) > 200 ? substr($ad->description, 0, 200) . '...' : $ad->description }}
             </p>
             <div class="info d-flex flex-row justify-content-between">
                 <button type="button"
@@ -52,7 +51,11 @@
                         {{ $ad->category->name }}
                     @endif
                 </button>
-                <p class="product-price text-right mb-auto p-2">{{ $ad->price }} €</p>
+                @if ($ad->place->name ?? '')
+                    <span class="px-1"> {{ __('global.inplace') }} </span>
+                    <button class="font-weight-bold btn nobtn">{{ $ad->place->name ?? '' }}</button>
+                @endif
+                <p class="product-price text-right mb-auto p-2 flex-grow-1">{{ $ad->price }} €</p>
             </div>
         </div>
     </div>

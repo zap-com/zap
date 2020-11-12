@@ -68,8 +68,10 @@
             </div> -->
             <p class="card-text text-muted mt-2 pt-0 slide-description flex-grow-1 mb-0">
                 <span class="text-desc">{{ $ad->description }}</span>
-                <button onClick="event.preventDefault(); event.stopPropagation();" class="nobtn myBtn">Read
-                    more</button>
+                @if (strlen($ad->description) > 200)
+                    <button onClick="event.preventDefault(); event.stopPropagation();"
+                        class="nobtn myBtn">{{ __('revisor.readmore') }}</button>
+                @endif
             </p>
 
             <div

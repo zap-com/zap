@@ -54,5 +54,6 @@ return [
     'modal-cta' => "Selling your products has never been easier! What are you waiting for?",
     'no-results' => "There are no results for your query",
     'trash' => "Trashbin",
+    'inplace' => "in",
 
 ];

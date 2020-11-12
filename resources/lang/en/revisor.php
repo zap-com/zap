@@ -7,7 +7,11 @@ return [
     'created' => "created on",
     'modified' => "updated on",
     'problem' => "problems",
-    'learnmore' => "Click to learn more"
-
+    'learnmore' => "Click to learn more",
+    'readmore' => "Read more",
+    'delete-message' => "Here you can restore or permanently delete the listings refused by moderators",
+    'delete' => "Delete",
+    'restore' => "Restore",
+    'empty-trash' => "The trashbin is empty"
 
 ];

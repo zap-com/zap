@@ -53,5 +53,5 @@ return [
     'modal-cta' => "Vendere i tuoi prodotti non è mai stato così facile! Che cosa stai aspettando?",
     'no-results' => "Non ci sono risultati per la tua ricerca",
     'trash' => "Cestino",
-
+    'inplace' => "a",
 ];
