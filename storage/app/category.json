@@ -34,7 +34,7 @@
         "icon": "./icons/sport.svg"
     },
     {
-        "name": "TV, Audio and Cameras",
+        "name": "TV and Audio",
         "name_it": "Tv e audio",
         "icon": "./icons/tv.svg"
     },
@@ -44,7 +44,7 @@
         "icon": "./icons/bike.svg"
     },
     {
-        "name": "Videogames and Consoles",
+        "name": "Games and Consoles",
         "name_it": "Videogiochi e console",
         "icon": "./icons/games.svg"
     },
@@ -59,7 +59,7 @@
         "icon": "./icons/appliances.svg"
     },
     {
-        "name": "Books, Movies and Music",
+        "name": "Books, Movies, Music",
         "name_it": "Libri, Film e Musica",
         "icon": "./icons/books.svg"
     },

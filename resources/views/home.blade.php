@@ -6,6 +6,7 @@
                 <div id="category-slider" class="swiper-container py-3">
                     <div id="category-wrapper" class="swiper-wrapper">
                     </div>
+                    <div class="swiper-scrollbar d-flex d-md-none"></div>
                 </div>
                 <div class="swiper-button-prev cat-prev d-none d-md-flex"></div>
                 <div class="swiper-button-next cat-next d-none d-md-flex"></div>
@@ -69,27 +70,31 @@
                 </button>
                 <div id="regionDropdown" class="dropdown-menu dropdown-menu-right bg-white"
                     aria-labelledby="dMenuButton">
-                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'abruzzo']) }}">Abruzzo</a>
-                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'basilicata']) }}">Basilicata</a>
-                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'calabria']) }}">Calabria</a>
-                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'campania']) }}">Campania</a>
-                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'emilia-romagna']) }}">Emilia-Romagna</a>
-                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'friuli-venezia-giulia']) }}">Friuli-Venezia Giulia</a>
-                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'lazio']) }}">Lazio</a>
-                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'liguria']) }}">Liguria</a>
-                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'lombardia']) }}">Lombardia</a>
-                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'marche']) }}">Marche</a>
-                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'molise']) }}">Molise</a>
-                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'piemonte']) }}">Piemonte</a>
-                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'puglia']) }}">Puglia</a>
-                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'sardegna']) }}">Sardegna</a>
-                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'sicilia']) }}">Sicilia</a>
-                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'toscana']) }}">Toscana</a>
-                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'trentino-alto-adige-sudtirol']) }}">Trentino-Alto
+                    <a class="dropdown-item" href="{{ route('region', ['regione' => 'abruzzo']) }}">Abruzzo</a>
+                    <a class="dropdown-item" href="{{ route('region', ['regione' => 'basilicata']) }}">Basilicata</a>
+                    <a class="dropdown-item" href="{{ route('region', ['regione' => 'calabria']) }}">Calabria</a>
+                    <a class="dropdown-item" href="{{ route('region', ['regione' => 'campania']) }}">Campania</a>
+                    <a class="dropdown-item"
+                        href="{{ route('region', ['regione' => 'emilia-romagna']) }}">Emilia-Romagna</a>
+                    <a class="dropdown-item"
+                        href="{{ route('region', ['regione' => 'friuli-venezia-giulia']) }}">Friuli-Venezia Giulia</a>
+                    <a class="dropdown-item" href="{{ route('region', ['regione' => 'lazio']) }}">Lazio</a>
+                    <a class="dropdown-item" href="{{ route('region', ['regione' => 'liguria']) }}">Liguria</a>
+                    <a class="dropdown-item" href="{{ route('region', ['regione' => 'lombardia']) }}">Lombardia</a>
+                    <a class="dropdown-item" href="{{ route('region', ['regione' => 'marche']) }}">Marche</a>
+                    <a class="dropdown-item" href="{{ route('region', ['regione' => 'molise']) }}">Molise</a>
+                    <a class="dropdown-item" href="{{ route('region', ['regione' => 'piemonte']) }}">Piemonte</a>
+                    <a class="dropdown-item" href="{{ route('region', ['regione' => 'puglia']) }}">Puglia</a>
+                    <a class="dropdown-item" href="{{ route('region', ['regione' => 'sardegna']) }}">Sardegna</a>
+                    <a class="dropdown-item" href="{{ route('region', ['regione' => 'sicilia']) }}">Sicilia</a>
+                    <a class="dropdown-item" href="{{ route('region', ['regione' => 'toscana']) }}">Toscana</a>
+                    <a class="dropdown-item"
+                        href="{{ route('region', ['regione' => 'trentino-alto-adige-sudtirol']) }}">Trentino-Alto
                         Adige</a>
-                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'umbria']) }}">Umbria</a>
-                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'valle-d-aosta-vallee-d-aoste']) }}">Valle d'Aosta</a>
-                    <a class="dropdown-item" href="{{ route('region',['regione'=> 'veneto']) }}">Veneto</a>
+                    <a class="dropdown-item" href="{{ route('region', ['regione' => 'umbria']) }}">Umbria</a>
+                    <a class="dropdown-item"
+                        href="{{ route('region', ['regione' => 'valle-d-aosta-vallee-d-aoste']) }}">Valle d'Aosta</a>
+                    <a class="dropdown-item" href="{{ route('region', ['regione' => 'veneto']) }}">Veneto</a>
                 </div>
             </div>
         </div>
@@ -98,9 +103,10 @@
                 <div id="trending-slider" class="swiper-container py-3">
                     <div id="trending-wrapper" class="swiper-wrapper">
                     </div>
+                    <div class="swiper-scrollbar d-flex d-md-none"></div>
                 </div>
-                <div class="swiper-button-prev trend-prev"></div>
-                <div class="swiper-button-next trend-next"></div>
+                <div class="swiper-button-prev trend-prev d-none d-md-flex"></div>
+                <div class="swiper-button-next trend-next d-none d-md-flex"></div>
             </div>
         </div>
     </section>

@@ -39,7 +39,13 @@
                         {{ __('global.in') }}
                         <button type="button"
                             onClick="location.href='{{ route('category.index', $ad->category) }}'; event.preventDefault(); event.stopPropagation()"
-                            class="nobtn font-weight-bold">{{ $ad->category->name }}</button>,
+                            class="nobtn font-weight-bold">
+                            @if (session()->get('locale') == 'it')
+                                {{ $ad->category->name_it }}
+                            @else
+                                {{ $ad->category->name }}
+                            @endif
+                        </button>,
                         @if ($ad->created_at >= $ad->updated_at)
                             {{ __('revisor.created') }}
                             {{ $ad->created_at }}
@@ -136,19 +142,24 @@
                             <div class="tags">
 
                                 <label for="adult">Adult</label>
-                                <progress id="adult" value="{{$image->adult}}" max="6"> {{($image->adult * 100) /6 }} </progress>
+                                <progress id="adult" value="{{ $image->adult }}" max="6">
+                                    {{ ($image->adult * 100) / 6 }} </progress>
 
                                 <label for="spoof">Spoof</label>
-                                <progress id="spoof" value="{{$image->spoof}}" max="6"> {{($image->spoof * 100) /6 }}</progress>
+                                <progress id="spoof" value="{{ $image->spoof }}" max="6">
+                                    {{ ($image->spoof * 100) / 6 }}</progress>
 
                                 <label for="medical">Medical</label>
-                                <progress id="medical" value="{{$image->medical}}" max="6"> {{($image->medical * 100) /6 }} </progress>
+                                <progress id="medical" value="{{ $image->medical }}" max="6">
+                                    {{ ($image->medical * 100) / 6 }} </progress>
 
                                 <label for="violence">Violence</label>
-                                <progress id="violence" value="{{$image->violence}}" max="6"> {{($image->violence * 100) /6 }}</progress>
+                                <progress id="violence" value="{{ $image->violence }}" max="6">
+                                    {{ ($image->violence * 100) / 6 }}</progress>
 
                                 <label for="racy">Racy</label>
-                                <progress id="racy" value="{{$image->racy}}" max="6">{{($image->racy * 100) /6 }} </progress>
+                                <progress id="racy" value="{{ $image->racy }}" max="6">{{ ($image->racy * 100) / 6 }}
+                                </progress>
 
                             </div>
 

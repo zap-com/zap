@@ -4,9 +4,8 @@
             <div class="col-md-3 mx-auto d-flex flex-column justify-content-between">
 
                 <!-- Links -->
-                <a class="navbar-brand mt-3 mb-2 py-0" href="{{ route('home') }}"
-                    title="{{ __('global.back-home') }}"><img class="img-fluid" src="{{ asset('images/zaplogo.svg') }}"
-                        width="40"></a>
+                <a class="mt-3 mb-2 py-0" href="{{ route('home') }}" title="{{ __('global.back-home') }}"><img
+                        class="img-fluid" src="{{ asset('images/zaplogo.svg') }}" width="40"></a>
 
                 <ul class="list-unstyled">
                     <li>

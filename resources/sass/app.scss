@@ -156,19 +156,19 @@ button:focus {
 }
 
 .cat-next {
-    right: -2vw !important;
+    right: -3rem !important;
 }
 
 .cat-prev {
-    left: -2vw !important;
+    left: -3rem !important;
 }
 
 .trend-next {
-    right: -2vw !important;
+    right: -3rem !important;
 }
 
 .trend-prev {
-    left: -2vw !important;
+    left: -3rem !important;
 }
 
 .swiper-button-next.swiper-button-disabled,
@@ -362,6 +362,10 @@ a {
 
 .login-container>.row>.col-12 {
     box-shadow: 5px 0 20px rgba(0, 0, 0, 0.1);
+
+    @media screen and (max-width:768px) {
+        box-shadow: none;
+    }
 }
 
 .login-container input[type="checkbox"i]:checked {
@@ -555,12 +559,27 @@ div.dropdown-multicol2 {
 }
 
 div.dropdown-multicol2>div.dropdown-col {
-    height: 120px !important;
+    height: 130px !important;
     display: inline-flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 16%;
+}
+
+div.dropdown-multicol3 {
+    width: 100vw;
+    text-align: center;
+    overflow-y: scroll;
+}
+
+div.dropdown-multicol3>div.dropdown-col {
+    height: 130px !important;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
 }
 
 .nav-dropdown .c-btn {
@@ -600,6 +619,7 @@ div.dropdown-multicol2>div.dropdown-col {
 
 #place-dropdown {
     width: 50vw;
+    overflow-y: visible;
 }
 
 .form-control {
@@ -734,26 +754,26 @@ div.dropdown-multicol2>div.dropdown-col {
     background-color: var(--color-main);
 }
 
-#account-modal .modal-dialog {
+.zap-modal .modal-dialog {
     margin: 0;
 }
 
-#account-modal .modal-content {
+.zap-modal .modal-content {
     width: 100vw !important;
     border: 0;
     border-radius: 0;
 }
 
-#account-modal .icons {
+.zap-modal .modal-body .icons {
     font-size: 6vw;
-    color: var(--color-faded);
+    color: $faded;
 }
 
-#account-modal a {
+.zap-modal a {
     transition: all 0.2 ease-in-out;
 }
 
-#account-modal a:hover {
+.zap-modal a:hover {
     background-color: var(--color-ex);
 }
 
@@ -764,7 +784,7 @@ div.dropdown-multicol2>div.dropdown-col {
     top: 40px;
 }
 
-#account-modal lottie-player {
+.zap-modal lottie-player {
     width: 70vw;
     height: 70vw;
 }
@@ -997,4 +1017,33 @@ div.dz-default.dz-message {
     background-color: trasparent;
     border: 1px solid #ccc;
     border-radius: 200px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.swiper-scrollbar-drag {
+    background: $primary;
+    opacity: 0.7;
+}
+
+#searchbar::-webkit-search-cancel-button {
+    display: none !important;
+}
+
+.modal-backdrop.show {
+    @media (max-width:768px) {
+        display: none !important;
+    }
+}
+
+.zap-modal .modal-header {
+    color: $primary;
+    font-size: 1.75rem !important;
+    border-bottom: 0px transparent;
+}
+
+.sec-modal {
+    z-index: 4000;
 }

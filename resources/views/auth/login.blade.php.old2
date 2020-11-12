@@ -11,10 +11,7 @@
     <title>{{ __('connect.login-title') }} | {{ config('app.name') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/preload.js') }}"></script>
-
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" defer></script>
-
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
@@ -45,33 +42,13 @@
                 <div class="row h-100 align-items-center">
                     <div class="col-12">
                         <h1 class="pb-3">{{ __('connect.login-title') }} - {{ config('app.name') }}</h1>
-                        <x-authForm />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        @if (session()->get('locale') == 'en')
-                            <button
-                                onclick="location.href='{{ route('locale', 'it') }}'; localStorage.setItem('locale','it-IT')"
-                                id="notification-button" class="d-flex flex-column justify-content-center mb-3"
-                                title="{{ __('global.switch-italian') }}">
-                                <img src="{{ asset('icons/italian.svg') }}">
-                            </button>
-                        @else
-                            <button
-                                onclick="location.href='{{ route('locale', 'en') }}'; localStorage.setItem('locale','en-GB')"
-                                id="notification-button" class="d-flex flex-column justify-content-center mb-3"
-                                title="{{ __('global.switch-english') }}">
-                                <img src="{{ asset('icons/english.svg') }}">
-                            </button>
-
-                        @endif
+                        <x-authForm/>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="{{ asset('js/authForm.js') }}"></script>
+    <script src="{{ asset('js/authForm.js') }}" ></script>
 </body>
 
 </html>

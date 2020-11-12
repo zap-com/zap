@@ -98,16 +98,30 @@ fetch('/announcement/catjson').then(function (response) {
 }).then(function (data) {
   var categoryWrapper = document.querySelector('#category-wrapper');
   var catCard1 = document.createElement('a');
+
+  if (localStorage.getItem('locale') == 'it-IT') {
+    var allPro = 'Tutto';
+  } else {
+    var allPro = 'All categories';
+  }
+
   catCard1.classList.add('d-flex', 'card', 'swiper-slide', 'card-category', 'align-items-center', 'pt-3', 'h-100');
   catCard1.href = "/announcement/";
-  catCard1.innerHTML = "\n            <img class=\"card-img-top mx-auto\" src=\"./icons/all.svg\"></img>\n            <div class=\"card-body pb-0\">\n              <h5 class=\"card-title text-center mb-0\">Tutto</h5>\n            </div>\n            ";
+  catCard1.innerHTML = "\n            <img class=\"card-img-top mx-auto\" src=\"./icons/all.svg\"></img>\n            <div class=\"card-body pb-0\">\n              <h5 class=\"card-title text-center mb-0\">".concat(allPro, "</h5>\n            </div>\n            ");
   categoryWrapper.appendChild(catCard1);
   data.forEach(function (category) {
     var categoryWrapper = document.querySelector('#category-wrapper');
+
+    if (localStorage.getItem('locale') == 'it-IT') {
+      var catName = category.name_it;
+    } else {
+      var catName = category.name;
+    }
+
     var catCard = document.createElement('a');
     catCard.classList.add('d-flex', 'card', 'swiper-slide', 'card-category', 'align-items-center', 'pt-3', 'h-100');
     catCard.href = "/category/" + category.slug;
-    catCard.innerHTML = "\n            <img class=\"card-img-top mx-auto\" src=\"".concat(category.icon, "\"></img>\n            <div class=\"card-body pb-0\">\n              <h5 class=\"card-title text-center mb-0\">").concat(category.name, "</h5>\n            </div>\n            ");
+    catCard.innerHTML = "\n            <img class=\"card-img-top mx-auto\" src=\"".concat(category.icon, "\"></img>\n            <div class=\"card-body pb-0\">\n              <h5 class=\"card-title text-center mb-0\">").concat(catName, "</h5>\n            </div>\n            ");
     categoryWrapper.appendChild(catCard);
   });
   var mySwiper = new Swiper('#category-slider', {
@@ -139,6 +153,10 @@ fetch('/announcement/catjson').then(function (response) {
       nextEl: '.cat-next',
       prevEl: '.cat-prev',
       hideOnClick: true
+    },
+    scrollbar: {
+      el: '.swiper-scrollbar',
+      draggable: true
     }
   });
 });
@@ -152,7 +170,7 @@ fetch('/announcement/catjson').then(function (response) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\sebou\wa\hack18\zap_presto\resources\js\catCarousel.js */"./resources/js/catCarousel.js");
+module.exports = __webpack_require__(/*! /mnt/d/root/dev/wa/zap_presto/resources/js/catCarousel.js */"./resources/js/catCarousel.js");
 
 
 /***/ })

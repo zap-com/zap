@@ -11,13 +11,16 @@ function truncateString(str, num) {
 const updateDom = data => {
     const wrapper = document.getElementById('listCol');
     data.forEach(ad => {
-        console.log(ad);
+        if (localStorage.getItem('locale') == 'it-IT') { var catName = ad.category.name_it }
+        else { var catName = ad.category.name }
+
         if (!document.querySelector(`.s${ad.id}`)) {
             const card = document.createElement("div");
             let adDescription = truncateString(ad.description, 200);
             card.classList.add("d-flex", "flex-column", "flex-md-row", "card", "listings-card", "w-100", "my-3", "p-1");
             card.setAttribute("data-id", ad.id);
-            card.innerHTML = `
+            if (ad.images.length > 1) {
+                card.innerHTML = `
             <div class="small-gallery smjs smjs-${ad.id} swiper-container card-img-top">
                 <div class="swiper-wrapper ${'s' + ad.id}">
                 </div>
@@ -28,15 +31,36 @@ const updateDom = data => {
             <h5 class="card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold"> 
                 <a href="/announcement/${ad.slug}"> ${ad.title} </a>
             </h5>
-            ${ad.place ? '<p class="card-text text-muted mt-2 pt-0 slide-description flex-grow-1">'+ ad.place.name +'</p>' : ''}
+            ${ad.place ? '<p class="card-text text-muted mt-2 pt-0 slide-description flex-grow-1">' + ad.place.name + '</p>' : ''}
             
  
             <p class="card-text text-muted mt-2 pt-0 slide-description flex-grow-1">${adDescription}</p>
             <div class="info ">
-                <a class="mr-auto " href="/category/${ad.category.slug}">${ad.category.name}</a>
+                <a class="mr-auto " href="/category/${ad.category.slug}">${catName}</a>
                 <p class="product-price text-right mb-auto p-2" >${ad.price} €</p>
             </div>
         </div>`;
+            } else {
+                card.innerHTML = `
+                <div class="small-gallery smjs smjs-${ad.id} swiper-container card-img-top">
+                    <div class="swiper-wrapper ${'s' + ad.id}">
+                    </div>
+                </div>
+                <div class="card-body d-flex flex-column pt-1 pb-1 px-2">
+                <h5 class="card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold"> 
+                    <a href="/announcement/${ad.slug}"> ${ad.title} </a>
+                </h5>
+                ${ad.place ? '<p class="card-text text-muted mt-2 pt-0 slide-description flex-grow-1">' + ad.place.name + '</p>' : ''}
+                
+     
+                <p class="card-text text-muted mt-2 pt-0 slide-description flex-grow-1">${adDescription}</p>
+                <div class="info ">
+                    <a class="mr-auto " href="/category/${ad.category.slug}">${catName}</a>
+                    <p class="product-price text-right mb-auto p-2" >${ad.price} €</p>
+                </div>
+            </div>`;
+
+            }
             wrapper.appendChild(card);
             if (ad.images.length > 1) {
                 ad.images.forEach(image => {
@@ -63,14 +87,13 @@ const updateDom = data => {
                     gWrapper.appendChild(galleryImg)
                 })
             } else {
-
                 let gWrapper = document.querySelector(`.s${ad.id}`);
                 let galleryImg = document.createElement('img');
                 var prodImage = '/images/placeholder_small.jpg'
                 galleryImg.src = prodImage;
                 galleryImg.classList.add('swiper-slide')
                 galleryImg.alt = ad.title;
-               
+
                 gWrapper.appendChild(galleryImg)
             }
         }
