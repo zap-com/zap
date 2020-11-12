@@ -52,12 +52,16 @@
                     <input type="range" class="form-control-range" id="formControlRange">
                 </div>
                 <div class="form-row">
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Min">
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Max">
-                    </div>
+                    <form action="/search" method="get">
+                        <div class="col">
+                            <input type="text" name="min" class="form-control" placeholder="Min">
+                        </div>
+                        <div class="col">
+                            <input type="text" name="max" class="form-control" placeholder="Max">
+                        </div>
+                        <button type="submit">Vai</button>
+                    </form>
+
                 </div>
             </div>
         </div>
@@ -94,10 +98,13 @@
             </button>
             <div id="time-dropdown" class="dropdown-menu pt-3 pb-0" aria-labelledby="dropdownMenuButton">
                 <div class="form-group pb-0">
-                <a class="dropdown-item py-3" href="{{route('search', ['data' => now()])}}">{{ __('global.today') }}</a>
-                    <a class="dropdown-item py-3" href="{{route('search', ['data' => \Carbon\Carbon::today()->subDays(7)])}}">{{ __('global.last-week') }}</a>
-                    <a class="dropdown-item py-3" href="{{route('search', ['data' => \Carbon\Carbon::today()->subDays(30)])}}">{{ __('global.last-month') }}</a>
-                   
+                    <a class="dropdown-item py-3"
+                        href="{{ route('search', ['data' => now()]) }}">{{ __('global.today') }}</a>
+                    <a class="dropdown-item py-3"
+                        href="{{ route('search', ['data' => \Carbon\Carbon::today()->subDays(7)]) }}">{{ __('global.last-week') }}</a>
+                    <a class="dropdown-item py-3"
+                        href="{{ route('search', ['data' => \Carbon\Carbon::today()->subDays(30)]) }}">{{ __('global.last-month') }}</a>
+
                 </div>
             </div>
         </div>
