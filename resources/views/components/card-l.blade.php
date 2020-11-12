@@ -32,7 +32,7 @@
             <h5 class="card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold">
                 {{ $ad->title }}
             </h5>
-            <p class="small">{{$ad->place->name ?? ''}}</p>
+            <p class="small">{{ $ad->place->name ?? '' }}</p>
 
             <!--
                 <div class="d-flex d-row align-items-center py-0 location-row">
@@ -45,7 +45,13 @@
             <div class="info d-flex flex-row justify-content-between">
                 <button type="button"
                     onClick="location.href='{{ route('category.index', $ad->category) }}'; event.preventDefault(); event.stopPropagation()"
-                    class="btn">{{ $ad->category->name }}</button>
+                    class="btn nobtn font-weight-bold">
+                    @if (session()->get('locale') == 'it')
+                        {{ $ad->category->name_it }}
+                    @else
+                        {{ $ad->category->name }}
+                    @endif
+                </button>
                 <p class="product-price text-right mb-auto p-2">{{ $ad->price }} €</p>
             </div>
         </div>

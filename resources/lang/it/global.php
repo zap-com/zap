@@ -14,6 +14,15 @@ return [
     'logout' => "Disconnettiti",
     'careers' => "Lavora con noi",
     'search' => "Che cosa stai cercando?",
+    'place' => "Località",
+    'search-place' => "Dove vuoi cercare?",
+    'search-btn' => "Cerca",
+    'choose-category' => "Scegli una categoria",
+    'price' => 'Prezzo',
+    'date' => "Data",
+    'today' => "Oggi",
+    'last-week' => "Ultima settimana",
+    'last-month' => "Ultimo mese",
     'all-categories' => "Tutte le categorie",
     'create' => "Inserisci un annuncio",
     'login' => "Login/Registrati",
@@ -41,6 +50,6 @@ return [
     'maderevisor' => "è diventato un revisore",
     'noadmins' => "Non ci sono admin, in questo sito comanda l'anarchia",
     'request-sent' => "Richiesta inviata, ti faremo sapere al più presto",
-
+    'modal-cta' => "Vendere i tuoi prodotti non è mai stato così facile! Che cosa stai aspettando?",
 
 ];

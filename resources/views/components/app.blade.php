@@ -58,11 +58,11 @@
 
         {{ $slot }}
 
+        @if ($sticky ?? '' === 1)
+            <x-secondary-modal />
+        @endif
     </div>
     <x-footer />
-    @if ($sticky ?? '' === 1)
-        <script src="{{ asset('js/price.js') }}"></script>
-    @endif
 </body>
 
 </html>

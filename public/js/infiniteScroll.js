@@ -888,14 +888,24 @@ function truncateString(str, num) {
 var updateDom = function updateDom(data) {
   var wrapper = document.getElementById('listCol');
   data.forEach(function (ad) {
-    console.log(ad);
+    if (localStorage.getItem('locale') == 'it-IT') {
+      var catName = ad.category.name_it;
+    } else {
+      var catName = ad.category.name;
+    }
 
     if (!document.querySelector(".s".concat(ad.id))) {
       var card = document.createElement("div");
       var adDescription = truncateString(ad.description, 200);
       card.classList.add("d-flex", "flex-column", "flex-md-row", "card", "listings-card", "w-100", "my-3", "p-1");
       card.setAttribute("data-id", ad.id);
-      card.innerHTML = "\n            <div class=\"small-gallery smjs smjs-".concat(ad.id, " swiper-container card-img-top\">\n                <div class=\"swiper-wrapper ").concat('s' + ad.id, "\">\n                </div>\n                <div class=\"swiper-button-prev swiper-button-prev-").concat(ad.id, "\"></div>\n                <div class=\"swiper-button-next swiper-button-next-").concat(ad.id, "\"></div>\n            </div>\n            <div class=\"card-body d-flex flex-column pt-1 pb-1 px-2\">\n            <h5 class=\"card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold\"> \n                <a href=\"/announcement/").concat(ad.slug, "\"> ").concat(ad.title, " </a>\n            </h5>\n            ").concat(ad.place ? '<p class="card-text text-muted mt-2 pt-0 slide-description flex-grow-1">' + ad.place.name + '</p>' : '', "\n            \n \n            <p class=\"card-text text-muted mt-2 pt-0 slide-description flex-grow-1\">").concat(adDescription, "</p>\n            <div class=\"info \">\n                <a class=\"mr-auto \" href=\"/category/").concat(ad.category.slug, "\">").concat(ad.category.name, "</a>\n                <p class=\"product-price text-right mb-auto p-2\" >").concat(ad.price, " \u20AC</p>\n            </div>\n        </div>");
+
+      if (ad.images.length > 1) {
+        card.innerHTML = "\n            <div class=\"small-gallery smjs smjs-".concat(ad.id, " swiper-container card-img-top\">\n                <div class=\"swiper-wrapper ").concat('s' + ad.id, "\">\n                </div>\n                <div class=\"swiper-button-prev swiper-button-prev-").concat(ad.id, "\"></div>\n                <div class=\"swiper-button-next swiper-button-next-").concat(ad.id, "\"></div>\n            </div>\n            <div class=\"card-body d-flex flex-column pt-1 pb-1 px-2\">\n            <h5 class=\"card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold\"> \n                <a href=\"/announcement/").concat(ad.slug, "\"> ").concat(ad.title, " </a>\n            </h5>\n            ").concat(ad.place ? '<p class="card-text text-muted mt-2 pt-0 slide-description flex-grow-1">' + ad.place.name + '</p>' : '', "\n            \n \n            <p class=\"card-text text-muted mt-2 pt-0 slide-description flex-grow-1\">").concat(adDescription, "</p>\n            <div class=\"info \">\n                <a class=\"mr-auto \" href=\"/category/").concat(ad.category.slug, "\">").concat(catName, "</a>\n                <p class=\"product-price text-right mb-auto p-2\" >").concat(ad.price, " \u20AC</p>\n            </div>\n        </div>");
+      } else {
+        card.innerHTML = "\n                <div class=\"small-gallery smjs smjs-".concat(ad.id, " swiper-container card-img-top\">\n                    <div class=\"swiper-wrapper ").concat('s' + ad.id, "\">\n                    </div>\n                </div>\n                <div class=\"card-body d-flex flex-column pt-1 pb-1 px-2\">\n                <h5 class=\"card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold\"> \n                    <a href=\"/announcement/").concat(ad.slug, "\"> ").concat(ad.title, " </a>\n                </h5>\n                ").concat(ad.place ? '<p class="card-text text-muted mt-2 pt-0 slide-description flex-grow-1">' + ad.place.name + '</p>' : '', "\n                \n     \n                <p class=\"card-text text-muted mt-2 pt-0 slide-description flex-grow-1\">").concat(adDescription, "</p>\n                <div class=\"info \">\n                    <a class=\"mr-auto \" href=\"/category/").concat(ad.category.slug, "\">").concat(catName, "</a>\n                    <p class=\"product-price text-right mb-auto p-2\" >").concat(ad.price, " \u20AC</p>\n                </div>\n            </div>");
+      }
+
       wrapper.appendChild(card);
 
       if (ad.images.length > 1) {
@@ -1070,7 +1080,7 @@ window.addEventListener("scroll", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\sebou\wa\hack18\zap_presto\resources\js\infiniteScroll.js */"./resources/js/infiniteScroll.js");
+module.exports = __webpack_require__(/*! /mnt/d/root/dev/wa/zap_presto/resources/js/infiniteScroll.js */"./resources/js/infiniteScroll.js");
 
 
 /***/ })

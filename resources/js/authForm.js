@@ -6,12 +6,19 @@ registerBtn.onclick = () => {
    if (registerForm.classList.contains('d-none')) {
       loginForm.classList.add('d-none');
       registerForm.classList.remove('d-none');
-      registerBtn.innerText = 'Sign-in';
+      if (localStorage.getItem('locale') == 'it-IT') {
+         registerBtn.innerText = 'Connettiti';
+      } else {
+         registerBtn.innerText = 'Sign-in';
+      }
    } else {
-      console.log('else')
       loginForm.classList.remove('d-none');
       registerForm.classList.add('d-none');
-      registerBtn.innerText = 'Register now';
+      if (localStorage.getItem('locale') == 'it-IT') {
+         registerBtn.innerText = 'Registrati ora';
+      } else {
+         registerBtn.innerText = 'Sign-up now';
+      }
    }
 
 }

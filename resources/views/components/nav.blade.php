@@ -9,7 +9,7 @@
                 <div id="searchbar-wrapper" class="d-flex flex-row align-items-center px-3 flex-grow-1">
                     <i class="icon-magnifier icons"></i>
                     <input id="searchbar" class="form-control mr-sm-2 flex-grow-1" type="search"
-                        placeholder="{{ __('global.search') }}" name="q" aria-label="Search">
+                        placeholder="{{ __('global.search') }}" name="q" aria-label="Search" autocomplete="off">
                     <div class="btn-group">
                         <button type="button" class="nobtn text-muted dropdown-toggle" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false" name="c">
@@ -24,7 +24,13 @@
                                 <input type="radio" name="cat" id="cat-{{ $category->id }}" value="{{ $category->id }}"
                                     class="d-none">
                                 <label for="cat-{{ $category->id }}"
-                                    class="dropdown-item align-items-start justify-content-start">{{ $category->name }}</label>
+                                    class="dropdown-item align-items-start justify-content-start">
+                                    @if (session()->get('locale') == 'it')
+                                        {{ $category->name_it }}
+                                    @else
+                                        {{ $category->name }}
+                                    @endif
+                                </label>
                                 {{-- <a class="dropdown-item"
                                     href="#">{{ $category->name }}</a> --}}
                             @endforeach
@@ -61,8 +67,8 @@
             @else
                 <!-- User Dropdown -->
                 <div class="dropdown">
-                    <button id="loginBtn" class="btn b-btn mr-md-3  dropdown-toggle" type="button" id="dMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true"
+                    <button id="loginBtn" class="btn b-btn mr-md-3 dropdown-toggle d-none d-md-block" type="button"
+                        id="dMenuButton" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">{{ Auth::user()->name }}</button></a>
                     <div class="dropdown-menu dropdown-menu-right bg-white" aria-labelledby="dMenuButton">
                         <a class="dropdown-item" href="{{ route('profile.edit') }}"> {{ __('profile.edit-title') }} </a>
@@ -90,14 +96,14 @@
             @endguest
 
             @if (session()->get('locale') == 'en')
-                <button onclick="location.href='{{ route('locale', 'it') }}'; localStorage.setItem('locale','it-IT')" id="notification-button"
-                    class="d-none d-md-flex flex-column justify-content-center"
+                <button onclick="location.href='{{ route('locale', 'it') }}'; localStorage.setItem('locale','it-IT')"
+                    id="notification-button" class="d-none d-md-flex flex-column justify-content-center"
                     title="{{ __('global.switch-italian') }}">
                     <img src="{{ asset('icons/italian.svg') }}">
                 </button>
             @else
-                <button onclick="location.href='{{ route('locale', 'en') }}'; localStorage.setItem('locale','en-GB')" id="notification-button"
-                    class="d-none d-md-flex flex-column justify-content-center"
+                <button onclick="location.href='{{ route('locale', 'en') }}'; localStorage.setItem('locale','en-GB')"
+                    id="notification-button" class="d-none d-md-flex flex-column justify-content-center"
                     title="{{ __('global.switch-english') }}">
                     <img src="{{ asset('icons/english.svg') }}">
                 </button>

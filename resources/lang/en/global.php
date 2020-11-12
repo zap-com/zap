@@ -13,7 +13,16 @@ return [
     'back-home' => "Return to Homepage",
     'logout' => "Log out",
     'careers' => "Work with us",
+    'place' => "Place",
     'search' => "What are you searching for?",
+    'search-btn' => "Search",
+    'price' => "Price",
+    'choose-category' => "Choose a category",
+    'date' => "Date",
+    'today' => "Today",
+    'last-week' => "Last week",
+    'last-month' => "Last month",
+    'search-place' => "Where do you want to search?",
     'all-categories' => 'All categories',
     'create' => 'Sell something now',
     'login' => "Login/Register",
@@ -42,5 +51,6 @@ return [
     'maderevisor' => "has been made revisor",
     'noadmins' => "There are no admin, this website is anarchy!",
     'request-sent' => "Your request has been sent, we will let you know as soon as possible",
+    'modal-cta' => "Selling your products has never been easier! What are you waiting for?",
 
 ];

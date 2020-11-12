@@ -14,6 +14,8 @@ fetch('/announcement/json')
         data.forEach(product => {
             let trendingWrapper = document.querySelector('#trending-wrapper')
             let prodTitle = truncateString(product.title, 24);
+            if (localStorage.getItem('locale') == 'it-IT') { var catName = product.category.name_it }
+            else { var catName = product.category.name }
             let prodDescription = truncateString(product.description, 120);
             let trendCard = document.createElement('a')
             trendCard.href = "/announcement/" + product.slug;
@@ -39,7 +41,7 @@ fetch('/announcement/json')
           <h5 class="p font-weight-bold card-title slide-title pt-1 pb-0 mb-0">${prodTitle}</h5>
           <button type="button"
                     onClick="location.href='/category/${product.category.slug}'; event.preventDefault(); event.stopPropagation()"
-                    class="nobtn">${product.category.name}</button>
+                    class="nobtn">${catName}</button>
           <!--<div class="d-flex d-row align-items-center py-0 location-row mb-2">
             <i class="icon-location-pin pr-1"></i>
             <p class="my-0 location-text">{product.location}</p>
@@ -58,29 +60,40 @@ fetch('/announcement/json')
             slidesPerView: 4,
             spaceBetween: 30,
             slidesPerGroup: 2,
+            hideOnClick: true,
             breakpoints: {
                 // when window width is >= 320px
                 320: {
                     slidesPerView: 1,
                     slidesPerGroup: 1,
-                    spaceBetween: 10
+                    spaceBetween: 10,
+                    scrollbar: {
+                        el: '.swiper-scrollbar',
+                        draggable: true,
+                    },
                 },
                 // when window width is >= 640px
                 640: {
                     slidesPerView: 2,
                     slidesPerGroup: 2,
                 },
-                1000: {
+                990: {
                     slidesPerView: 4,
                     slidesPerGroup: 2,
-                    spaceBetween: 20
+                    spaceBetween: 20,
+                    hideOnClick: true
                 }
             },
             // Navigation arrows
             navigation: {
                 nextEl: '.trend-next',
                 prevEl: '.trend-prev',
-            }
+                hideOnClick: true,
+            },
+            scrollbar: {
+                el: '.swiper-scrollbar',
+                draggable: true,
+            },
 
 
         })
