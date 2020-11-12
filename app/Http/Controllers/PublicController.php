@@ -77,7 +77,7 @@ class PublicController extends Controller
         
 
         if($min && $max){
-            $announcements = Announcement::where('price','>',$min)->where('price','<',$max)->where('status_id', 2)->orderby('created_at','desc')->get();
+            $announcements = Announcement::where('price','>',$min)->where('price','<',$max)->where('status_id', 2)->orderBy('created_at','desc')->get();
             return view('announcement.index', compact('announcements'));
         }
         session()->put('q', $q);
@@ -85,22 +85,22 @@ class PublicController extends Controller
 
         if($data){
             if (!$categoryId) {
-                $announcements = Announcement::where('created_at','<',$data)->where('status_id', 2)->orderby('created_at','desc')->get();
+                $announcements = Announcement::where('created_at','<',$data)->where('status_id', 2)->orderBy('created_at','desc')->get();
                 
                
             } else if (!$q) {
-                $announcements = Announcement::where('category_id', $categoryId)->orderby('created_at','desc')->get();
+                $announcements = Announcement::where('category_id', $categoryId)->orderBy('created_at','desc')->get();
             } else {
-                $announcements = Announcement::search($q)->where('status_id', 2)->where('category_id', $categoryId)->orderby('created_at','desc')->get();
+                $announcements = Announcement::search($q)->where('status_id', 2)->where('category_id', $categoryId)->orderBy('created_at','desc')->get();
             }
         }else{
             
             if (!$categoryId) {
-                $announcements = Announcement::search($q)->where('status_id', 2)->orderby('created_at','desc')->get();
+                $announcements = Announcement::search($q)->where('status_id', 2)->orderBy('created_at','desc')->get();
             } else if (!$q) {
-                $announcements = Announcement::where('category_id', $categoryId)->orderby('created_at','desc')->get();
+                $announcements = Announcement::where('category_id', $categoryId)->orderBy('created_at','desc')->get();
             } else {
-                $announcements = Announcement::search($q)->where('status_id', 2)->where('category_id', $categoryId)->orderby('created_at','desc')->get();
+                $announcements = Announcement::search($q)->where('status_id', 2)->where('category_id', $categoryId)->orderBy('created_at','desc')->get();
             }
     
         }
