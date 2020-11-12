@@ -51,13 +51,18 @@
                 </button>
             </div>
             <div class="modal-body dropdown-multicol3 px-0">
-                <div class="d-flex flex-row">
-                    <input type="hidden" id="hiddenplace" name="hiddenplace" value="">
-                    <input type="text" id="address-input" name="address-input" class="form-control"
-                        placeholder="{{ __('global.search-place') }}">
+                <form action="{{ route('search.locality') }}" method="GET" class="px-3">
+                    @csrf
+                    <div class="form-group">
+                        <div class="d-flex flex-row">
+                            <input type="hidden" id="hiddenplacemobile" name="hiddenplacemobile" value="">
+                            <input type="text" id="addressinputmobile" name="address-input-mobile" class="form-control"
+                                placeholder="{{ __('global.search-place') }}">
 
-                    <button class="btn b-btn ml-3" type="submit">{{ __('global.search-btn') }}</button>
-                </div>
+                            <button class="btn b-btn ml-3" type="submit">{{ __('global.search-btn') }}</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

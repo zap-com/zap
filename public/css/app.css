@@ -11868,8 +11868,18 @@ a {
 }
 
 .alt-btn:hover {
-  border: 2px solid #f46161;
+  background-color: transparent;
   color: #f46161;
+  border: 2px solid #f46161;
+  opacity: 1;
+}
+
+.alt-btn:focus-within {
+  background-color: transparent;
+  color: #f46161;
+  border: 2px solid #f46161;
+  opacity: 1;
+  box-shadow: none;
 }
 
 .dropdown-toggle.active {
@@ -12435,5 +12445,14 @@ div.dz-default.dz-message {
 
 .sec-modal {
   z-index: 4000;
+}
+
+.ap-dropdown-menu {
+  margin-top: 1rem;
+  position: absolute !important;
+  width: 100vw;
+  text-align: left;
+  box-shadow: 0 0 transparent;
+  transform: translateX(-1rem);
 }
 

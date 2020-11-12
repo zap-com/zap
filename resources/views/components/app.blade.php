@@ -60,6 +60,9 @@
 
         @if ($sticky ?? '' === 1)
             <x-secondary-modal />
+            <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
+
+            <script src="{{ asset('js/places.js') }}"></script>
         @endif
     </div>
     <x-footer />

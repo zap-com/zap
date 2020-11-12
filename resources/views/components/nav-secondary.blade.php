@@ -42,8 +42,8 @@
         </button>
 
         <div class="dropdown nav-dropdown">
-            <button class="btn b-btn c-btn dropdown-toggle mr-3" type="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
+            <button class="btn alt-btn dropdown-toggle mr-3" type="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
                 {{ __('global.price') }}
             </button>
             <div id="price-dropdown" class="dropdown-menu p-3" aria-labelledby="dropdownMenuButton">
@@ -63,7 +63,7 @@
         </div>
         <div class="dropdown nav-dropdown">
 
-            <button class="btn b-btn c-btn dropdown-toggle mr-3 d-none d-md-block" type="button" data-toggle="dropdown"
+            <button class="btn alt-btn dropdown-toggle mr-3 d-none d-md-block" type="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 {{ __('global.place') }}
             </button>
@@ -83,13 +83,13 @@
 
             </div>
         </div>
-        <button class="btn b-btn dropdown-toggle mr-3 d-block d-md-none" type="button" data-toggle="modal"
+        <button class="btn alt-btn dropdown-toggle mr-3 d-block d-md-none" type="button" data-toggle="modal"
             data-target="#place-modal">
             {{ __('global.place') }}
         </button>
         <div class="dropdown nav-dropdown">
-            <button class="btn b-btn c-btn dropdown-toggle mr-3" type="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
+            <button class="btn alt-btn dropdown-toggle mr-3" type="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
                 {{ __('global.date') }}
             </button>
             <div id="time-dropdown" class="dropdown-menu pt-3 pb-0" aria-labelledby="dropdownMenuButton">
