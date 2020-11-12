@@ -25,7 +25,7 @@ class Place extends Model
 
     //FUNZIONI  
 
-    static public function regionAnnouncements($region_code, $distance)
+    static public function regionAnnouncements($region_code, $distance = null)
     {
         $city = self::where('region', $region_code)->get();
 
