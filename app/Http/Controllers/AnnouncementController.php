@@ -10,11 +10,12 @@ use Illuminate\Http\Request;
 use App\Models\AnnouncementImage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use App\Jobs\GoogleVisonSafeImageJob;
-
-use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\AnnouncementRequest;
 use App\Jobs\GoogleVisionImgLabelJob;
+
+use App\Jobs\GoogleVisonSafeImageJob;
+use Illuminate\Support\Facades\Storage;
+use App\Jobs\GoogleVisionRemoveFacesJob;
+use App\Http\Requests\AnnouncementRequest;
 
 class AnnouncementController extends Controller
 {
@@ -201,23 +202,19 @@ class AnnouncementController extends Controller
             $newFileName =  "/public/announcements/{$a->id}/{$fileName}";
             Storage::move($image, $newFileName);
 
-            dispatch(new ResizeImageJob(
-                $newFileName,
-                200,
-                150
-            ));
-            dispatch(new ResizeImageJob(
-                $newFileName,
-                900,
-                500
-            ));
-
+  
             $i->file =  "announcements/{$a->id}/{$fileName}";
             $i->announcement_id = $a->id;
             $i->save();
             
-            dispatch(new GoogleVisonSafeImageJob($i->id));
-            dispatch(new GoogleVisionImgLabelJob($i->id));
+           
+            GoogleVisonSafeImageJob::withChain([
+                new GoogleVisionImgLabelJob($i->id),
+                new GoogleVisionRemoveFacesJob($i->id),
+                new ResizeImageJob($newFileName,200,150),
+                new ResizeImageJob($newFileName,900,500)
+            ])->dispatch($i->id);
+            
         }
 
         File::deleteDirectory(storage_path("/app/public/temp/{$secret}"));
