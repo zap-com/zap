@@ -50,7 +50,7 @@ Route::get('/carosel/{announcement}', [PublicController::class, 'indexCarousel']
 
 //Search route
 
-Route::get('/test', [PublicController::class, 'search'])->name('search');
+Route::get('/search/{data?}', [PublicController::class, 'search'])->name('search');
 Route::get('/locality', [PublicController::class, 'searchByLocality'])->name('search.locality');
 
 

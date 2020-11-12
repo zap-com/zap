@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\RevisorRequestNotification;
+use Carbon\Carbon;
 
 class PublicController extends Controller
 {
@@ -66,20 +67,40 @@ class PublicController extends Controller
         return redirect(route('home'))->with('message', __('global.request-sent'));
     }
 
-    public function search(Request $req)
+    public function search(Request $req, $data = null)
     {
 
         $q = $req->input('q');
         $categoryId = $req->input('cat');
+        
 
+        session()->put('q', $q);
+        session()->put('categoryId', $categoryId);
 
-        if (!$categoryId) {
-            $announcements = Announcement::search($q)->where('status_id', 2)->get();
-        } else if (!$q) {
-            $announcements = Announcement::where('category_id', $categoryId)->get();
-        } else {
-            $announcements = Announcement::search($q)->where('status_id', 2)->where('category_id', $categoryId)->get();
+        if($data){
+            if (!$categoryId) {
+                $announcements = Announcement::where('created_at','<',$data)->where('status_id', 2)->orderby('created_at','desc')->get();
+                
+               
+            } else if (!$q) {
+                $announcements = Announcement::where('category_id', $categoryId)->orderby('created_at','desc')->get();
+            } else {
+                $announcements = Announcement::search($q)->where('status_id', 2)->where('category_id', $categoryId)->orderby('created_at','desc')->get();
+            }
+        }else{
+            
+            if (!$categoryId) {
+                $announcements = Announcement::search($q)->where('status_id', 2)->orderby('created_at','desc')->get();
+            } else if (!$q) {
+                $announcements = Announcement::where('category_id', $categoryId)->orderby('created_at','desc')->get();
+            } else {
+                $announcements = Announcement::search($q)->where('status_id', 2)->where('category_id', $categoryId)->orderby('created_at','desc')->get();
+            }
+    
         }
+
+        
+        
 
 
         return view('announcement.index', compact('announcements'));
