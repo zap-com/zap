@@ -26,23 +26,35 @@ var placesAutocomplete = places({
     container: document.querySelector("#address-input")
 });
 
-placesAutocomplete.on("change", e => console.log(e.suggestion.administrative));
-placesAutocomplete.on("change", e => console.log(e.suggestion.name));
-placesAutocomplete.on("change", e => console.log(e.suggestion.latlng));
-placesAutocomplete.on("change", e => console.log(e.suggestion));
-placesAutocomplete.on("change", e => console.log(e.suggestion.latlng.lat));
+var pl_2 = places({
+    appId: "plJEYXAMRTHF",
+    apiKey: "c36ed29d68decfe7547d4897d1d9c568",
+    language: "it",
+    container: document.querySelector("#addressinputmobile")
+});
+
 placesAutocomplete.on("change", e => {
 
     let json = {
         name: e.suggestion.name,
         region: _.kebabCase(e.suggestion.administrative.replace('/', '-')),
-        region_code: e.suggestion.hit.county[1] || e.suggestion.hit.county[0] ,
-        country_code: e.suggestion.countryCode ,
+        region_code: e.suggestion.hit.county[1] || e.suggestion.hit.county[0],
+        country_code: e.suggestion.countryCode,
         post_code: e.suggestion.postcode || e.suggestion.hit.objectID,
         cordinates: e.suggestion.latlng
     }
-    console.log(json);
     document.getElementById("hiddenplace").value = JSON.stringify(json)
-}
-    
-);
+});
+
+pl_2.on("change", e => {
+
+    let json = {
+        name: e.suggestion.name,
+        region: _.kebabCase(e.suggestion.administrative.replace('/', '-')),
+        region_code: e.suggestion.hit.county[1] || e.suggestion.hit.county[0],
+        country_code: e.suggestion.countryCode,
+        post_code: e.suggestion.postcode || e.suggestion.hit.objectID,
+        cordinates: e.suggestion.latlng
+    }
+    document.getElementById("hiddenplacemobile").value = JSON.stringify(json)
+});

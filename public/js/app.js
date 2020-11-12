@@ -41672,8 +41672,16 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 $(function () {
   $(".dropdown-menu label").on('click', function () {
-    $(".nobtn:first-child").text($(this).text());
-    $(".nobtn:first-child").val($(this).text());
+    $("#catsearch").text($(this).text());
+    $("#catsearch").val($(this).text());
+    $("#catsearchmobile").text($(this).text());
+  });
+});
+$(function () {
+  $(".modal-body label").on('click', function () {
+    $("#catsearch").text($(this).text());
+    $("#catsearch").val($(this).text());
+    $("#catsearchmobile").text($(this).text());
   });
 });
 $('.regione').on('click', function () {

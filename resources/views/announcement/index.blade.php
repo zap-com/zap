@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-12 text-center mt-5">
 
-                <h1>Non ci sono risultati per la tua ricerca: {{ $q ?? '' }}</h1>
+                    <h1>{{ __('global.no-results') }}: {{ $q ?? '' }}</h1>
                 </div>
             </div>
         </div>
@@ -27,9 +27,6 @@
     </div>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="{{ asset('js/infiniteScroll.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
-
-    <script src="{{ asset('js/places.js') }}"></script>
 
     <script src="{{ asset('js/globalslider.js') }}"></script>
 </x-app>
