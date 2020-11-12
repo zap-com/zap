@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-12 text-center mt-5">
 
-                    <h1>{{ __('global.no-results') }}</h1>
+                    <h1>{{ __('global.no-results') }}: {{ $q }}</h1>
                 </div>
             </div>
         </div>

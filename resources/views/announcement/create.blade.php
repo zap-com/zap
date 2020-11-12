@@ -15,7 +15,7 @@
                             <label for="title">{{ __('announcement.title') }}</label>
                             <input type="text" name="title" id="title"
                                 class="form-control  @error('title') is-invalid @enderror"
-                                placeholder="{{ __('announcement.title-ph') }}">
+                                placeholder="{{ __('announcement.title-ph') }}" value="{{ old('title') }}">
                             @error('title')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -27,7 +27,7 @@
                             <label for="description">{{ __('announcement.description') }}</label>
                             <textarea type="text" name="description" id="description"
                                 class="form-control @error('description') is-invalid @enderror"
-                                placeholder="{{ __('announcement.description-ph') }}"></textarea>
+                                placeholder="{{ __('announcement.description-ph') }}">{{ old('description') }}</textarea>
                             @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -54,7 +54,7 @@
                         <div class="form-group">
                             <label for="price">{{ __('announcement.price') }}</label>
                             <div class="input-group">
-                                <input type="text" name="price" id="price"
+                                <input type="text" name="price" value="{{ old('price') }}" id="price"
                                     class="form-control @error('price') is-invalid @enderror"
                                     placeholder="{{ __('announcement.price-ph') }}">
                                 <div class="input-group-append">
@@ -67,11 +67,19 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-group"><label for="address-input">{{ __('announcement.place') }}</label>
-                            <input type="text" name="address-input" id="address-input" class="form-control"
+                        <div class="form-group">
+                            <label for="address-input">{{ __('announcement.place') }}</label>
+                            <input type="text" name="address-input" id="address-input" class="form-control @error('hiddenplace') is-invalid @enderror"
                                 placeholder="{{ __('announcement.place-ph') }}">
+                                @error('hiddenplace')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                             <input type="hidden" id="hiddenplace" name="hiddenplace" value="">
+                           
                         </div>
+                        
                         {{-- <div class="form-group">
                             <label for="autocomplete"> Location/City/Address </label>
                             <input type="text" name="autocomplete" id="autocomplete" class="form-control"

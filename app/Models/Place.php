@@ -25,20 +25,21 @@ class Place extends Model
 
     //FUNZIONI  
 
-    static public function regionAnnouncements($region_code)
+    static public function regionAnnouncements($region_code, $distance = null)
     {
         $city = self::where('region', $region_code)->get();
 
         $announcements = collect([]);
 
-        $city->map(function ($el) use ($announcements) {
+        $city->map(function ($el) use ($announcements, $distance) {
             return $el->announcements->map(
-                function ($e) use ($announcements) {
+                function ($e) use ($announcements, $distance) {
+                    $e->distance = $distance;
                     $announcements->push($e);
                 }
             );
         });
-
+       
         return $announcements;
     }
 
@@ -46,17 +47,22 @@ class Place extends Model
     {
       
         $q = self::distance($lat, $lng);
-        $array = $q->orderBy('distance', 'ASC')->get();
+        $array = $q->orderBy('distance', 'asc')->get();
+        
         $announcements = collect([]);
         $array->map(function($b) use ($announcements)
         {
-            self::regionAnnouncements($b->region)->map(
+            
+            self::regionAnnouncements($b->region,$b->distance)->map(
                 function ($e) use ($announcements){
+                   
+                   
                     $announcements->push($e);
                 }
             );
-        });
-
+        })->sortBy('distance');
+        
+        
         return $announcements;
     }
 }
