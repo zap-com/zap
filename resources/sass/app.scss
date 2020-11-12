@@ -769,6 +769,7 @@ div.dropdown-multicol3>div.dropdown-col {
 }
 
 .zap-modal .modal-content {
+    overflow-y: scroll;
     width: 100vw !important;
     border: 0;
     border-radius: 0;

@@ -52,6 +52,7 @@ return [
     'noadmins' => "There are no admin, this website is anarchy!",
     'request-sent' => "Your request has been sent, we will let you know as soon as possible",
     'modal-cta' => "Selling your products has never been easier! What are you waiting for?",
-    'no-results' => "There are no results for your query"
+    'no-results' => "There are no results for your query",
+    'trash' => "Trashbin",
 
 ];

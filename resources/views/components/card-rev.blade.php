@@ -59,7 +59,7 @@
                             class="nobtn font-weight-bold">{{ $ad->user->name }}</button>
                     </div>
                 </div>
-                <p class="product-price text-right mb-auto pt-0 pr-2 pl-2">{{ $ad->price }} €</p>
+                <p class="product-price text-right mb-auto pt-0 pr-2 pl-2 d-none d-md-inline">{{ $ad->price }} €</p>
             </div>
             <!--
                 <div class="d-flex d-row align-items-center py-0 location-row">

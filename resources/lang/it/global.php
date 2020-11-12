@@ -51,6 +51,7 @@ return [
     'noadmins' => "Non ci sono admin, in questo sito comanda l'anarchia",
     'request-sent' => "Richiesta inviata, ti faremo sapere al più presto",
     'modal-cta' => "Vendere i tuoi prodotti non è mai stato così facile! Che cosa stai aspettando?",
-    'no-results' => "Non ci sono risultati per la tua ricerca"
+    'no-results' => "Non ci sono risultati per la tua ricerca",
+    'trash' => "Cestino",
 
 ];
