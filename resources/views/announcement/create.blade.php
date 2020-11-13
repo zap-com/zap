@@ -45,7 +45,7 @@
                                         @if (session()->get('locale') == 'it')
                                             {{ $category->name_it }}
                                         @else
-                                            {{ $acategory->name }}
+                                            {{ $category->name }}
                                         @endif
                                     </option>
                                 @endforeach

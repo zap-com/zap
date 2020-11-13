@@ -66,9 +66,7 @@
         ],
         "post-install-cmd": [
             "php artisan clear-compiled",
-            "chmod -R 777 public/",
-            "php artisan db:wipe --force",
-            "php artisan migrate --seed --force"
+            "chmod -R 777 public/"
         ]
     }
 }
