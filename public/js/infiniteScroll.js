@@ -874,204 +874,206 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-function truncateString(str, num) {
-  // If the length of str is less than or equal to num
-  // just return str--don't truncate it.
-  if (str.length <= num) {
-    return str;
-  } // Return str truncated with '...' concatenated to the end of str.
+if (window.location.pathname.includes('/announcement')) {
+  var truncateString = function truncateString(str, num) {
+    // If the length of str is less than or equal to num
+    // just return str--don't truncate it.
+    if (str.length <= num) {
+      return str;
+    } // Return str truncated with '...' concatenated to the end of str.
 
 
-  return str.slice(0, num) + '...';
-}
+    return str.slice(0, num) + '...';
+  };
 
-var updateDom = function updateDom(data) {
-  var wrapper = document.getElementById('listCol');
-  data.forEach(function (ad) {
-    if (localStorage.getItem('locale') == 'it-IT') {
-      var catName = ad.category.name_it;
-      var inplace = ' a ';
-    } else {
-      var catName = ad.category.name;
-      var inplace = " in ";
-    }
-
-    if (!document.querySelector(".s".concat(ad.id))) {
-      var card = document.createElement("div");
-      var adDescription = truncateString(ad.description, 200);
-      card.classList.add("d-flex", "flex-column", "flex-md-row", "card", "listings-card", "w-100", "my-3", "p-1");
-      card.setAttribute("data-id", ad.id);
-
-      if (ad.images.length > 1) {
-        card.innerHTML = "\n            <div class=\"small-gallery smjs smjs-".concat(ad.id, " swiper-container card-img-top\">\n                <div class=\"swiper-wrapper ").concat('s' + ad.id, "\">\n                </div>\n                <div class=\"swiper-button-prev swiper-button-prev-").concat(ad.id, "\"></div>\n                <div class=\"swiper-button-next swiper-button-next-").concat(ad.id, "\"></div>\n            </div>\n            <div class=\"card-body d-flex flex-column pt-1 pb-1 px-2\">\n            <h5 class=\"card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold\"> \n                <a href=\"/announcement/").concat(ad.slug, "\"> ").concat(ad.title, " </a>\n            </h5>\n            \n \n            <p class=\"card-text text-muted mt-2 pt-0 slide-description flex-grow-1\">").concat(adDescription, "</p>\n            <div class=\"info \">\n            <a class=\"mr-auto btn nobtn font-weight-bold\" onClick=\"location.href='").concat(ad.category.slug, "'; event.preventDefault(); event.stopPropagation()\">").concat(catName, "</a>\n                ").concat(ad.place ? "<span>".concat(inplace, "</span>") + '<p class="font-weight-bold btn nobtn">' + ad.place.name + '</p>' : '', "\n                <p class=\"product-price text-right mb-auto p-2 flex-grow-1\" >").concat(ad.price, " \u20AC</p>\n            </div>\n        </div>");
+  var updateDom = function updateDom(data) {
+    var wrapper = document.getElementById('listCol');
+    data.forEach(function (ad) {
+      if (localStorage.getItem('locale') == 'it-IT') {
+        var catName = ad.category.name_it;
+        var inplace = ' a ';
       } else {
-        card.innerHTML = "\n                <div class=\"small-gallery smjs smjs-".concat(ad.id, " swiper-container card-img-top\">\n                    <div class=\"swiper-wrapper ").concat('s' + ad.id, "\">\n                    </div>\n                </div>\n                <div class=\"card-body d-flex flex-column pt-1 pb-1 px-2\">\n                <h5 class=\"card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold\"> \n                    <a href=\"/announcement/").concat(ad.slug, "\"> ").concat(ad.title, " </a>\n                </h5>\n                ").concat(ad.place ? '<p class="card-text text-muted mt-2 pt-0 slide-description flex-grow-1">' + ad.place.name + '</p>' : '', "\n                \n     \n                <p class=\"card-text text-muted mt-2 pt-0 slide-description flex-grow-1\">").concat(adDescription, "</p>\n                <div class=\"info \">\n                    <a class=\"mr-auto btn nobtn font-weight-bold\" onClick=\"location.href='").concat(ad.category.slug, "'; event.preventDefault(); event.stopPropagation()\">").concat(catName, "</a>\n                    ").concat(ad.place ? "<span>".concat(inplace, "</span>") + '<p class="font-weight-bold btn nobtn">' + ad.place.name + '</p>' : '', "\n                    <p class=\"product-price text-right mb-auto p-2 flex-grow-1\" >").concat(ad.price, " \u20AC</p>\n                </div>\n            </div>");
+        var catName = ad.category.name;
+        var inplace = " in ";
       }
 
-      wrapper.appendChild(card);
+      if (!document.querySelector(".s".concat(ad.id))) {
+        var card = document.createElement("div");
+        var adDescription = truncateString(ad.description, 200);
+        card.classList.add("d-flex", "flex-column", "flex-md-row", "card", "listings-card", "w-100", "my-3", "p-1");
+        card.setAttribute("data-id", ad.id);
 
-      if (ad.images.length > 1) {
-        ad.images.forEach(function (image) {
+        if (ad.images.length > 1) {
+          card.innerHTML = "\n                <div class=\"small-gallery smjs smjs-".concat(ad.id, " swiper-container card-img-top\">\n                    <div class=\"swiper-wrapper ").concat('s' + ad.id, "\">\n                    </div>\n                    <div class=\"swiper-button-prev swiper-button-prev-").concat(ad.id, "\"></div>\n                    <div class=\"swiper-button-next swiper-button-next-").concat(ad.id, "\"></div>\n                </div>\n                <div class=\"card-body d-flex flex-column pt-1 pb-1 px-2\">\n                <h5 class=\"card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold\"> \n                    <a href=\"/announcement/").concat(ad.slug, "\"> ").concat(ad.title, " </a>\n                </h5>\n                \n     \n                <p class=\"card-text text-muted mt-2 pt-0 slide-description flex-grow-1\">").concat(adDescription, "</p>\n                <div class=\"info \">\n                <a class=\"mr-auto btn nobtn font-weight-bold\" onClick=\"location.href='").concat(ad.category.slug, "'; event.preventDefault(); event.stopPropagation()\">").concat(catName, "</a>\n                    ").concat(ad.place ? "<span>".concat(inplace, "</span>") + '<p class="font-weight-bold btn nobtn">' + ad.place.name + '</p>' : '', "\n                    <p class=\"product-price text-right mb-auto p-2 flex-grow-1\" >").concat(ad.price, " \u20AC</p>\n                </div>\n            </div>");
+        } else {
+          card.innerHTML = "\n                    <div class=\"small-gallery smjs smjs-".concat(ad.id, " swiper-container card-img-top\">\n                        <div class=\"swiper-wrapper ").concat('s' + ad.id, "\">\n                        </div>\n                    </div>\n                    <div class=\"card-body d-flex flex-column pt-1 pb-1 px-2\">\n                    <h5 class=\"card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold\"> \n                        <a href=\"/announcement/").concat(ad.slug, "\"> ").concat(ad.title, " </a>\n                    </h5>\n                    ").concat(ad.place ? '<p class="card-text text-muted mt-2 pt-0 slide-description flex-grow-1">' + ad.place.name + '</p>' : '', "\n                    \n         \n                    <p class=\"card-text text-muted mt-2 pt-0 slide-description flex-grow-1\">").concat(adDescription, "</p>\n                    <div class=\"info \">\n                        <a class=\"mr-auto btn nobtn font-weight-bold\" onClick=\"location.href='").concat(ad.category.slug, "'; event.preventDefault(); event.stopPropagation()\">").concat(catName, "</a>\n                        ").concat(ad.place ? "<span>".concat(inplace, "</span>") + '<p class="font-weight-bold btn nobtn">' + ad.place.name + '</p>' : '', "\n                        <p class=\"product-price text-right mb-auto p-2 flex-grow-1\" >").concat(ad.price, " \u20AC</p>\n                    </div>\n                </div>");
+        }
+
+        wrapper.appendChild(card);
+
+        if (ad.images.length > 1) {
+          ad.images.forEach(function (image) {
+            var gWrapper = document.querySelector(".s".concat(ad.id));
+            var galleryImg = document.createElement('img');
+            var prodEl = image.file;
+            var prodArr = prodEl.split("/");
+            var prodImage = "/storage/" + prodArr[0] + "/" + prodArr[1] + "/crop200x150_" + prodArr[2];
+            galleryImg.src = prodImage;
+            galleryImg.alt = ad.title;
+            galleryImg.classList.add('swiper-slide');
+            gWrapper.appendChild(galleryImg);
+          });
+        } else if (ad.images.length == 1) {
+          ad.images.forEach(function (image) {
+            var gWrapper = document.querySelector(".s".concat(ad.id));
+            var galleryImg = document.createElement('img');
+            var prodEl = image.file;
+            var prodArr = prodEl.split("/");
+            var prodImage = "/storage/" + prodArr[0] + "/" + prodArr[1] + "/crop200x150_" + prodArr[2];
+            galleryImg.src = prodImage;
+            galleryImg.alt = ad.title;
+            galleryImg.classList.add('swiper-slide');
+            gWrapper.appendChild(galleryImg);
+          });
+        } else {
           var gWrapper = document.querySelector(".s".concat(ad.id));
           var galleryImg = document.createElement('img');
-          var prodEl = image.file;
-          var prodArr = prodEl.split("/");
-          var prodImage = "/storage/" + prodArr[0] + "/" + prodArr[1] + "/crop200x150_" + prodArr[2];
+          var prodImage = '/images/placeholder_small.jpg';
           galleryImg.src = prodImage;
-          galleryImg.alt = ad.title;
           galleryImg.classList.add('swiper-slide');
-          gWrapper.appendChild(galleryImg);
-        });
-      } else if (ad.images.length == 1) {
-        ad.images.forEach(function (image) {
-          var gWrapper = document.querySelector(".s".concat(ad.id));
-          var galleryImg = document.createElement('img');
-          var prodEl = image.file;
-          var prodArr = prodEl.split("/");
-          var prodImage = "/storage/" + prodArr[0] + "/" + prodArr[1] + "/crop200x150_" + prodArr[2];
-          galleryImg.src = prodImage;
           galleryImg.alt = ad.title;
-          galleryImg.classList.add('swiper-slide');
           gWrapper.appendChild(galleryImg);
-        });
-      } else {
-        var gWrapper = document.querySelector(".s".concat(ad.id));
-        var galleryImg = document.createElement('img');
-        var prodImage = '/images/placeholder_small.jpg';
-        galleryImg.src = prodImage;
-        galleryImg.classList.add('swiper-slide');
-        galleryImg.alt = ad.title;
-        gWrapper.appendChild(galleryImg);
-      }
-    }
-
-    var smallGallery = new Swiper(".smjs-".concat(ad.id), {
-      effect: 'fade',
-      fadeEffect: {
-        crossFade: true
-      },
-      // Optional parameters
-      loop: false,
-      speed: 600,
-      slidesPerView: 'auto',
-      // Navigation arrows
-      navigation: {
-        nextEl: ".swiper-button-next-".concat(ad.id),
-        prevEl: ".swiper-button-prev-".concat(ad.id)
-      }
-    });
-  });
-};
-
-var getTotalPages = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-    var response, data, limit;
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return fetch("/announcement?page=1", {
-              headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
-              }
-            });
-
-          case 2:
-            response = _context.sent;
-            _context.next = 5;
-            return response.json();
-
-          case 5:
-            data = _context.sent;
-            limit = [data.to, Math.ceil(data.total / data["per_page"])];
-            return _context.abrupt("return", data['last_page']);
-
-          case 8:
-          case "end":
-            return _context.stop();
         }
       }
-    }, _callee);
-  }));
 
-  return function getTotalPages() {
-    return _ref.apply(this, arguments);
+      var smallGallery = new Swiper(".smjs-".concat(ad.id), {
+        effect: 'fade',
+        fadeEffect: {
+          crossFade: true
+        },
+        // Optional parameters
+        loop: false,
+        speed: 600,
+        slidesPerView: 'auto',
+        // Navigation arrows
+        navigation: {
+          nextEl: ".swiper-button-next-".concat(ad.id),
+          prevEl: ".swiper-button-prev-".concat(ad.id)
+        }
+      });
+    });
   };
-}();
 
-var currentPage = 2;
+  var getTotalPages = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      var response, data, limit;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return fetch("/announcement?page=1", {
+                headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json"
+                }
+              });
 
-var fetchData = /*#__PURE__*/function () {
-  var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-    var lastPage, res, data;
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+            case 2:
+              response = _context.sent;
+              _context.next = 5;
+              return response.json();
+
+            case 5:
+              data = _context.sent;
+              limit = [data.to, Math.ceil(data.total / data["per_page"])];
+              return _context.abrupt("return", data['last_page']);
+
+            case 8:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function getTotalPages() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
+  var currentPage = 2;
+
+  var fetchData = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+      var lastPage, res, data;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return getTotalPages();
+
+            case 2:
+              lastPage = _context2.sent;
+
+              if (!(currentPage <= lastPage)) {
+                _context2.next = 12;
+                break;
+              }
+
+              _context2.next = 6;
+              return fetch("/announcement?page=".concat(currentPage), {
+                headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json"
+                }
+              });
+
+            case 6:
+              res = _context2.sent;
+              _context2.next = 9;
+              return res.json();
+
+            case 9:
+              data = _context2.sent;
+              updateDom(data.data);
+              currentPage++;
+
+            case 12:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function fetchData() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
+  window.addEventListener("scroll", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
       while (1) {
-        switch (_context2.prev = _context2.next) {
+        switch (_context3.prev = _context3.next) {
           case 0:
-            _context2.next = 2;
-            return getTotalPages();
-
-          case 2:
-            lastPage = _context2.sent;
-
-            if (!(currentPage <= lastPage)) {
-              _context2.next = 12;
+            if (!(window.innerHeight + window.scrollY >= document.body.offsetHeight)) {
+              _context3.next = 3;
               break;
             }
 
-            _context2.next = 6;
-            return fetch("/announcement?page=".concat(currentPage), {
-              headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
-              }
-            });
+            _context3.next = 3;
+            return fetchData();
 
-          case 6:
-            res = _context2.sent;
-            _context2.next = 9;
-            return res.json();
-
-          case 9:
-            data = _context2.sent;
-            updateDom(data.data);
-            currentPage++;
-
-          case 12:
+          case 3:
           case "end":
-            return _context2.stop();
+            return _context3.stop();
         }
       }
-    }, _callee2);
-  }));
-
-  return function fetchData() {
-    return _ref2.apply(this, arguments);
-  };
-}();
-
-window.addEventListener("scroll", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
-    while (1) {
-      switch (_context3.prev = _context3.next) {
-        case 0:
-          if (!(window.innerHeight + window.scrollY >= document.body.offsetHeight)) {
-            _context3.next = 3;
-            break;
-          }
-
-          _context3.next = 3;
-          return fetchData();
-
-        case 3:
-        case "end":
-          return _context3.stop();
-      }
-    }
-  }, _callee3);
-})));
+    }, _callee3);
+  })));
+}
 
 /***/ }),
 
@@ -1082,7 +1084,7 @@ window.addEventListener("scroll", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /mnt/d/root/dev/wa/zap_presto/resources/js/infiniteScroll.js */"./resources/js/infiniteScroll.js");
+module.exports = __webpack_require__(/*! C:\Users\sebou\wa\hack18\zap_presto\resources\js\infiniteScroll.js */"./resources/js/infiniteScroll.js");
 
 
 /***/ })

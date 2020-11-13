@@ -144,7 +144,7 @@ class Announcement extends Model
        
 
        $p = $coll->filter(function($e){
-            return $e >= 3;
+            return $e >= 4;
         });
 
 
