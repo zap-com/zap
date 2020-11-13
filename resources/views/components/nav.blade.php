@@ -90,7 +90,7 @@
                             </a>
                         @endif
                         <a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit(); localStorage.setItem('locale','it-IT')">
                             {{ __('global.logout') }}
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
