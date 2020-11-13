@@ -128,7 +128,7 @@ registerBtn.onclick = function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /mnt/d/root/dev/wa/zap_presto/resources/js/authForm.js */"./resources/js/authForm.js");
+module.exports = __webpack_require__(/*! C:\Users\sebou\wa\hack18\zap_presto\resources\js\authForm.js */"./resources/js/authForm.js");
 
 
 /***/ })

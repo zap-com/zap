@@ -125,7 +125,7 @@
 
                 <div class="row mx-1 justify-content-end">
                     <div class="form-group">
-                        <button type="submit" class="btn b-btn">
+                        <button type="submit" class="btn b-btn mt-3 mt-md-0">
                             {{ __('announcement.submit') }}
                         </button>
                     </div>
