@@ -51,12 +51,12 @@
                     </div>
                 </div>
                 <div class="card-body d-flex flex-column pt-1 pb-1">
-                    <div class="d-flex flex-row">
+                    <div class="d-flex flex-column flex-md-row">
                         <div class="d-flex flex-column">
                             <h4 class="card-title p slide-title pt-1 pb-0 mb-0 font-weight-bold">
                                 {{ $announcement->title }}
                             </h4>
-                            <p class="pt-2">
+                            <p class="pt-2 mb-2">
                                 <a class="h6 text-uppercase" href="/category/{{ $announcement->category->slug }}">
                                     @if (session()->get('locale') == 'it')
                                         {{ $announcement->category->name_it }}
@@ -70,7 +70,7 @@
                                 @endif
                             </p>
                         </div>
-                        <p class="product-price align-self-end text-right mb-auto flex-grow-1">
+                        <p class="product-price align-self-start align-self-md-end text-right mb-auto flex-grow-1">
                             {{ $announcement->price }} €
                         </p>
                     </div>
