@@ -80,7 +80,7 @@
             <div class="modal-body dropdown-multicol3 px-0 text-left">
                 <div class="form-group pb-0">
                     <a class="dropdown-item py-3"
-                        href="{{ route('search', ['data' => now()]) }}">{{ __('global.today') }}</a>
+                        href="{{ route('search', ['data' => \Carbon\Carbon::today()]) }}">{{ __('global.today') }}</a>
                     <a class="dropdown-item py-3"
                         href="{{ route('search', ['data' => \Carbon\Carbon::today()->subDays(7)]) }}">{{ __('global.last-week') }}</a>
                     <a class="dropdown-item py-3"

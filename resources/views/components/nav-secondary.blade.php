@@ -98,7 +98,7 @@
             <div id="time-dropdown" class="dropdown-menu pt-3 pb-0" aria-labelledby="dropdownMenuButton">
                 <div class="form-group pb-0">
                     <a class="dropdown-item py-3"
-                        href="{{ route('search', ['data' => now()]) }}">{{ __('global.today') }}</a>
+                        href="{{ route('search', ['data' => \Carbon\Carbon::today()]) }}">{{ __('global.today') }}</a>
                     <a class="dropdown-item py-3"
                         href="{{ route('search', ['data' => \Carbon\Carbon::today()->subDays(7)]) }}">{{ __('global.last-week') }}</a>
                     <a class="dropdown-item py-3"
