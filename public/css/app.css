@@ -11798,8 +11798,8 @@ a {
 }
 
 .modal-content .card-img-top {
-  border-radius: 25px;
-  height: 187.5px !important;
+  border-radius: 0;
+  height: auto;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -12630,5 +12630,6 @@ progress[value^="110"]::-moz-progress-bar {
   position: absolute;
   top: -5px !important;
   right: -5px;
+  min-width: 20px;
 }
 
