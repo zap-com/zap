@@ -77,7 +77,7 @@ class PublicController extends Controller
         
 
         if($min && $max){
-            $announcements = Announcement::where('price','>',$min)->where('price','<',$max)->where('status_id', 2)->orderBy('created_at','desc')->get();
+            $announcements = Announcement::where('price','>',$min)->where('price','<',$max)->where('status_id', 2)->orderBy('price','asc')->get();
             return view('announcement.index', compact('announcements'));
         }
         session()->put('q', $q);
@@ -85,7 +85,7 @@ class PublicController extends Controller
 
         if($data){
             if (!$categoryId) {
-                $announcements = Announcement::where('created_at','<',$data)->where('status_id', 2)->orderBy('created_at','desc')->get();
+                $announcements = Announcement::where('created_at','>=',$data)->where('status_id', 2)->orderBy('created_at','desc')->get();
                 
                
             } else if (!$q) {
@@ -114,7 +114,7 @@ class PublicController extends Controller
 
     public function searchByLocality(Request $request)
     {
-        $q = json_decode($request->input('hiddenplace'));
+        $q = json_decode($request->input('hiddenplace')) ?? json_decode($request->input('hiddenplacemobile'));
 
         $announcements = Place::getAnnouncementByDistance($q->cordinates->lat,$q->cordinates->lng );
 

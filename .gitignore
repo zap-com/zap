@@ -12,3 +12,5 @@ npm-debug.log
 yarn-error.log
 /storage/*.index
 google_credentials.json
+storage/announcements.index-shm
+storage/announcements.index-wal

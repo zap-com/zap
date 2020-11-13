@@ -11798,8 +11798,8 @@ a {
 }
 
 .modal-content .card-img-top {
-  border-radius: 25px;
-  height: 187.5px !important;
+  border-radius: 0;
+  height: auto;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -11861,6 +11861,7 @@ a {
   color: #fb8289;
   line-height: 1;
   font-weight: bold;
+  min-width: 65px;
 }
 
 .listings-card .card-text {
@@ -12630,5 +12631,6 @@ progress[value^="110"]::-moz-progress-bar {
   position: absolute;
   top: -5px !important;
   right: -5px;
+  min-width: 20px;
 }
 

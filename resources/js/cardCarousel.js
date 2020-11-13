@@ -20,7 +20,7 @@ fetch('/announcement/json')
             }
             else {
                 var catName = product.category.name;
-                var inplace = " in "
+                var inplace = "in"
             }
             let prodDescription = truncateString(product.description, 120);
             let trendCard = document.createElement('a')
@@ -45,14 +45,13 @@ fetch('/announcement/json')
                 <img src="${prodImage}" class="card-img-top px-1 pt-1 pb-0" alt="${prodTitle}">
         <div class="card-body pt-1 px-2">
           <h5 class="p font-weight-bold card-title slide-title pt-1 pb-0 mb-0">${prodTitle}</h5>
-          <button type="button"
+          <p class="d-flex flex-row align-items-end">
+            <button type="button"
                     onClick="location.href='/category/${product.category.slug}'; event.preventDefault(); event.stopPropagation()"
                     class="btn nobtn">${catName}</button>
-                    ${product.place ? `<span>${inplace}</span>` + '<p class="btn nobtn">' + product.place.name + '</p>' : ''}
-          <!--<div class="d-flex d-row align-items-center py-0 location-row mb-2">
-            <i class="icon-location-pin pr-1"></i>
-            <p class="my-0 location-text">{product.location}</p>
-          </div>-->
+                    ${product.place ? `<span>&nbsp;${inplace}&nbsp;
+                    </span>` + '<span class="btn nobtn">' + product.place.name + '</span>' : ''}
+                    </p>
           <p class="card-text text-muted pt-0 slide-description">${prodDescription}
           </p >
         </div >

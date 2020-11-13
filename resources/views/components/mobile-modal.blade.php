@@ -39,7 +39,7 @@
                         </a>
                     @endif
                     <a class="d-block py-4 w-100 d-flex align-items-center" href="{{ route('logout') }}"
-                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit(); localStorage.setItem('locale','en-GB')">
                         <i class="icons icon-logout mx-3"></i>
                         <p class="m-0">{{ __('global.logout') }}</p>
                     </a>
